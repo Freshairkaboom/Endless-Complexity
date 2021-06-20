@@ -108,9 +108,9 @@
         if (eventTime == false) return;
         eventTime = false;
 
-        //Increases round by 1 and resets the player's courage so they can fight
+        //Increases round by 1 and resets the player's health so they can fight.
         round += 1;
-        player.courage = 1;
+        player.health = 100;
 
         //Loading event visible on screen
         status = 'Loading event...';
@@ -182,7 +182,6 @@
             setTimeout(()=> {
                 eventTime = true;
                 strikeTime = true;
-                player.health = 100;
                 firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
                 secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
                 thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
@@ -197,7 +196,6 @@
                 alert('You should not have done that.');
                 eventTime = true;
                 strikeTime = true;
-                player.health = 100;
                 firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
                 secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
                 thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
