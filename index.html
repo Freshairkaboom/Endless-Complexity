@@ -181,6 +181,7 @@
             updateView();
             setTimeout(()=> {
                 eventTime = true;
+                player.health = 100;
                 firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
                 secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
                 thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
@@ -194,6 +195,7 @@
                 currentMonster = {name:'N/A',health:'N/A'};
                 alert('You should not have done that.');
                 eventTime = true;
+                player.health = 100;
                 firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
                 secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
                 thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
