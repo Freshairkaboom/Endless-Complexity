@@ -17,6 +17,7 @@
     let winOrLose = '';
     let eventTime = true;
     let strikeTime = true;
+    let fleeTime = true;
     let status = 'You are home.';
     let powerUP = 0;
     let firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;

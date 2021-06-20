@@ -25,6 +25,7 @@ function strikeMonster(damage) {
 
     if (strikeTime == false) return;
     strikeTime = false;
+    if (fleeTime == false) return;
 
     status = 'You prepare to strike your foe...';
     updateView();
@@ -70,6 +71,7 @@ function strikeMonster(damage) {
             return;
         }
     },3000);
+    fleeTime == true;
 }
 
 function treasureHunt(treasureEvent) {

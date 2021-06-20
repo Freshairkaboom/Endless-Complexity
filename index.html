@@ -60,6 +60,10 @@
 
     // Called from fightSequence() function - Ends fightSequence function, removes courage to prevent loop, removes some gold, returns to idle.
     function flee() {
+        if (fleeTime == false) return;
+        fleeTime == false;
+        if (strikeTime == false) return;
+        strikeTime = false;
         winOrLose = 'You fled from the battle and lost some gold.';
         updateView();
         player.courage = 0;
@@ -69,6 +73,8 @@
             status = 'You are home.';
             currentMonster = {name:'N/A',health:'N/A'};
             eventTime = true;
+            fleeTime = true;
+            strikeTime = true;
             monsterName = 'N/A';
             monsterHealth = 'N/A';
             winOrLose = '';
@@ -110,11 +116,17 @@
 
         //Increases round by 1 and resets the player's health so they can fight.
         round += 1;
-        player.health = 100;
 
         //Loading event visible on screen
         status = 'Loading event...';
         updateView();
+
+        if (boxID == "Rest" && player.health < 50) {
+            status = 'You take a couple days off to rest, recovering from your wounds.';
+            round +=2;
+            updateView();
+            setTimeout(()=>{status='You are home.';player.health = 100;updateView();eventTime=true;}, 3000);
+        }
 
         //Checks what box was clicked and selects appropriate event
         if (boxID == 'Fight') {
