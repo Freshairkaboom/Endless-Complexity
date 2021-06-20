@@ -30,7 +30,7 @@
     player = {
         name: playerName,
         health: 100,
-        ad: 3, // Attack damage
+        ad: 7, // Attack damage
         speed: 5,
         weapon: "Stick",
         //Inventory:

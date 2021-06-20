@@ -59,7 +59,8 @@ function strikeMonster(damage) {
 
             }
             else {
-                status = "You traded blows with " + currentMonster.name + ".";
+                status = "You dealt " + damage + " damage to the " + currentMonster.name + ", and the "
+                + currentMonster.name + " dealt " + currentMonster.ad + " damage to you.";
                 updateView();
                 strikeTime = true;
             }
