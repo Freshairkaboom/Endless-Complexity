@@ -31,7 +31,7 @@
             </div>
             <div class="interactContainer">
                 <div class="header">
-                    <div>Click a button to select event</div>
+                    <div>Round: ${round}</div>
                     <div> Status: ${status} </br> ${winOrLose}</div>
                 </div>
 

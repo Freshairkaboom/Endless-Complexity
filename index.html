@@ -229,7 +229,7 @@
         player = {
         name: playerName,
         health: 0,
-        ad: 3, // Attack damage
+        ad: 7, // Attack damage
         speed: 5,
         weapon: "Stick",
         //Inventory:
@@ -245,6 +245,9 @@
         setTimeout(()=> {
                 currentMonster = {name:'N/A',health:'N/A'};
                 eventTime = true;
+                strikeTime = true;
+                fleeTime = true;
+                round = 0;
                 firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
                 secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
                 thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
