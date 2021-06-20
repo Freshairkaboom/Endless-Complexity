@@ -61,3 +61,7 @@ body {
     height: 6.4vh;
     font-size: 2vh;
 }
+
+.fightSequence {
+    background-color: crimson;
+}

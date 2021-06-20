@@ -9,13 +9,13 @@ function fightSequence(monster) {
 
     status = "You encountered a " + monster.name + "!";
 
-    firstAction = `<button class="actionButton" onclick="strikeMonster(calculateDamage())">Strike</button>`;
+    firstAction = `<button class="actionButton fightSequence" onclick="strikeMonster(calculateDamage())">Strike</button>`;
 
-    secondAction = `<button class="actionButton" onclick="alert('This button does nothing (yet).')">Open bag</button>`;
+    secondAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">Open bag</button>`;
 
-    thirdAction = `<button class="actionButton" onclick="alert('This button does nothing (yet).')">Assess area</button>`;
+    thirdAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">Assess area</button>`;
 
-    fourthAction = `<button class="actionButton" onclick="flee()">Flee</button>`;
+    fourthAction = `<button class="actionButton fightSequence" onclick="flee()">Flee</button>`;
 
     updateView();
 
