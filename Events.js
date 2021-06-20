@@ -73,7 +73,7 @@ function strikeMonster(damage) {
         }
     },3000);
     fleeTime == true;
-    player.health = 100;
+
 }
 
 function treasureHunt(treasureEvent) {
