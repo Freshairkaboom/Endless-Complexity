@@ -11,7 +11,7 @@
     let weaponSpeed = 0;
 
     //Other variables
-    let round = 1;
+    let round = 0;
     let currentMonster = {name:'N/A',health:'N/A'};
     let damage = 0;
     let winOrLose = '';
