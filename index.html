@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Complexity</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script defer src="Model.js"></script>
+    <script defer src="View.js"></script>
+    <script defer src="Events.js"></script>
+
+</head>
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+
+    //Controller
+
+    // Called from fightSequence() function - Returns a healthpotion one out of 10 times
+    function addHealthPotionReward() {
+        let chanceOfPot = Math.ceil(Math.random()*10);
+        if (chanceOfPot === 10 && player.inventory > 0) {
+            player.inventory -= 1;
+            return 1;
+        }
+        else return 0;
+    }
+
+
+    // Called from fightSequence() function - Returns total damage after accounting for weapon, player and powerup damage.
+    function calculateDamage(weaponDamage, playerDamage) {
+        if (player.attackUP > 0 && player.health <= 50) {
+            player.attackUP -= 1;
+            player.inventory += 1;
+            powerUP = playerDamage;
+        }
+
+        damage = weaponDamage + playerDamage + powerUP;
+        return damage;
+    }
+
+    // Called from fightSequence() function - Returns weapon damage after checking the equipped weapon.
+    function addWeaponDamage() {
+        //Default weapon
+        if (selectedWeapon == "Stick" && weaponType == "Default") return 3; //Adds +3 damage to attack
+
+    }
+
+    //Called from fightSequence() function - Returns weapon speed after checking the equipped weapon.
+    function addWeaponSpeed() {
+        //Default weapon
+        if (selectedWeapon == "Stick" && weaponType == "Default") return 5; //Weapon speed is 5
+
+    }
+
+    // Called from fightSequence() function - Ends fightSequence function, removes courage to prevent loop, removes some gold, returns to idle.
+    function flee() {
+        winOrLose = 'You fled from the battle and lost some gold.';
+        updateView();
+        player.courage = 0;
+        player.gold -= 5;
+        if (player.gold < 0) player.gold = 0;
+        setTimeout(()=>{
+            status = 'You are home.';
+            eventTime = true;
+            monsterName = 'N/A';
+            monsterHealth = 'N/A';
+            winOrLose = '';
+            updateView();},3000);
+        return;
+    }
+
+    //Called from selectEvent() function - Returns a treasure event based on random logic.
+    function randomTreasureEvent() {
+        //Pick a treasure event at random
+        const random = Math.ceil(Math.random() * 10);
+        if (round == 10) return castle;
+        else return forest;
+
+    }
+
+    //Called from selectEvent() function - Returns a monster based on random logic.
+    function randomMonster() {
+        //Reset all monster health
+        goblin.health = 50 + Math.ceil(Math.random()*100);
+        goblinBoss.health = 100 + Math.ceil(Math.random()*200);
+
+        //Pick monster at random
+        random = Math.ceil(Math.random() * 10);
+        if (round == 10 || round == 20 || round == 30) return goblinBoss;
+        if (random == 10 && round > 10) return goblinBoss;
+        else return goblin;
+    }
+
+    //Called from onclick event in "fight" box.
+    function selectEvent(boxID) {
+        //Prevents two events running at the same time - eventTime returns to true at the end of each event.
+        if (eventTime == false) return;
+        eventTime = false;
+
+        //Increases round by 1 and resets the player's courage so they can fight
+        round += 1;
+        player.courage = 1;
+
+        //Loading event visible on screen
+        status = 'Loading event...';
+        updateView();
+
+        //Checks what box was clicked and selects appropriate event
+        if (boxID == 'Fight') {
+            setTimeout(()=>{fightSequence(randomMonster())}, 3000);
+
+        }
+        else if (boxID == 'Explore') {
+                setTimeout(()=>{treasureHunt(randomTreasureEvent())}, 3000);
+
+        }
+        else if (boxID == 'Farm') {
+                setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
+
+        }
+        else if (boxID == 'Study') {
+                setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
+
+        }
+    }
+
+    //Called from 50gp button in the bottom left box.
+    function buyAttackUp() {
+        console.log(player.attackUP);
+        if (player.gold >= 50 && player.inventory > 0) {
+            player.gold -= 50;
+            player.inventory -= 1;
+            player.attackUP += 1;
+            updateView();
+        }
+        else alert("Check if you have enough gold or inventory space.");
+
+    }
+
+    function buyHealthPotion() {
+        console.log(player.healthpotions);
+        if (player.gold >= 25 && player.inventory > 0) {
+            player.gold -= 25;
+            player.inventory -= 1;
+            player.healthpotions += 1;
+            updateView();
+        }
+        else alert("Check if you have enough gold or inventory space.");
+    }
+
+</script>
+</html>

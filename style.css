@@ -1,0 +1,62 @@
+body {
+    background-color: beige;
+
+}
+
+.page {
+    display: flex;
+    border: 0.3vh solid black;
+    border-right: none;
+    margin-left: 65vh;
+    margin-top: 20vh;
+    width: 25vw;
+    height: 53.3vh;
+}
+
+.modelContainer {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    height: 53.33vh;
+    width: 21.5vh;
+}
+
+.modelBox {
+    border-bottom: 1px solid black;
+    height: 13.33vh;
+    width: 21.5vh;
+    font-size: 2vh;
+}
+
+.bottomBox {
+    height: 13.33vh;
+    width: 21.5vh;
+    font-size: 2vh;
+}
+
+.interactContainer {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    height: 53.33vh;
+    width: 50vh;
+    font-size: 2.5vh;
+}
+
+.header {
+    border-bottom: 1px solid black;
+}
+
+.button {
+    margin: 0.5vh;
+    width: 5vh;
+    height: 3vh;
+    font-size: 1.5vh;
+}
+
+.actionButton {
+    cursor: pointer;
+    border: 2px solid black;
+    margin: 0.5vh;
+    width: 10vh;
+    height: 6vh;
+    font-size: 2vh;
+}
