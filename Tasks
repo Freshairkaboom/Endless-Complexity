@@ -4,3 +4,7 @@ High prio:
 - Add functionality to "Assess area" option in fightSequence() function.
 
 Low prio:
+- Make turn counter visible
+- Make turn counter reset upon death
+- Make hp not reset after events
+- Have a rest option at home to recover hp but increases turn.
