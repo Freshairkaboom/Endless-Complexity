@@ -70,6 +70,7 @@
         player.gold -= 5;
         if (player.gold < 0) player.gold = 0;
         setTimeout(()=>{
+            player.health = 100;
             status = 'You are home.';
             currentMonster = {name:'N/A',health:'N/A'};
             eventTime = true;
@@ -116,6 +117,7 @@
 
         //Increases round by 1 and resets the player's health so they can fight.
         round += 1;
+        player.health = 100;
 
         //Loading event visible on screen
         status = 'Loading event...';
@@ -199,6 +201,7 @@
                 thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
                 fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
                 status = 'You are home.';
+                player.health = 100;
                 updateView();
             },3000)
         }
@@ -213,6 +216,7 @@
                 thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
                 fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
                 status = 'You are home.';
+                player.health = 100;
                 updateView();
             },3000)
         }
