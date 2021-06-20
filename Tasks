@@ -1,0 +1,6 @@
+High prio:
+- Add functionality to "Open bag" option in fightSequence() function.
+- Add functionality to "Assess area" option in fightSequence() function.
+
+Low prio:
+- Change CSS on action buttons for fightSequence() function.

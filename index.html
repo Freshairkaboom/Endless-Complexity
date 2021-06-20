@@ -31,28 +31,30 @@
 
 
     // Called from fightSequence() function - Returns total damage after accounting for weapon, player and powerup damage.
-    function calculateDamage(weaponDamage, playerDamage) {
+    function calculateDamage() {
         if (player.attackUP > 0 && player.health <= 50) {
             player.attackUP -= 1;
             player.inventory += 1;
-            powerUP = playerDamage;
+            powerUP = player.ad;
         }
 
-        damage = weaponDamage + playerDamage + powerUP;
+        weaponDamage = addWeaponDamage();
+
+        damage = weaponDamage + player.ad + powerUP;
         return damage;
     }
 
     // Called from fightSequence() function - Returns weapon damage after checking the equipped weapon.
     function addWeaponDamage() {
         //Default weapon
-        if (selectedWeapon == "Stick" && weaponType == "Default") return 3; //Adds +3 damage to attack
+        if (player.weapon == "Stick" && weaponType == "Default") return 3; //Adds +3 damage to attack
 
     }
 
     //Called from fightSequence() function - Returns weapon speed after checking the equipped weapon.
     function addWeaponSpeed() {
         //Default weapon
-        if (selectedWeapon == "Stick" && weaponType == "Default") return 5; //Weapon speed is 5
+        if (player.weapon == "Stick" && weaponType == "Default") return 5; //Weapon speed is 5
 
     }
 
@@ -65,10 +67,15 @@
         if (player.gold < 0) player.gold = 0;
         setTimeout(()=>{
             status = 'You are home.';
+            currentMonster = {name:'N/A',health:'N/A'};
             eventTime = true;
             monsterName = 'N/A';
             monsterHealth = 'N/A';
             winOrLose = '';
+            firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
+            secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
+            thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
+            fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
             updateView();},3000);
         return;
     }
@@ -85,8 +92,8 @@
     //Called from selectEvent() function - Returns a monster based on random logic.
     function randomMonster() {
         //Reset all monster health
-        goblin.health = 50 + Math.ceil(Math.random()*100);
-        goblinBoss.health = 100 + Math.ceil(Math.random()*200);
+        goblin.health = 30 + Math.ceil(Math.random()*30);
+        goblinBoss.health = 60 + Math.ceil(Math.random()*60);
 
         //Pick monster at random
         random = Math.ceil(Math.random() * 10);
@@ -115,14 +122,20 @@
 
         }
         else if (boxID == 'Explore') {
-                setTimeout(()=>{treasureHunt(randomTreasureEvent())}, 3000);
+                status = 'Event is not finished, try again later.'
+                updateView()
+                setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
 
         }
         else if (boxID == 'Farm') {
+                status = 'Event is not finished, try again later.'
+                updateView()
                 setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
 
         }
         else if (boxID == 'Study') {
+                status = 'Event is not finished, try again later.'
+                updateView()
                 setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
 
         }
@@ -150,6 +163,77 @@
             updateView();
         }
         else alert("Check if you have enough gold or inventory space.");
+    }
+
+    function checkDead() {
+        if (player.health < 1) death();
+
+        if (currentMonster.health < 1) reward();
+
+    }
+
+    function reward() {
+        status = 'You beat the ' + currentMonster.name + ' and got some loot!';
+        updateView();
+        if (currentMonster.name == "Goblin") {
+            currentMonster = {name:'N/A',health:'N/A'};
+            player.gold += Math.ceil(Math.random()*30)
+            updateView();
+            setTimeout(()=> {
+                eventTime = true;
+                firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
+                secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
+                thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
+                fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
+                status = 'You are home.';
+                updateView();
+            },3000)
+        }
+        else {
+            setTimeout(()=> {
+                currentMonster = {name:'N/A',health:'N/A'};
+                alert('You should not have done that.');
+                eventTime = true;
+                firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
+                secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
+                thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
+                fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
+                status = 'You are home.';
+                updateView();
+            },3000)
+        }
+
+    }
+
+    function death() {
+        status = 'Oh dear, you have met your demise. Try again from the start.'
+        updateView();
+        player = {
+        name: playerName,
+        health: 0,
+        ad: 3, // Attack damage
+        speed: 5,
+        weapon: "Stick",
+        //Inventory:
+        inventory: 10,
+        gold: 10,
+        healthpotions: 0,
+        attackUP: 0,
+
+        //Status:
+        courage: 1,
+        }
+        updateView();
+        setTimeout(()=> {
+                currentMonster = {name:'N/A',health:'N/A'};
+                eventTime = true;
+                firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
+                secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
+                thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
+                fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
+                status = 'You are home.';
+                updateView();
+            },3000)
     }
 
 </script>

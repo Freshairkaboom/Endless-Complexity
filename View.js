@@ -13,8 +13,8 @@
                     <div>Equipped weapon: ${player.weapon}</div>
                 </div>
                 <div class="modelBox">
-                    <div>Monster name: ${monsterName}</div>
-                    <div>Health: ${monsterHealth} </div>
+                    <div>Monster name: ${currentMonster.name}</div>
+                    <div>Health: ${currentMonster.health} </div>
                 </div>
 
                 <div class="modelBox">
