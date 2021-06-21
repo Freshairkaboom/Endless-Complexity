@@ -3,12 +3,17 @@ body {
 
 }
 
+.log {
+    border: 0.3vh solid black;
+    width: 10vw;
+}
+
 .page {
     display: flex;
     border: 0.3vh solid black;
     border-right: none;
-    margin-left: 65vh;
-    margin-top: 20vh;
+    margin-left: 73vh;
+    margin-top: 25vh;
     width: 25vw;
     height: 53.3vh;
 }
@@ -17,14 +22,14 @@ body {
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     height: 53.33vh;
-    width: 21.5vh;
+    width: 16vw;
 }
 
 .modelBox {
     border-bottom: 1px solid black;
     height: 13.33vh;
     width: 21.5vh;
-    font-size: 2vh;
+    font-size: 1.9vh;
 }
 
 .bottomBox {
@@ -48,7 +53,7 @@ body {
 
 .button {
     margin: 0.5vh;
-    width: 5vh;
+    width: 2.5vw;
     height: 3vh;
     font-size: 1.5vh;
 }
@@ -57,11 +62,17 @@ body {
     cursor: pointer;
     border: 2px solid black;
     margin: 0.5vh;
-    width: 10vh;
+    width: 7vw;
     height: 6.4vh;
     font-size: 2vh;
 }
 
+.tinyButton {
+    width: 15vh;
+    height: 3vh;
+}
+
 .fightSequence {
-    background-color: crimson;
+    border: 3px solid black;
+    background-color: rgb(233, 68, 101);
 }

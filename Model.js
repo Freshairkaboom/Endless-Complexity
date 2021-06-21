@@ -5,10 +5,13 @@
     let playerName = 'Bob'; //Default name
     let weaponType = "Default";
     let healthPotions = 0;
+    let attackDamage = 7;
 
     //Weapon variables
     let weaponDamage = 0;
     let weaponSpeed = 0;
+
+    let weapons = ['N/A','N/A','N/A'];
 
     //Other variables
     let round = 0;
@@ -18,6 +21,7 @@
     let eventTime = true;
     let strikeTime = true;
     let fleeTime = true;
+    let bagTime = true;
     let status = 'You are home.';
     let powerUP = 0;
     let firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
@@ -30,14 +34,14 @@
     player = {
         name: playerName,
         health: 100,
-        ad: 7, // Attack damage
+        ad: attackDamage,
         speed: 5,
         weapon: "Stick",
         //Inventory:
         inventory: 10,
         gold: 10,
         healthpotions: 0,
-        attackUP: 0,
+        strengthPotion: 0,
 
         //Status:
         courage: 1,

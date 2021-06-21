@@ -11,7 +11,7 @@ function fightSequence(monster) {
 
     firstAction = `<button class="actionButton fightSequence" onclick="strikeMonster(calculateDamage())">Strike</button>`;
 
-    secondAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">Open bag</button>`;
+    secondAction = `<button class="actionButton fightSequence" onclick="openBag()">Open bag</button>`;
 
     thirdAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">Assess area</button>`;
 
@@ -26,6 +26,9 @@ function strikeMonster(damage) {
     if (strikeTime == false) return;
     strikeTime = false;
     if (fleeTime == false) return;
+    fleeTime = false;
+    if (bagTime == false) return;
+    bagTime = false;
 
     status = 'You prepare to strike your foe...';
     updateView();
@@ -68,11 +71,13 @@ function strikeMonster(damage) {
         }
         else if (player.health == 0) {
             player.health = 100;
+            player.ad = 7;
             strikeTime = true;
             return;
         }
-    },3000);
-    fleeTime == true;
+    },500);
+    fleeTime = true;
+    bagTime = true;
 
 }
 

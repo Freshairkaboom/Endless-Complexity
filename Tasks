@@ -1,10 +1,7 @@
 High prio:
-- Why the heck does player.health turn to NaN after reward() function????
-- Add functionality to "Open bag" option in fightSequence() function.
+- Why doesn't equipping Iron Sword change the inventory slot to Stick right away?
 - Add functionality to "Assess area" option in fightSequence() function.
 
 Low prio:
-- Make turn counter visible
-- Make turn counter reset upon death
 - Make hp not reset after events
 - Have a rest option at home to recover hp but increases turn.

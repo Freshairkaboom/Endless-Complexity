@@ -3,6 +3,7 @@
     updateView();
     function updateView() {
         let html = `
+
         <div class="page">
             <div class="modelContainer">
                 <div class="modelBox">
@@ -10,7 +11,7 @@
                     <div>Health: ${player.health}</div>
                     <div>Attack damage: ${player.ad}</div>
                     <div>Speed: ${player.speed}</div>
-                    <div>Equipped weapon: ${player.weapon}</div>
+                    <div>Equipped: ${player.weapon}</div>
                 </div>
                 <div class="modelBox">
                     <div>Monster name: ${currentMonster.name}</div>
@@ -21,12 +22,12 @@
                     <div>Inventory: ${player.inventory} slots left</div>
                     <div>Gold: ${player.gold} gp</div>
                     <div>Health potions: ${player.healthpotions}</div>
-                    <div>AttackUP: ${player.attackUP}</div>
+                    <div>Strength potions: ${player.strengthPotion}</div>
                 </div>
 
                 <div class="bottomBox">
-                    <div>Buy health potion <button class="button" onclick="buyHealthPotion()">25gp</button></div>
-                    <div> Buy attackUP <button class="button" onclick="buyAttackUp()">50gp</button></div>
+                    <div>Buy Health <button class="button" onclick="buyHealthPotion()">25gp</button></div>
+                    <div> Buy Strength <button class="button" onclick="buystrengthPotion()">50gp</button></div>
                 </div>
             </div>
             <div class="interactContainer">
