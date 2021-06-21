@@ -42,19 +42,16 @@
     // Called from fightSequence() function - Returns weapon damage after checking the equipped weapon.
     function addWeaponDamage() {
         //Default weapon
-        if (player.weapon == "Stick" && weaponType == "Default") return 3; //Adds +3 damage to attack
-
-        if (weaponType == "Iron") {
-            if (player.weapon == 'Iron Sword') return 6;
-        }
+        if (player.weapon == "Stick") return 3;
+        if (player.weapon == 'Iron Sword') return 6;
 
     }
 
     //Called from fightSequence() function - Returns weapon speed after checking the equipped weapon.
     function addWeaponSpeed() {
         //Default weapon
-        if (player.weapon == "Stick" && weaponType == "Default") return 5; //Weapon speed is 5
-
+        if (player.weapon == "Stick") return 5; //Weapon speed is 5
+        if (player.weapon == 'Iron Sword') return 8;
     }
 
     // Called from fightSequence() function - Ends fightSequence function, removes courage to prevent loop, removes some gold, returns to idle.
@@ -206,8 +203,10 @@
             status = 'You beat the ' + currentMonster.name + ' and got '+ loot*2 + ' gp.';
             currentMonster = {name:'N/A',health:'N/A'};
         updateView();
-            weapons[0] = 'Iron Sword';
-            weaponType = 'Iron';
+            if (weapons.includes('Iron Sword') == false) {
+                alert('You got an Iron Sword! Check your bag.');
+                weapons[0] = 'Iron Sword';
+            }
             updateView();
             setTimeout(()=> {
                 reset();

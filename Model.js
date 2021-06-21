@@ -3,7 +3,6 @@
 
     //Player model variables
     let playerName = 'Bob'; //Default name
-    let weaponType = "Default";
     let healthPotions = 0;
     let attackDamage = 7;
 
