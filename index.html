@@ -132,7 +132,7 @@
 
         //Checks what box was clicked and selects appropriate event
         if (boxID == 'Fight') {
-            setTimeout(()=>{fightSequence(randomMonster())}, 3000);
+            setTimeout(()=>{fightSequence(randomMonster())}, 500);
 
         }
         else if (boxID == 'Explore') {
@@ -203,9 +203,10 @@
             status = 'You beat the ' + currentMonster.name + ' and got '+ loot*2 + ' gp.';
             currentMonster = {name:'N/A',health:'N/A'};
         updateView();
-            if (weapons.includes('Iron Sword') == false) {
+            if (weapons.includes('Iron Sword') == false && player.weapon != "Iron Sword") {
                 alert('You got an Iron Sword! Check your bag.');
                 weapons[0] = 'Iron Sword';
+                console.log('It worked?')
             }
             updateView();
             setTimeout(()=> {
