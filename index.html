@@ -198,18 +198,7 @@
             currentMonster = {name:'N/A',health:'N/A'};
             updateView();
             setTimeout(()=> {
-                eventTime = true;
-                strikeTime = true;
-                fleeTime = true;
-                bagTime = true;
-                firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
-                secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
-                thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
-                fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
-                status = 'You are home.';
-                player.health = 100;
-                player.ad = 7;
-                updateView();
+                reset();
             },3000)
         }
         else if (currentMonster.name == "Goblin Boss") {
@@ -221,36 +210,12 @@
             weaponType = 'Iron';
             updateView();
             setTimeout(()=> {
-                eventTime = true;
-                strikeTime = true;
-                fleeTime = true;
-                bagTime = true;
-                firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
-                secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
-                thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
-                fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
-                status = 'You are home.';
-                player.health = 100;
-                player.ad = 7;
-                updateView();
+                reset();
             },3000)
         }
         else {
             setTimeout(()=> {
-                currentMonster = {name:'N/A',health:'N/A'};
-                alert('You should not have done that.');
-                eventTime = true;
-                strikeTime = true;
-                fleeTime = true;
-                bagTime = true;
-                firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
-                secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
-                thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
-                fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
-                status = 'You are home.';
-                player.health = 100;
-                player.ad = 7;
-                updateView();
+                reset();
             },3000)
         }
     }
@@ -382,6 +347,21 @@
             status = 'You equipped ' + weapon + '.';
             updateView();
         }
+    }
+
+    function reset() {
+        eventTime = true;
+        strikeTime = true;
+        fleeTime = true;
+        bagTime = true;
+        firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
+        secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
+        thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
+        fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
+        status = 'You are home.';
+        player.health = 100;
+        player.ad = 7;
+        updateView();
     }
 
 </script>
