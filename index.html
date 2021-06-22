@@ -345,6 +345,7 @@
             weapons[index] = player.weapon;
             player.weapon = weapon;
             status = 'You equipped ' + weapon + '.';
+            switchWeapon()
             updateView();
         }
     }
