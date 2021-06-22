@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css"/>
     <script defer src="Model.js"></script>
     <script defer src="View.js"></script>
-    <script defer src="Events.js"></script>
+    <script defer src="Fight Event.js"></script>
 
 </head>
 <body>
@@ -18,74 +18,6 @@
 <script>
 
     //Controller
-
-    // Called from fightSequence() function - Returns a healthpotion one out of 10 times
-    function addHealthPotionReward() {
-        let chanceOfPot = Math.ceil(Math.random()*10);
-        if (chanceOfPot === 10 && player.inventory > 0) {
-            player.inventory -= 1;
-            return 1;
-        }
-        else return 0;
-    }
-
-
-    // Called from fightSequence() function - Returns total damage after accounting for weapon, player and powerup damage.
-    function calculateDamage() {
-
-        weaponDamage = addWeaponDamage();
-
-        damage = weaponDamage + player.ad;
-        return damage;
-    }
-
-    // Called from fightSequence() function - Returns weapon damage after checking the equipped weapon.
-    function addWeaponDamage() {
-        //Default weapon
-        if (player.weapon == "Stick") return 3;
-        if (player.weapon == 'Iron Sword') return 6;
-
-    }
-
-    //Called from fightSequence() function - Returns weapon speed after checking the equipped weapon.
-    function addWeaponSpeed() {
-        //Default weapon
-        if (player.weapon == "Stick") return 5; //Weapon speed is 5
-        if (player.weapon == 'Iron Sword') return 8;
-    }
-
-    // Called from fightSequence() function - Ends fightSequence function, removes courage to prevent loop, removes some gold, returns to idle.
-    function flee() {
-        if (strikeTime == false) return;
-        strikeTime = false;
-        if (fleeTime == false) return;
-        fleeTime = false;
-        if (bagTime == false) return;
-        bagTime = false;
-        winOrLose = 'You fled from the battle and lost some gold.';
-        updateView();
-        player.courage = 0;
-        player.gold -= 5;
-        if (player.gold < 0) player.gold = 0;
-        setTimeout(()=>{
-            player.health = 100;
-            player.ad = 7;
-            status = 'You are home.';
-            currentMonster = {name:'N/A',health:'N/A'};
-            eventTime = true;
-            fleeTime = true;
-            strikeTime = true;
-            bagTime = true;
-            monsterName = 'N/A';
-            monsterHealth = 'N/A';
-            winOrLose = '';
-            firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
-            secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
-            thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
-            fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
-            updateView();},3000);
-        return;
-    }
 
     //Called from selectEvent() function - Returns a treasure event based on random logic.
     function randomTreasureEvent() {
@@ -110,7 +42,7 @@
     }
 
     //Called from onclick event in "fight" box.
-    function selectEvent(boxID) {
+    function selectEvent(event) {
         //Prevents two events running at the same time - eventTime returns to true at the end of each event.
         if (eventTime == false) return;
         eventTime = false;
@@ -123,7 +55,7 @@
         status = 'Loading event...';
         updateView();
 
-        if (boxID == "Rest" && player.health < 50) {
+        if (event == "Rest" && player.health < 50) {
             status = 'You take a couple days off to rest, recovering from your wounds.';
             round +=2;
             updateView();
@@ -131,23 +63,23 @@
         }
 
         //Checks what box was clicked and selects appropriate event
-        if (boxID == 'Fight') {
-            setTimeout(()=>{fightSequence(randomMonster())}, 500);
+        if (event == 'Fight') {
+            setTimeout(()=>{fightSequence(randomMonster());eventTime=true;}, 500);
 
         }
-        else if (boxID == 'Explore') {
+        else if (event == 'Explore') {
                 status = 'Event is not finished, try again later.'
                 updateView()
                 setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
 
         }
-        else if (boxID == 'Farm') {
+        else if (event == 'Farm') {
                 status = 'Event is not finished, try again later.'
                 updateView()
                 setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
 
         }
-        else if (boxID == 'Study') {
+        else if (event == 'Study') {
                 status = 'Event is not finished, try again later.'
                 updateView()
                 setTimeout(()=>{status='You are home.';updateView();eventTime=true;}, 3000);
@@ -157,11 +89,11 @@
 
     //Called from 50gp button in the bottom left box.
     function buystrengthPotion() {
-        console.log(player.strengthPotion);
-        if (player.gold >= 50 && player.inventory > 0) {
-            player.gold -= 50;
-            player.inventory -= 1;
-            player.strengthPotion += 1;
+        console.log(player.bag.strengthPotion);
+        if (player.bag.gold >= 50 && player.bag.inventory > 0) {
+            player.bag.gold -= 50;
+            player.bag.inventory -= 1;
+            player.bag.strengthPotion += 1;
             updateView();
         }
         else alert("Check if you have enough gold or inventory space.");
@@ -169,11 +101,11 @@
     }
 
     function buyHealthPotion() {
-        console.log(player.healthpotions);
-        if (player.gold >= 25 && player.inventory > 0) {
-            player.gold -= 25;
-            player.inventory -= 1;
-            player.healthpotions += 1;
+        console.log(player.bag.healthpotions);
+        if (player.bag.gold >= 25 && player.bag.inventory > 0) {
+            player.bag.gold -= 25;
+            player.bag.inventory -= 1;
+            player.bag.healthpotions += 1;
             updateView();
         }
         else alert("Check if you have enough gold or inventory space.");
@@ -186,184 +118,31 @@
 
     }
 
-    function reward() {
-        let loot = Math.ceil(Math.random()*30);
-
-        if (currentMonster.name == "Goblin") {
-            player.gold += loot;
-            status = 'You beat the ' + currentMonster.name + ' and got '+ loot + ' gp.';
-            currentMonster = {name:'N/A',health:'N/A'};
-            updateView();
-            setTimeout(()=> {
-                reset();
-            },3000)
-        }
-        else if (currentMonster.name == "Goblin Boss") {
-            player.gold += loot*2;
-            status = 'You beat the ' + currentMonster.name + ' and got '+ loot*2 + ' gp.';
-            currentMonster = {name:'N/A',health:'N/A'};
-        updateView();
-            if (weapons.includes('Iron Sword') == false && player.weapon != "Iron Sword") {
-                alert('You got an Iron Sword! Check your bag.');
-                weapons[0] = 'Iron Sword';
-                console.log('It worked?')
-            }
-            updateView();
-            setTimeout(()=> {
-                reset();
-            },3000)
-        }
-        else {
-            setTimeout(()=> {
-                reset();
-            },3000)
-        }
-    }
-
-    function death() {
-        status = 'Oh dear, you have met your demise. Try again from the start.'
-        updateView();
-        player = {
-        name: playerName,
-        health: 0,
-        ad: 7, // Attack damage
-        speed: 5,
-        weapon: "Stick",
-        //Inventory:
-        inventory: 10,
-        gold: 10,
-        healthpotions: 0,
-        strengthPotion: 0,
-
-        //Status:
-        courage: 1,
-        }
-        updateView();
-        setTimeout(()=> {
-                currentMonster = {name:'N/A',health:'N/A'};
-                eventTime = true;
-                strikeTime = true;
-                fleeTime = true;
-                bagTime = true;
-                round = 0;
-                firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
-                secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
-                thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
-                fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
-                status = 'You are home.';
-                updateView();
-            },3000)
-    }
-
-
-    function openBag() {
-        if (strikeTime == false) return;
-        if (fleeTime == false) return;
-        if (bagTime == false) return;
-
-        status = 'You opened your satchel. What would you like to do?';
-
-        firstAction = `<button class="actionButton fightSequence" onclick="restoreHealth()">Restore health</button>`;
-
-        secondAction = `<button class="actionButton fightSequence" onclick="strengthPotion()">Strength Potion</button>`;
-
-        thirdAction = `<button class="actionButton fightSequence" onclick="switchWeapon()">Switch weapon</button>`;
-
-        fourthAction = `<button class="actionButton fightSequence" onclick="fightSequence(currentMonster)">Close bag</button>`;
-
-        updateView();
-    }
-
-    function restoreHealth() {
-        if (player.healthpotions > 0 && player.health <= 75) {
-            status = 'You drink a healthpotion...';
-            updateView();
-            setTimeout(()=>{
-                player.healthpotions -= 1;
-                player.inventory += 1;
-                player.health += 25;
-                status = 'You restored 25 health. What else would you like to do?';
-                updateView();
-            },3000);
-        }
-        else if (player.healthpotions < 1) {
-            status = "You don't have any healthpotions.";
-            updateView();
-        }
-        else {
-            status = "You don't feel like you would gain enough benefit from drinking a health potion at this time.";
-            updateView();
-        }
-    }
-
-    function strengthPotion() {
-
-        if (player.ad == attackDamage + 5) {
-            status = 'You cannot gain any more benefit from drinking Strength Potions.';
-            updateView();
-            return;
-        }
-
-        if (player.strengthPotion > 0) {
-            status = 'You drink a Strength Potion...';
-            updateView();
-            player.ad = attackDamage;
-            setTimeout(()=>{
-                player.strengthPotion -= 1;
-                player.inventory += 1;
-                player.ad += 5;
-                status = 'You became stronger. What else would you like to do?';
-                updateView();
-            },3000);
-        }
-        else {
-            status = "You don't have any Strength Potions.";
-            updateView();
-        }
-    }
-
-    function switchWeapon() {
-        status = 'You are currently wielding a ' + player.weapon + '. Select the weapon you would like to wield.';
-
-        firstAction = `<button class="actionButton fightSequence" onclick="equipWeapon('${weapons[0]}', 0)">${weapons[0]}</button>`;
-
-        secondAction = `<button class="actionButton fightSequence" onclick="equipWeapon('${weapons[1]}', 1)">${weapons[1]}</button>`;
-
-        thirdAction = `<button class="actionButton fightSequence" onclick="equipWeapon('${weapons[2]}', 2)">${weapons[2]}</button>`;
-
-        fourthAction = `<button class="actionButton fightSequence" onclick="openBag()">Return</button>`;
-
-        updateView();
-    }
-
-    function equipWeapon(weapon, index) {
-        if (weapon == 'N/A') {
-            status = 'There is no weapon in this slot.';
-            updateView();
-        }
-        else {
-            weapons[index] = player.weapon;
-            player.weapon = weapon;
-            status = 'You equipped ' + weapon + '.';
-            switchWeapon()
-            updateView();
-        }
-    }
-
     function reset() {
+        status = 'You are home.';
+        winOrLose = '';
         eventTime = true;
-        strikeTime = true;
-        fleeTime = true;
-        bagTime = true;
+
         firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
         secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
         thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
         fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
-        status = 'You are home.';
+
         player.health = 100;
         player.ad = 7;
+        currentMonster = {name:'N/A',health:'N/A'};
         updateView();
     }
 
+    function eventLock() {
+        if (strikeTime == false) return "locked";
+        strikeTime = false;
+        if (bagTime == false) return "locked";
+        bagTime = false;
+        if (assessTime == false) return "locked";
+        assessTime = false;
+        if (fleeTime == false) return "locked";
+        fleeTime = false;
+    }
 </script>
 </html>
