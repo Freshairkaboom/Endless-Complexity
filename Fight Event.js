@@ -182,6 +182,7 @@ function death() {
     updateView();
     setTimeout(()=> {
             reset();
+            round = 0;
         },3000)
 }
 
