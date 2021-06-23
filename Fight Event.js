@@ -172,6 +172,11 @@ function death() {
             gold: 10,
             healthpotions: 0,
             strengthPotion: 0,
+        },
+        armory: {
+            slot1: noweapon,
+            slot2: noweapon,
+            slot3: noweapon,
         }
     }
     updateView();

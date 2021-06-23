@@ -112,9 +112,15 @@
     }
 
     function checkDead() {
-        if (player.health < 1) death();
+        if (player.health < 1) {
+            death();
+            return;
+        }
 
-        if (currentMonster.health < 1) reward();
+        if (currentMonster.health < 1) {
+            reward();
+            return;
+        }
 
     }
 
