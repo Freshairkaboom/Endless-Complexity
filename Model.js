@@ -2,6 +2,29 @@
     let app = document.getElementById('app');
 
     //Object defaults
+
+    let randomObjects = [
+
+        objectnull = {
+            name: "N/A",
+        },
+
+        campsite = {
+            name: "Campsite",
+            traps: 1,
+            treasure: 1,
+        },
+
+        hut = {
+            name: "Hut",
+            hull: 100,
+            treasure: 1,
+        },
+
+        //Workspace
+    ]
+
+
     let weaponStore = [
 
         noweapon = {
@@ -89,7 +112,7 @@
     let thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
     let fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
 
-
+    let randomObject = [objectnull,objectnull,objectnull];
 
     // let Events = [
 

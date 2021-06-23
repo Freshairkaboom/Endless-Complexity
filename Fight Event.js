@@ -15,7 +15,7 @@ function fightSequence(monster) {
 
     secondAction = `<button class="actionButton fightSequence" onclick="openBag()">Open bag</button>`;
 
-    thirdAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">Assess area</button>`;
+    thirdAction = `<button class="actionButton fightSequence" onclick="assessArea()">Assess area</button>`;
 
     fourthAction = `<button class="actionButton fightSequence" onclick="flee()">Flee</button>`;
 
@@ -101,13 +101,24 @@ function openBag() {
 function assessArea() {
     if(eventLock() == "locked") return;
 
+    status = 'You look around for something usable.';
+
+    firstAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">${randomObject[0].name}</button>`;
+
+    secondAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">${randomObject[1].name}</button>`;
+
+    thirdAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">${randomObject[2].name}</button>`;
+
+    fourthAction = `<button class="actionButton fightSequence" onclick="fightSequence(currentMonster)">Return to fight</button>`;
+
+    updateView();
+
 }
 
 // Called from fightSequence() function - Ends fightSequence function and resets values.
 function flee() {
 
     if(eventLock() == "locked") {
-        console.log('It was locked');
         return;
     }
 
