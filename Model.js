@@ -19,6 +19,12 @@
             damage: 6,
             speed: 8,
         },
+
+        steelsword = {
+            name: "Steel Sword",
+            damage: 12,
+            speed: 8,
+        }
     ]
 
     let characters = [
@@ -53,7 +59,7 @@
             name: "Goblin Boss",
             health: 100,
             ad: 20, // Attack damage
-            speed: 10,
+            speed: 12,
         },
     ];
 

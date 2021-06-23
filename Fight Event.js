@@ -140,14 +140,10 @@ function reward() {
         winOrLose = 'You beat the ' + currentMonster.name + ' and got '+ loot*2 + ' gp.';
         currentMonster = {name:'N/A',health:'N/A'};
         updateView();
-        if (player.armory.slot1 != ironsword ||
-            player.armory.slot2 != ironsword ||
-            player.armory.slot3 != ironsword &&
-            player.armory.slot1 == noweapon &&
+        if (player.armory.slot1 == noweapon &&
             player.weapon != ironsword) {
             alert('You got an Iron Sword! Check your bag.');
             player.armory.slot1 = ironsword;
-            console.log('It worked?')
         }
         updateView();
         setTimeout(()=> {
@@ -165,9 +161,9 @@ function death() {
     winOrLose = 'Oh dear, you have met your demise. Try again from the start.'
     updateView();
     player = {
-        name: playerName,
+        name: 'Bob',
         health: 0,
-        ad: attackDamage, // Attack damage
+        ad: 7, // Attack damage
         speed: 5,
         weapon: stick,
         //Inventory:
@@ -267,15 +263,12 @@ function switchWeapon() {
     updateView();
 }
 
-function equipWeapon(weapon, index) {
-    console.log('Start good');
+function equipWeapon(weapon) {
     if (weapon == noweapon) {
-        console.log('No weapon');
         status = 'There is no weapon in this slot.';
         updateView();
     }
     else {
-        console.log('Weapon eqipped');
         player.armory.slot1 = player.weapon;
         player.weapon = weapon;
         switchWeapon()
