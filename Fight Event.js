@@ -214,13 +214,15 @@ function addWeaponSpeed() {
 }
 
 function restoreHealth() {
+    if (healthTime == false) return;
+    healthTime = false;
     if (player.bag.healthpotions > 0 && player.health <= 75) {
         status = 'You drink a healthpotion...';
+        player.health += 25;
         updateView();
         setTimeout(()=>{
             player.bag.healthpotions -= 1;
             player.bag.inventory += 1;
-            player.health += 25;
             status = 'You restored 25 health. What else would you like to do?';
             updateView();
         },3000);
@@ -233,11 +235,12 @@ function restoreHealth() {
         status = "You don't feel like you would gain enough benefit from drinking a health potion at this time.";
         updateView();
     }
+    healthTime = true;
 }
 
 function strengthPotion() {
-
     if (player.ad == attackDamage + 5) {
+        player.ad == attackDamage + 5;
         status = 'You cannot gain any more benefit from drinking Strength Potions.';
         updateView();
         return;
@@ -245,12 +248,13 @@ function strengthPotion() {
 
     if (player.bag.strengthPotion > 0) {
         status = 'You drink a Strength Potion...';
-        updateView();
         player.ad = attackDamage;
+        player.ad += 5;
+        updateView();
         setTimeout(()=>{
+            if (player.bag.strengthPotion < 1) return;
             player.bag.strengthPotion -= 1;
             player.bag.inventory += 1;
-            player.ad += 5;
             status = 'You became stronger. What else would you like to do?';
             updateView();
         },3000);
@@ -259,6 +263,7 @@ function strengthPotion() {
         status = "You don't have any Strength Potions.";
         updateView();
     }
+
 }
 
 function switchWeapon() {

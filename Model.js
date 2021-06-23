@@ -100,6 +100,9 @@
     //This variable prevent events from running while another event is running.
     let eventTime = true;
 
+    let strengthTime = true;
+    let healthTime = true;
+
     //For strikeSequence() function - Prevents multiple options from running at the same time.
     let strikeTime = true;
     let bagTime = true;
