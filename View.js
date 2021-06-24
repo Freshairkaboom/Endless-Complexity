@@ -8,7 +8,7 @@
             <div class="modelContainer">
                 <div class="modelBox">
                     <div class="title">Player name: ${player.name}</div>
-                    <div>Health: ${player.health}</div>
+                    <div>Health: ${player.health} + ${cover}</div>
                     <div>Attack damage: ${player.ad}</div>
                     <div>Speed: ${player.speed}</div>
                     <div>Equipped: ${player.weapon.name}</div>
@@ -22,7 +22,7 @@
                     <div>Inventory: ${player.bag.inventory} slots left</div>
                     <div>Gold: ${player.bag.gold} gp</div>
                     <div>Health potions: ${player.bag.healthpotions}</div>
-                    <div>Strength potions: ${player.bag.strengthPotion}</div>
+                    <div>Strength potions: ${player.bag.strengthpotions}</div>
                 </div>
 
                 <div class="bottomBox">

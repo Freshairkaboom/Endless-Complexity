@@ -2,10 +2,7 @@
 
 function fightSequence(monster) {
 
-    strikeTime = true;
-    bagTime = true;
-    assessTime = true;
-    fleeTime = true;
+    fightTime = true;
 
     currentMonster = monster;
 
@@ -23,7 +20,7 @@ function fightSequence(monster) {
 
 }
 
-// // Menu functions // //
+// // Onclick functions // //
 
 function strikeMonster(damage) {
 
@@ -33,20 +30,33 @@ function strikeMonster(damage) {
     updateView();
 
     setTimeout(()=>{
-        weaponSpeed = addWeaponSpeed();
-
         if (player.speed + player.weapon.speed >= currentMonster.speed) {
             currentMonster.health -= damage;
             checkDead();
             if (currentMonster.health < 0) currentMonster.health = 0;
-            player.health -= currentMonster.ad;
+
+            if (cover > currentMonster.ad) cover -= currentMonster.ad;
+            else if (cover <= currentMonster.ad) {
+                remainingCover = cover;
+                cover = 0;
+                player.health -= currentMonster.ad - remainingCover;
+                updateView();
+            }
+
+
             checkDead();
             if (player.health < 0) player.health = 0;
 
         }
         else {
-            player.health -= currentMonster.ad;
-            checkDead();
+            if (cover > currentMonster.ad) cover -= currentMonster.ad;
+            else if (cover <= currentMonster.ad) {
+                remainingCover = cover;
+                cover = 0;
+                console.log(currentMonster.ad - remainingCover)
+                player.health -= currentMonster.ad - remainingCover;
+                updateView();
+            }
             if (player.health < 0) player.health = 0;
 
             currentMonster.health -= damage;
@@ -57,27 +67,42 @@ function strikeMonster(damage) {
             if(player.health < 50 && currentMonster.health > 50) {
                 status = "You don't see yourself winning a head on engagement any longer. Perhaps you should change strategy."
                 updateView();
-                strikeTime = true;
+                fightTime = true;
 
             }
             else {
-                status = "You dealt " + damage + " damage to the " + currentMonster.name + ", and the "
-                + currentMonster.name + " dealt " + currentMonster.ad + " damage to you.";
-                updateView();
-                strikeTime = true;
+                if (cover > 0) {
+                    status = "You dealt " + damage + " damage to the " + currentMonster.name + ", and the "
+                    + currentMonster.name + " dealt " + currentMonster.ad + " damage to your cover.";
+                    updateView();
+                    fightTime = true;
+                }
+
+                else if (remainingCover > 0) {
+                    status = "You dealt " + damage + " damage to the " + currentMonster.name + ", and the "
+                    + currentMonster.name + " dealt " + currentMonster.ad + " damage to your cover and destroyed it!";
+                    updateView();
+                    fightTime = true;
+                }
+
+                else {
+                    status = "You dealt " + damage + " damage to the " + currentMonster.name + ", and the "
+                    + currentMonster.name + " dealt " + currentMonster.ad + " damage to you.";
+                    updateView();
+                    fightTime = true;
+                }
+
+
             }
 
         }
         else if (player.health == 0) {
             player.health = 100;
             player.ad = 7;
-            strikeTime = true;
+            fightTime = true;
             return;
         }
     },500);
-    fleeTime = true;
-    bagTime = true;
-    assessTime = true;
 
 }
 
@@ -103,11 +128,11 @@ function assessArea() {
 
     status = 'You look around for something usable.';
 
-    firstAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">${randomObject[0].name}</button>`;
+    firstAction = `<button class="actionButton fightSequence" onclick="useObject(randomObject[0])">${randomObject[0].name}</button>`;
 
-    secondAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">${randomObject[1].name}</button>`;
+    secondAction = `<button class="actionButton fightSequence" onclick="useObject(randomObject[1])">${randomObject[1].name}</button>`;
 
-    thirdAction = `<button class="actionButton fightSequence" onclick="alert('This button does nothing (yet).')">${randomObject[2].name}</button>`;
+    thirdAction = `<button class="actionButton fightSequence" onclick="useObject(randomObject[2])">${randomObject[2].name}</button>`;
 
     fourthAction = `<button class="actionButton fightSequence" onclick="fightSequence(currentMonster)">Return to fight</button>`;
 
@@ -115,7 +140,6 @@ function assessArea() {
 
 }
 
-// Called from fightSequence() function - Ends fightSequence function and resets values.
 function flee() {
 
     if(eventLock() == "locked") {
@@ -132,7 +156,7 @@ function flee() {
     return;
 }
 
-// // Callback functions // //
+//Fight functions start here
 
 function reward() {
     let loot = Math.ceil(Math.random()*30);
@@ -151,8 +175,7 @@ function reward() {
         winOrLose = 'You beat the ' + currentMonster.name + ' and got '+ loot*2 + ' gp.';
         currentMonster = {name:'N/A',health:'N/A'};
         updateView();
-        if (player.armory.slot1 == noweapon &&
-            player.weapon != ironsword) {
+        if (player.armory.slot1 == noweapon && player.weapon != ironsword && Math.ceil(Math.random()*5 == 5)) {
             alert('You got an Iron Sword! Check your bag.');
             player.armory.slot1 = ironsword;
         }
@@ -182,7 +205,7 @@ function death() {
             inventory: 10,
             gold: 10,
             healthpotions: 0,
-            strengthPotion: 0,
+            strengthpotions: 0,
         },
         armory: {
             slot1: noweapon,
@@ -197,21 +220,14 @@ function death() {
         },3000)
 }
 
- // Called from fightSequence() function - Returns total damage after accounting for weapon, player and powerup damage.
+ //Returns total damage after accounting for weapon, player and powerup damage.
  function calculateDamage() {
-
-    // weaponDamage = addWeaponDamage();
 
     damage = player.weapon.damage + player.ad;
     return damage;
 }
 
-//Called from fightSequence() function - Returns weapon speed after checking the equipped weapon.
-function addWeaponSpeed() {
-    //Default weapon
-    if (player.weapon == "Stick") return 5; //Weapon speed is 5
-    if (player.weapon == 'Iron Sword') return 8;
-}
+//Open Bag functions start here
 
 function restoreHealth() {
     if (healthTime == false) return;
@@ -246,21 +262,21 @@ function strengthPotion() {
         return;
     }
 
-    if (player.bag.strengthPotion > 0) {
-        status = 'You drink a Strength Potion...';
+    if (player.bag.strengthpotions > 0) {
+        status = 'You drink a strength potion...';
         player.ad = attackDamage;
         player.ad += 5;
         updateView();
         setTimeout(()=>{
-            if (player.bag.strengthPotion < 1) return;
-            player.bag.strengthPotion -= 1;
+            if (player.bag.strengthpotions < 1) return;
+            player.bag.strengthpotions -= 1;
             player.bag.inventory += 1;
             status = 'You became stronger. What else would you like to do?';
             updateView();
         },3000);
     }
     else {
-        status = "You don't have any Strength Potions.";
+        status = "You don't have any strength potions.";
         updateView();
     }
 
@@ -277,10 +293,7 @@ function switchWeapon() {
 
     fourthAction = `<button class="actionButton fightSequence" onclick="openBag()">Return</button>`;
 
-    strikeTime = true;
-    bagTime = true;
-    assessTime = true;
-    fleeTime = true;
+    fightTime = true;
 
     updateView();
 }
@@ -295,5 +308,207 @@ function equipWeapon(weapon) {
         player.weapon = weapon;
         switchWeapon()
         updateView();
+    }
+}
+
+//Assess area functions start here
+
+function getRandomObject() {
+    //Makes sure only one object is not objectnull, giving priority to the first and second.
+    for (i = 0; i<randomObject.length; i++) {
+        if (randomObject[i] != objectnull) return objectnull;
+    }
+
+    random = Math.ceil(Math.random()*5);
+    if (random <= 3) return objectnull;
+    if (random == 4) return campsite;
+    if (random == 5) return objectnull; //Temporarily disabled hut
+}
+
+function useObject(object) {
+    if (useTime == false) return;
+    useTime = false;
+
+    if (object == objectnull) return;
+    if (object == campsite) campsiteEvent();
+    if (object == hut) return;
+
+    object = objectnull;
+}
+
+function campsiteEvent() {
+    random = Math.ceil(Math.random()*3);
+
+    if (random == 1) status = 'You escape towards a nearby campsite. Can you use something here?';
+
+    if (random == 2) status = 'You spot a campsite nearby. You wonder if there is something useful here.';
+
+    if (random == 3) status = 'You see a campsite in a clearing to the right. What do you want to do?';
+
+    //---------------------------------------------------------------------------------------------------------
+
+    firstAction = `<button class="actionButton fightSequence" onclick="seekCover(campsite)">Use campsite for cover</button>`;
+
+    secondAction = `<button class="actionButton fightSequence" onclick="seekTreasure(campsite)">Scout for treasure</button>`;
+
+    thirdAction = `<button class="actionButton fightSequence" onclick="checkTraps(campsite)">Check for traps</button>`;
+
+    fourthAction = `<button class="actionButton fightSequence" onclick="fightSequence(currentMonster)">Return to fight</button>`;
+
+    updateView();
+
+    fightTime = true;
+
+}
+
+function seekCover(object) {
+
+    if (seekTime == false) return;
+    seekTime = false;
+
+    status = 'You find cover behind some crates in the ' + object.name + '.';
+    updateView();
+
+    object = {
+        name: object.name,
+        traps: Math.floor(Math.random()*3),
+        cover: 10 + Math.floor(Math.random()*50),
+    }
+
+    if (object.traps > 1) {
+        setTimeout(()=>{
+            player.health -= 10;
+            checkDead();
+            status = 'You step on a beartrap and lose 10 health!'
+            setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},2000)
+            updateView();
+        },3000);
+    }
+
+    else if (object.cover < 20) {
+        setTimeout(()=>{
+            status = 'The crates fall apart as you lean on them, apparently they are rotten to the core. You are left without any cover.'
+            updateView();
+            setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},2000)
+        },3000);
+    }
+
+    else {
+        setTimeout(()=>{
+            status = 'The crates provide solid cover for a counterattack.'
+            cover = object.cover;
+            updateView();
+            setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},2000)
+        },3000);
+    }
+}
+
+function seekTreasure(object) {
+    if (seekTime == false) return;
+    seekTime = false;
+
+    status = 'You go looking for something valuable in the nearby ' + object.name + '.';
+    updateView();
+
+    object = {
+        name: object.name,
+        traps: Math.floor(Math.random()*2),
+        treasure: Math.floor(Math.random()*5),
+    }
+
+    if (trapsOrNot == false) object.traps = 0;
+
+    if (object.treasure > 3 && object.traps > 0) {
+        setTimeout(()=>{
+            player.health -= 15;
+            checkDead();
+            status = 'You find some treasure, but there is a trap on it! You lose some health.'
+            updateView();
+            setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},3000)
+        },3000);
+    }
+    else if (object.treasure > 3 && object.traps == 0) {
+        setTimeout(()=>{
+                addTreasure();
+                setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},3000)
+        },3000);
+    }
+
+    else {
+        setTimeout(()=>{
+            status = 'You did not find any treasure...';
+            updateView();
+            setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},3000);
+        },3000)
+    }
+}
+
+function addTreasure() {
+    random = Math.ceil(Math.random()*10);
+
+    if (random == 10 && player.armory.slot1 != ironsword && player.weapon != ironsword) {
+        player.armory.slot1 = ironsword;
+        status = 'You find an iron sword! Congratulations!';
+        updateView();
+    }
+
+    if (10 > random > 8) {
+        player.bag.healthpotions++;
+        status = 'You find a health potion!';
+        updateView();
+    }
+    if (9 > random > 7) {
+        player.bag.strengthpotions++;
+        status = 'You find a strength potion!';
+        updateView();
+    }
+
+    else {
+        player.bag.gold += Math.ceil(Math.random()*100);
+        status = 'You find some gold!';
+        updateView();
+    }
+}
+
+function checkTraps(object) {
+
+    if (checkTime == false) return;
+    checkTime = false;
+
+    if (seekTime == false) return;
+    seekTime = false;
+
+    status = 'You check the ' + object.name + ' for traps.';
+    updateView();
+
+    object = {
+        traps: Math.floor(Math.random()*2),
+    }
+
+    if (object.traps > 0 && Math.ceil(Math.random()*100) >= 60) {
+        setTimeout(()=>{
+            status = 'You disable all traps!'
+            updateView();
+            trapsOrNot = false;
+            seekTime = true;
+        },3000);
+    }
+
+    else if (object.traps > 0 && Math.ceil(20 < Math.random()*100) < 60) {
+        setTimeout(()=>{
+            status = 'You fail to spot and disable any traps.';
+            updateView();
+            trapsOrNot = false;
+            seekTime = true;
+        },3000);
+    }
+    else {
+        setTimeout(()=>{
+            status = 'You trigger a trap and lose some health!';
+            player.health -= 15;
+            checkDead();
+            updateView();
+            setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},3000);
+        },3000);
     }
 }

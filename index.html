@@ -19,23 +19,20 @@
 
     //Controller
 
-    //Called from selectEvent() function - Returns a treasure event based on random logic.
-    function randomTreasureEvent() {
-        //Pick a treasure event at random
-        const random = Math.ceil(Math.random() * 10);
-        if (round == 10) return castle;
-        else return forest;
-
-    }
-
     //Called from selectEvent() function - Returns a monster based on random logic.
-    function randomMonster() {
-        //Reset all monster health
+    function randomEncounter() {
+        //Set all monster health
         goblin.health = 30 + Math.ceil(Math.random()*30);
         goblinBoss.health = 60 + Math.ceil(Math.random()*60);
 
+        //Pick objects at random
+        randomObject[0] = getRandomObject();
+        randomObject[1] = getRandomObject();
+        randomObject[2] = getRandomObject();
+
         //Pick monster at random
         random = Math.ceil(Math.random() * 10);
+
         if (round == 10 || round == 20 || round == 30) return goblinBoss;
         if (random == 10 && round > 10) return goblinBoss;
         else return goblin;
@@ -48,7 +45,7 @@
         eventTime = false;
 
         //Increases round by 1 and resets the player's health so they can fight.
-        round += 1;
+        round++;
         player.health = 100;
 
         //Loading event visible on screen
@@ -64,7 +61,7 @@
 
         //Checks what box was clicked and selects appropriate event
         if (event == 'Fight') {
-            setTimeout(()=>{fightSequence(randomMonster());eventTime=true;}, 500);
+            setTimeout(()=>{fightSequence(randomEncounter());eventTime=true;}, 500);
 
         }
         else if (event == 'Explore') {
@@ -89,11 +86,11 @@
 
     //Called from 50gp button in the bottom left box.
     function buystrengthPotion() {
-        console.log(player.bag.strengthPotion);
+        console.log(player.bag.strengthpotions);
         if (player.bag.gold >= 50 && player.bag.inventory > 0) {
             player.bag.gold -= 50;
             player.bag.inventory -= 1;
-            player.bag.strengthPotion += 1;
+            player.bag.strengthpotions += 1;
             updateView();
         }
         else alert("Check if you have enough gold or inventory space.");
@@ -128,6 +125,8 @@
         status = 'You are home.';
         winOrLose = '';
         eventTime = true;
+        useTime = true;
+        checkTime = true;
 
         firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
         secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
@@ -137,18 +136,13 @@
         player.health = 100;
         player.ad = 7;
         currentMonster = {name:'N/A',health:'N/A'};
+        cover = 0;
         updateView();
     }
 
     function eventLock() {
-        if (strikeTime == false) return "locked";
-        strikeTime = false;
-        if (bagTime == false) return "locked";
-        bagTime = false;
-        if (assessTime == false) return "locked";
-        assessTime = false;
-        if (fleeTime == false) return "locked";
-        fleeTime = false;
+        if (fightTime == false) return "locked";
+        fightTime = false;
     }
 </script>
 </html>

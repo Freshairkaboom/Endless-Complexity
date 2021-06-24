@@ -4,6 +4,9 @@ High prio:
 Low prio:
 - Make hp not reset after events
 - Have a rest option at home to recover hp but increases turn.
+- Add experience points.
+- Add player levels and have base stats of player be modified based on level.
+
+Done:
 - Add function that adds objects to player, have those objects be usable from bag.
 - Make weapons into objects instead of string of text.
-- Add player levels and have base stats of player be modified based on level in selectEvent() function.

@@ -63,7 +63,7 @@
                 inventory: 10,
                 gold: 10,
                 healthpotions: 0,
-                strengthPotion: 0,
+                strengthpotions: 0,
             },
             armory: {
                 slot1: noweapon,
@@ -96,18 +96,19 @@
     let round = 0;
     let currentMonster = {name:'N/A',health:'N/A'};
     let damage = 0;
+    let cover = 0;
+    let remainingCover = 0;
+    let trapsOrNot = true;
 
     //This variable prevent events from running while another event is running.
     let eventTime = true;
-
     let strengthTime = true;
     let healthTime = true;
 
-    //For strikeSequence() function - Prevents multiple options from running at the same time.
-    let strikeTime = true;
-    let bagTime = true;
-    let assessTime = true;
-    let fleeTime = true;
+    let fightTime = true;
+    let seekTime = true;
+    let checkTime = true;
+    let useTime = true;
 
     let powerUP = 0;
     let firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
