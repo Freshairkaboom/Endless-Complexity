@@ -21,37 +21,5 @@
 
     //Controller
 
-    //Called from selectEvent() function - Returns a monster based on random logic.
-    function randomEncounter() {
-        //Set all monster health
-        goblin.health = 30 + Math.ceil(Math.random()*30);
-        goblinBoss.health = 60 + Math.ceil(Math.random()*60);
-
-        //Pick objects at random
-        randomObject[0] = getRandomObject();
-        randomObject[1] = getRandomObject();
-        randomObject[2] = getRandomObject();
-
-        //Pick monster at random
-        random = Math.ceil(Math.random() * 10);
-
-        if (round == 10 || round == 20 || round == 30) return goblinBoss;
-        if (random == 10 && round > 10) return goblinBoss;
-        else return goblin;
-    }
-
-    function checkDead() {
-        if (player.health < 1) {
-            death();
-            return;
-        }
-
-        if (currentMonster.health < 1) {
-            reward();
-            return;
-        }
-
-    }
-
 </script>
 </html>
