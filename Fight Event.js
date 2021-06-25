@@ -255,12 +255,14 @@ function restoreHealth() {
 }
 
 function strengthPotion() {
-    if (player.ad == attackDamage + 5) {
-        player.ad == attackDamage + 5;
-        status = 'You cannot gain any more benefit from drinking Strength Potions.';
+
+    if (strengthTime == false) {
+        status = 'You cannot gain any more benefit from drinking strength potions.';
         updateView();
         return;
     }
+
+    strengthTime = false;
 
     if (player.bag.strengthpotions > 0) {
         status = 'You drink a strength potion...';
@@ -511,4 +513,43 @@ function checkTraps(object) {
             setTimeout(()=>{seekTime = true;checkTime=true;fightSequence(currentMonster);},3000);
         },3000);
     }
+}
+
+// Reset function for when events in fightSequence() are over.
+function reset() {
+    status = 'You are home.';
+    winOrLose = '';
+    eventTime = true;
+    strengthTime = true;
+    useTime = true;
+    checkTime = true;
+
+    firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
+    secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
+    thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
+    fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
+
+    player.health = 100;
+    player.ad = 7;
+    currentMonster = {name:'N/A',health:'N/A'};
+    cover = 0;
+    updateView();
+}
+
+function eventLock() {
+    if (fightTime == false) return "locked";
+    fightTime = false;
+}
+
+function checkDead() {
+    if (player.health < 1) {
+        death();
+        return;
+    }
+
+    if (currentMonster.health < 1) {
+        reward();
+        return;
+    }
+
 }

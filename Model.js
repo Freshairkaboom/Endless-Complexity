@@ -100,22 +100,24 @@
     let remainingCover = 0;
     let trapsOrNot = true;
 
-    //This variable prevent events from running while another event is running.
+    //These variables prevent events from running while another event is running.
     let eventTime = true;
     let strengthTime = true;
     let healthTime = true;
 
     let fightTime = true;
+    let potionTime = true;
     let seekTime = true;
     let checkTime = true;
     let useTime = true;
 
-    let powerUP = 0;
+    //Defining the default values of action buttons on the main menu.
     let firstAction = `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`;
     let secondAction = `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`;
     let thirdAction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
     let fourthAction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
 
+    //Used to place objects in Assess Area menu in FightSequence() function. By default, objectnull is an empty object with the name "N/A".
     let randomObject = [objectnull,objectnull,objectnull];
 
     // let Events = [
