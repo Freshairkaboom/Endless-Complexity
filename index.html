@@ -5,21 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endless Complexity</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script defer src="Model.js"></script>
-    <script defer src="View.js"></script>
-    <script defer src="selectEvent.js"></script>
-    <script defer src="Buy upgrades.js"></script>
-    <script defer src="Fight Event.js"></script>
+    <!-- Bring in CSS -->
+    <link rel="stylesheet" href="css/style.css"/>
+    <!-- Bring in Javascript (Style: Model View Controller) -->
+    <script defer src="js/model.js"></script>
+    <script defer src="js/view.js"></script>
+    <script defer src="js/selectEventController.js"></script>
+    <script defer src="js/buyUpgradesController.js"></script>
+    <script defer src="js/fightEventController.js"></script>
 
 </head>
-<body>
+<!-- Load main view after body is loaded -->
+<body onload="updateView()">
     <div id="app"></div>
 </body>
 
-<script>
+<!-- Defines variable for app used by view function to display content -->
+<script>let app = document.getElementById('app');</script>
 
-    //Controller
-
-</script>
 </html>
