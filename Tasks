@@ -1,6 +1,4 @@
 High prio:
-- Add experience points.
-- Add player levels and have base stats of player be modified based on level.
 
 Low prio:
 - Make hp not reset after events
@@ -10,3 +8,5 @@ Done:
 - Add function that adds objects to player, have those objects be usable from bag.
 - Make weapons into objects instead of string of text.
 - Add functionality to "Assess area" option in fightSequence() function.
+- Add experience points.
+- Add player levels and have base stats of player be modified based on level.
