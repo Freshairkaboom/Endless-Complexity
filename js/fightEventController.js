@@ -1,4 +1,4 @@
-//Main menu function - Updates action buttons and prepares the board
+// // Main menu function - Updates action buttons and prepares the board // //
 
 function fightSequence(enemy) {
 
