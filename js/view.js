@@ -2,11 +2,13 @@
     function updateView() {
         let html = `
 
+        <h1 class="title">Endless Complexity</h1>
+
         <div class="page">
 
             <div class="modelContainer">
                 <div class="modelBox">
-                    <div class="title">Player name: ${player.name}</div>
+                    <div>Player name: ${player.name}</div>
                     <div>Health: ${player.health} + ${pmvariables.cover}</div>
                     <div>Attack damage: ${player.ad}</div>
                     <div>Speed: ${player.speed}</div>
