@@ -167,27 +167,45 @@ function reward() {
     let loot = Math.ceil(Math.random()*30);
 
     if (monster.current.name == "Goblin") {
+        pmvariables.experiencepoints += 5;
         player.bag.gold += loot;
         menu.winorlose = 'You beat the ' + monster.current.name + ' and got '+ loot + ' gp.';
         monster.current = {name:'N/A',health:'N/A'};
         updateView();
-        setTimeout(()=> {
-            reset();
-        },3000)
+        setTimeout(()=>{
+            if (pmvariables.experiencepoints >= getExpReq()) {
+                levelUp();
+                menu.status = 'You levelled up!';
+                updateView();
+            }
+            setTimeout(()=> {
+                reset();
+            },3000)
+        },500)
+
     }
     else if (monster.current.name == "Goblin Boss") {
+        pmvariables.experiencepoints += 10;
         player.bag.gold += loot*2;
         menu.winorlose = 'You beat the ' + monster.current.name + ' and got '+ loot*2 + ' gp.';
         monster.current = {name:'N/A',health:'N/A'};
         updateView();
+
         if (player.armory.slot1 == noweapon && player.weapon != ironsword && Math.ceil(Math.random()*5 == 5)) {
             alert('You got an Iron Sword! Check your bag.');
             player.armory.slot1 = ironsword;
         }
         updateView();
-        setTimeout(()=> {
-            reset();
-        },3000)
+        setTimeout(()=>{
+            if (pmvariables.experiencepoints >= getExpReq()) {
+                levelUp();
+                menu.status = 'You levelled up!';
+                updateView();
+            }
+            setTimeout(()=> {
+                reset();
+            },3000)
+        },500)
     }
     else {
         setTimeout(()=> {
@@ -230,7 +248,7 @@ function death() {
 function restoreHealth() {
     if (time.health == false) return;
     time.health = false;
-    if (player.bag.healthpotions > 0 && player.health <= 75) {
+    if (player.bag.healthpotions > 0 && player.health <= 75 + Math.floor(player.health * levelfactor.health)) {
         menu.status = 'You drink a healthpotion...';
         player.health += 25;
         updateView();
@@ -541,8 +559,7 @@ function reset() {
     button.thirdaction = `<button class="actionButton" onclick="selectEvent('Farm')">Farm</button>`;
     button.fourthaction = `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`;
 
-    player.health = 100;
-    player.ad = 7;
+    applyLevel();
 
     pmvariables.cover = 0;
 

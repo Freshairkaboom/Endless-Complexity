@@ -34,7 +34,7 @@ body {
     width: 33vh;
     border-right: 1px solid;
     grid-area: "statusContainer";
-    margin-left: -3px;
+    margin-left: -15px;
     font-size: 1.9vh;
 
 }

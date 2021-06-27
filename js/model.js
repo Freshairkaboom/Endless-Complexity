@@ -89,6 +89,8 @@
             },
 
             pmvariables = {
+                experiencepoints: 0,
+                level: 1,
                 damage: 0,
                 cover: 0,
                 remainingcover: 0,
@@ -114,6 +116,14 @@
         ],
 
         otherVariables: [
+
+            levelfactor = {
+                health: 0,
+                ad: 0,
+                speed: 0,
+
+                experience: 1.8,
+            },
 
             time = {
                 event: true,

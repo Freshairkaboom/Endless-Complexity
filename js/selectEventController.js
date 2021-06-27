@@ -6,7 +6,7 @@ function selectEvent(event) {
 
     //Increases menu.round by 1 and resets the player's health so they can fight.
     menu.round++;
-    player.health = 100;
+    applyLevel();
 
     //Loading event visible on screen
     menu.status = 'Loading event...';

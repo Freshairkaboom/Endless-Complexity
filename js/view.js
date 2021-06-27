@@ -33,6 +33,8 @@
 
             <div class="statuscontainer">
                     <div>Round: ${menu.round}</div>
+                    <div>Level: ${pmvariables.level}</div>
+                    <div>Experience: ${pmvariables.experiencepoints} / ${getExpReq()}</div>
                     <div> Status: ${menu.status}</div>
                     <div>${menu.winorlose}</div>
             </div>
