@@ -41,7 +41,6 @@
                 ${button.thirdaction} 3)
                 <hr>
                 ${button.fourthaction} 4)
-                <hr>
 
 
             </div>

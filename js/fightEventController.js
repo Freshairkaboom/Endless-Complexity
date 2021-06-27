@@ -346,7 +346,7 @@ function campsiteEvent() {
 
     //---------------------------------------------------------------------------------------------------------
 
-    button.firstaction = `<button class="actionButton fightSequence" onclick="seekCover(campsite)">Use campsite for cover</button>`;
+    button.firstaction = `<button class="actionButton fightSequence" onclick="seekCover(campsite)">Seek cover</button>`;
 
     button.secondaction = `<button class="actionButton fightSequence" onclick="seekTreasure(campsite)">Scout for treasure</button>`;
 
@@ -394,7 +394,7 @@ function seekCover(object) {
 
     else {
         setTimeout(()=>{
-            menu.status = 'The crates provide solid pmvariables.cover for a counterattack.'
+            menu.status = 'The crates provide solid cover for a counterattack.'
             pmvariables.cover = object.cover;
             updateView();
             setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},2000)
