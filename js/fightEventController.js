@@ -238,8 +238,12 @@ function death() {
     }
     updateView();
     setTimeout(()=> {
-            reset();
-            menu.round = 0;
+        pmvariables.level = 1;
+        levelfactor.health = 0;
+        levelfactor.ad = 0;
+        levelfactor.speed = 0;
+        menu.round = 0;
+        reset();
         },3000)
 }
 
