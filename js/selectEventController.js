@@ -12,37 +12,41 @@ function selectEvent(event) {
     menu.status = 'Loading event...';
     updateView();
 
+    //Adds opacity to page
+    style.opacity = "opacity";
+    updateView();
+
     if (event == "Rest" && player.health < 50) {
         menu.status = 'You take a couple days off to rest, recovering from your wounds.';
         menu.round +=2;
         updateView();
-        setTimeout(()=>{menu.status='You are home.';player.health = 100;updateView();time.event=true;}, 3000);
+        setTimeout(()=>{menu.status='You are home.';player.health = 100;updateView();time.event=true;style.opacity = "";}, 3000);
     }
 
     //Checks what box was clicked and selects appropriate event
     if (event == 'Fight') {
-        setTimeout(()=>{fightSequence(randomEncounter());time.event=true;}, 500);
+        setTimeout(()=>{fightSequence(randomEncounter());time.event=true;style.opacity = "";updateView();}, 3000);
 
     }
     else if (event == 'Explore') {
             menu.status = 'Event is not finished, try again later.'
             menu.round--;
             updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;}, 3000);
+            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;style.opacity = "";updateView();}, 3000);
 
     }
     else if (event == 'Farm') {
             menu.status = 'Event is not finished, try again later.'
             menu.round--;
             updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;}, 3000);
+            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;style.opacity = "";updateView();}, 3000);
 
     }
     else if (event == 'Study') {
             menu.status = 'Event is not finished, try again later.'
             menu.round--;
             updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;}, 3000);
+            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;style.opacity = "";updateView();}, 3000);
 
     }
 }

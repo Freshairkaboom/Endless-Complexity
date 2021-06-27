@@ -4,7 +4,7 @@
 
         <h1 class="title">Endless Complexity</h1>
 
-        <div class="page">
+        <div class="page ${style.opacity}">
 
             <div class="modelContainer">
                 <div class="modelBox">

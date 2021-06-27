@@ -117,6 +117,10 @@
 
         otherVariables: [
 
+            style = {
+                opacity: "",
+            },
+
             levelfactor = {
                 health: 0,
                 ad: 0,

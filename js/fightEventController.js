@@ -169,7 +169,7 @@ function reward() {
     if (monster.current.name == "Goblin") {
         pmvariables.experiencepoints += 5;
         player.bag.gold += loot;
-        menu.winorlose = 'You beat the ' + monster.current.name + ' and got '+ loot + ' gp.';
+        menu.winorlose = 'You beat the ' + monster.current.name + ' and get '+ loot + ' gp.';
         monster.current = {name:'N/A',health:'N/A'};
         updateView();
         setTimeout(()=>{
@@ -533,11 +533,15 @@ function addTreasure() {
 // // Functions used to check if player/monster is dead, or is afflicted by other effects // //
 function checkDead() {
     if (player.health < 1) {
+        style.opacity = "opacity";
+        updateView();
         death();
         return;
     }
 
     if (monster.current.health < 1) {
+        style.opacity = "opacity";
+        updateView();
         reward();
         return;
     }
@@ -546,6 +550,8 @@ function checkDead() {
 
 // // Functions used to reset or lock events in fightSequence function // //
 function reset() {
+    style.opacity = "";
+
     menu.status = 'You are home.';
     menu.winorlose = '';
 
