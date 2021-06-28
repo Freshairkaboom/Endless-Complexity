@@ -54,8 +54,8 @@ function selectEvent(event) {
 //Used as an argument when Fight event option is chosen from main menu - Sets random areas, and returns a monster based on random logic.
 function randomEncounter() {
     //Set all monster health
-    goblin.health = 30 + Math.ceil(Math.random()*30);
-    goblinBoss.health = 60 + Math.ceil(Math.random()*60);
+    goblin.health = 40 + Math.ceil(Math.random()*20) + Math.floor(goblin.health * monstergrowth.health);
+    goblinBoss.health = 80 + Math.ceil(Math.random()*40) + Math.floor(goblinBoss.health * monstergrowth.health);
 
     //Pick areas you can find in Assess Area event option at random.
     model.randomObjects[0] = getRandomObject();
@@ -65,7 +65,13 @@ function randomEncounter() {
     //Pick monster at random.
     random = Math.ceil(Math.random() * 10);
 
-    if (menu.round == 10 || menu.round == 20 || menu.round == 30) return goblinBoss;
+    if (menu.round == 10 + monsterbuff.interval) {
+        monsterbuff.interval += 10;
+        monstergrowth.health += 0.30;
+        monstergrowth.ad += 0.30;
+        monstergrowth.speed += 0.30;
+        return goblinBoss;
+    }
     if (random == 10 && menu.round > 10) return goblinBoss;
     else return goblin;
 

@@ -129,6 +129,12 @@
                 experience: 1.8,
             },
 
+            monstergrowth = {
+                health: 0,
+                ad: 0,
+                speed: 0,
+            },
+
             time = {
                 event: true,
                 strength: true,
@@ -148,6 +154,10 @@
 
             traps = {
                 trapsornot: true,
+            },
+
+            monsterbuff = {
+                interval: 0,
             }
 
         ],
