@@ -28,8 +28,8 @@
                 </div>
                 <hr>
                 <div class="bottomBox">
-                    <div>Buy Health <button class="button" onclick="buyHealthPotion()">25gp</button></div>
-                    <div> Buy Strength <button class="button" onclick="buystrengthPotion()">50gp</button></div>
+                    <div>Buy health potion:<button class="button" onclick="buyHealthPotion()">25gp</button></div>
+                    <div> Buy strength potion: <button class="button2" onclick="buystrengthPotion()">50gp</button></div>
                 </div>
             </div>
 
