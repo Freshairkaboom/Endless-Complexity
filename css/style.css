@@ -15,7 +15,7 @@ body {
     margin-left: 350px;
     margin-top: 150px;
     border: 2px solid black;
-    width: 100vh;
+    width: 750px;
     display: grid;
     grid-template-columns: 1fr, 1fr, 1fr;
        grid-template-rows: 1fr;
@@ -23,32 +23,22 @@ body {
 
 }
 .modelContainer {
-    width: 33vh;
+    width: 250px;
     height: auto;
     border-right: 1px solid;
     grid-area: "modelContainer";
 
 }
 
-.modelBox {
-    font-size: 1.9vh;
-}
-
-.bottomBox {
-    font-size: 1.9vh;
-}
-
 .statuscontainer {
-    width: 33vh;
+    width: 250px;
     border-right: 1px solid;
     grid-area: "statusContainer";
-    margin-left: -15px;
-    font-size: 1.9vh;
 
 }
 
 .buttoncontainer {
-    width: 20vh;
+    width: 250px;
     grid-area: "buttonContainer";
 }
 

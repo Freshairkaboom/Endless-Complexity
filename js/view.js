@@ -49,7 +49,7 @@
                 ${button.thirdaction} 3)
                 <hr>
                 ${button.fourthaction} 4)
-
+            </div>
         </div>
 
     `;

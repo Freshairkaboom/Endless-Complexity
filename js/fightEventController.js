@@ -239,6 +239,7 @@ function death() {
     updateView();
     setTimeout(()=> {
         pmvariables.level = 1;
+        pmvariables.experiencepoints = 0;
         levelfactor.health = 0;
         levelfactor.ad = 0;
         levelfactor.speed = 0;
