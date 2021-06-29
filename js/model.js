@@ -122,7 +122,7 @@
                 ad: 0,
                 speed: 0,
 
-                experience: 1.8,
+                experience: 0,
             },
 
             monstergrowth = {

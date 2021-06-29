@@ -366,7 +366,7 @@ function campsiteEvent() {
 
     if (random == 3) menu.status = 'You see a campsite in a clearing to the right. What do you want to do?';
 
-    //---------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------------------//
 
     button.firstaction = `<button class="actionButton fightSequence" onclick="seekCover(campsite)">Seek cover</button>`;
 
