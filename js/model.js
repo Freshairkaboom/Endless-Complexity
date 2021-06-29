@@ -84,10 +84,6 @@
 
         playerModelVariables: [
 
-            pmconstants = {
-                attackdamage: 7,
-            },
-
             pmvariables = {
                 experiencepoints: 0,
                 level: 1,

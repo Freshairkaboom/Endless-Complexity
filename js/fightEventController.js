@@ -72,14 +72,14 @@ function strikeMonster(damage) {
             else {
                 if (pmvariables.cover > 0) {
                     menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
-                    + monster.current.name + " dealt " + monster.current.ad + " damage to your pmvariables.cover.";
+                    + monster.current.name + " dealt " + monster.current.ad + " damage to your cover.";
                     updateView();
                     time.fight = true;
                 }
 
                 else if (pmvariables.remainingcover > 0) {
                     menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
-                    + monster.current.name + " dealt " + monster.current.ad + " damage to your pmvariables.cover and destroyed it!";
+                    + monster.current.name + " dealt " + monster.current.ad + " damage to your cover and destroyed it!";
                     updateView();
                     time.fight = true;
                 }
@@ -287,7 +287,6 @@ function strengthPotion() {
 
     if (player.bag.strengthpotions > 0) {
         menu.status = 'You drink a strength potion...';
-        player.ad = pmconstants.attackdamage;
         player.ad += 5;
         updateView();
         setTimeout(()=>{
