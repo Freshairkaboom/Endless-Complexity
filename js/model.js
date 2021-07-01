@@ -49,7 +49,7 @@
         characters: [
 
             player = {
-                name: '<span onclick="setName()">Bob</span>',
+                name: '<span onclick="setName()">Bob (click to change)</span>',
                 health: 100,
                 ad: 7,
                 speed: 5,
