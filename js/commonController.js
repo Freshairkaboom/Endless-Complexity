@@ -27,3 +27,16 @@ function applyLevel() {
     player.ad += Math.floor(player.ad * levelfactor.ad);
     player.speed += Math.floor(player.speed * levelfactor.speed);
 }
+
+function setName() {
+
+    player.name = '<input onchange="changeName(this.value)"/>'
+    updateView();
+}
+
+function changeName(name) {
+    pmvariables.truename = name;
+
+    player.name = '<span onclick="setName()">' + name + '</span>';
+    updateView();
+}

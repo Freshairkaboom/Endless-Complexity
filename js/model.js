@@ -49,7 +49,7 @@
         characters: [
 
             player = {
-                name: 'Bob',
+                name: '<span onclick="setName()">Bob</span>',
                 health: 100,
                 ad: 7,
                 speed: 5,
@@ -85,6 +85,7 @@
         playerModelVariables: [
 
             pmvariables = {
+                truename: 'Bob',
                 experiencepoints: 0,
                 level: 1,
                 damage: 0,

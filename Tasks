@@ -10,3 +10,4 @@ Done:
 - Add functionality to "Assess area" option in fightSequence() function.
 - Add experience points.
 - Add player levels and have base stats of player be modified based on level.
+- Ability to change name by clicking name in model box and inputting a new one.
