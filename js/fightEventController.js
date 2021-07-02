@@ -2,7 +2,7 @@
 
 function fightSequence(enemy) {
 
-    time.fight = true;
+    time.event = true;
 
     monster.current = enemy;
 
@@ -66,7 +66,7 @@ function strikeMonster(damage) {
             if(player.health < 50 && monster.current.health > 50) {
                 menu.status = "You don't see yourself winning a head on engagement any longer. Perhaps you should change strategy."
                 updateView();
-                time.fight = true;
+                time.event = true;
 
             }
             else {
@@ -74,21 +74,21 @@ function strikeMonster(damage) {
                     menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
                     + monster.current.name + " dealt " + monster.current.ad + " damage to your cover.";
                     updateView();
-                    time.fight = true;
+                    time.event = true;
                 }
 
                 else if (pmvariables.remainingcover > 0) {
                     menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
                     + monster.current.name + " dealt " + monster.current.ad + " damage to your cover and destroyed it!";
                     updateView();
-                    time.fight = true;
+                    time.event = true;
                 }
 
                 else {
                     menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
                     + monster.current.name + " dealt " + monster.current.ad + " damage to you.";
                     updateView();
-                    time.fight = true;
+                    time.event = true;
                 }
 
 
@@ -98,7 +98,7 @@ function strikeMonster(damage) {
         else if (player.health == 0) {
             player.health = 100;
             player.ad = 7;
-            time.fight = true;
+            time.event = true;
             return;
         }
     },500);
@@ -133,7 +133,7 @@ function assessArea() {
 
     button.thirdaction = `<button class="actionButton fightSequence" onclick="useObject(model.randomObjects[2])">${model.randomObjects[2].name}</button>`;
 
-    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(monster.current)">Return to fight</button>`;
+    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(monster.current)">Return to event</button>`;
 
     updateView();
 
@@ -316,7 +316,7 @@ function switchWeapon() {
 
     button.fourthaction = `<button class="actionButton fightSequence" onclick="openBag()">Return</button>`;
 
-    time.fight = true;
+    time.event = true;
 
     updateView();
 }
@@ -374,11 +374,11 @@ function campsiteEvent() {
 
     button.thirdaction = `<button class="actionButton fightSequence" onclick="checkTraps(campsite)">Check for traps</button>`;
 
-    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(monster.current)">Return to fight</button>`;
+    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(monster.current)">Return to event</button>`;
 
     updateView();
 
-    time.fight = true;
+    time.event = true;
 
 }
 
@@ -560,6 +560,7 @@ function reset() {
     menu.winorlose = '';
 
     time.event = true;
+    time.explore = true;
     time.strength = true;
     time.use = true;
     time.check = true;
@@ -575,9 +576,4 @@ function reset() {
 
     monster.current = {name:'N/A',health:'N/A'};
     updateView();
-}
-
-function eventLock() {
-    if (time.fight == false) return "locked";
-    time.fight = false;
 }

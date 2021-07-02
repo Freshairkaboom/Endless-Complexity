@@ -65,6 +65,10 @@ body {
     background-color: rgb(221, 80, 80)
 }
 
+.exploreSequence {
+    background-color: chartreuse;
+}
+
 .opacity {
     background-color: rgba(147, 221, 77, 0.750);
 }

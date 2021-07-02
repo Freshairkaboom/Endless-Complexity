@@ -1,8 +1,8 @@
 // // Function that selects which event to execute based on button clicks from main menu // //
 function selectEvent(event) {
     //Prevents two events running at the same time - time.event returns to true at the end of each event.
-    if (time.event == false) return;
-    time.event = false;
+    if (time.selectevent == false) return;
+    time.selectevent = false;
 
     //Increases menu.round by 1 and resets the player's health so they can fight.
     menu.round++;
@@ -20,33 +20,30 @@ function selectEvent(event) {
         menu.status = 'You take a couple days off to rest, recovering from your wounds.';
         menu.round +=2;
         updateView();
-        setTimeout(()=>{menu.status='You are home.';player.health = 100;updateView();time.event=true;style.opacity = "";}, 3000);
+        setTimeout(()=>{menu.status='You are home.';player.health = 100;updateView();time.selectevent=true;style.opacity = "";}, 3000);
     }
 
     //Checks what box was clicked and selects appropriate event
     if (event == 'Fight') {
-        setTimeout(()=>{fightSequence(randomEncounter());time.event=true;style.opacity = "";updateView();}, 3000);
+        setTimeout(()=>{fightSequence(randomEncounter());time.selectevent=true;style.opacity = "";updateView();}, 3000);
 
     }
     else if (event == 'Explore') {
-            menu.status = 'Event is not finished, try again later.'
-            menu.round--;
             updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;style.opacity = "";updateView();}, 3000);
-
+            setTimeout(()=>{exploreSequence();time.selectevent=true;style.opacity = "";updateView();}, 3000);
     }
     else if (event == 'Farm') {
             menu.status = 'Event is not finished, try again later.'
             menu.round--;
             updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;style.opacity = "";updateView();}, 3000);
+            setTimeout(()=>{menu.status='You are home.';updateView();time.selectevent=true;style.opacity = "";updateView();}, 3000);
 
     }
     else if (event == 'Study') {
             menu.status = 'Event is not finished, try again later.'
             menu.round--;
             updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.event=true;style.opacity = "";updateView();}, 3000);
+            setTimeout(()=>{menu.status='You are home.';updateView();time.selectevent=true;style.opacity = "";updateView();}, 3000);
 
     }
 }

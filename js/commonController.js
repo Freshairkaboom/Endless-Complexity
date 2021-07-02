@@ -40,3 +40,8 @@ function changeName(name) {
     player.name = '<span onclick="setName()">' + name + '</span>';
     updateView();
 }
+
+function eventLock() {
+    if (time.event == false) return "locked";
+    time.event = false;
+}

@@ -60,6 +60,7 @@
                     gold: 10,
                     healthpotions: 0,
                     strengthpotions: 0,
+                    windingmap: 0,
                 },
                 armory: {
                     slot1: noweapon,
@@ -133,10 +134,10 @@
             },
 
             time = {
-                event: true,
+                selectevent: true,
                 strength: true,
                 health: true,
-                fight: true,
+                event: true,
                 seek: true,
                 check: true,
                 use: true,
@@ -155,6 +156,25 @@
 
             monsterbuff = {
                 interval: 0,
+            },
+
+            direction = {
+                north: 'north',
+                west: "west",
+                east: "east",
+                south: "south",
+            },
+
+            firsttime = {
+                sector1: true,
+                sector2: true,
+                sector3: true,
+                sector4: true,
+                sector5: true,
+                sector6: true,
+                sector7: true,
+                sector8: true,
+                sector9: true,
             }
 
         ],
