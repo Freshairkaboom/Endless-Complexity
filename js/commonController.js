@@ -45,3 +45,15 @@ function eventLock() {
     if (time.event == false) return "locked";
     time.event = false;
 }
+
+function updateQuest(status, button1, button2, button3, button4) {
+    menu.status = status;
+
+    button.firstaction = button1;
+
+    button.secondaction = button2;
+
+    button.thirdaction = button3;
+
+    button.fourthaction = button4;
+}
