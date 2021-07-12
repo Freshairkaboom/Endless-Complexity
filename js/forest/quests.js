@@ -247,6 +247,12 @@ function theMerchantChapter1() {
 
         }
 
+        else {
+            setTimeout(()=>{
+                    reset();
+            },12000);
+        }
+
     }
 
     function theMerchantStep9Choice1() {
