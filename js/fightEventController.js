@@ -260,12 +260,14 @@ function restoreHealth() {
         setTimeout(()=>{
             player.bag.healthpotions -= 1;
             player.bag.inventory += 1;
+            if (player.bag.healthpotions < 1) player.bag.healthpotions = 0;
             menu.status = 'You restored 25 health. What else would you like to do?';
             updateView();
         },3000);
     }
     else if (player.bag.healthpotions < 1) {
         menu.status = "You don't have any healthpotions.";
+        player.bag.healthpotions = 0;
         updateView();
     }
     else {
