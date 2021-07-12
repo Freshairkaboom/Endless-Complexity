@@ -185,6 +185,10 @@
 
         otherVariables: [
 
+            loop = {
+                i: 0,
+            },
+
             style = {
                 opacity: "",
             },

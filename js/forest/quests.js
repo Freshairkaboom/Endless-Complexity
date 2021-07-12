@@ -221,7 +221,7 @@ function theMerchantChapter1() {
     function theMerchantChapter2() {
 
         updateQuest(
-            theMerchantQuest.chapter2[0][0],
+            staggeredText(theMerchantQuest.chapter2[0][0]),
             `<button class="actionButton exploreSequence" onclick=""></button>`,
             `<button class="actionButton exploreSequence" onclick=""></button>`,
             `<button class="actionButton exploreSequence" onclick=""></button>`,
@@ -243,7 +243,7 @@ function theMerchantChapter1() {
                 setTimeout(()=>{
                     reset();
                 },3000);
-            },6000);
+            },12000);
 
         }
 

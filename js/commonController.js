@@ -57,3 +57,48 @@ function updateQuest(status, button1, button2, button3, button4) {
 
     button.fourthaction = button4;
 }
+
+function staggeredText(text) {
+
+    let str = text;
+    let strArray = str.split("");
+
+    if (strArray[loop.i-1] == "." || strArray[loop.i-1] == "!" || strArray[loop.i-1] == "?") {
+        setTimeout(()=>{
+            if (loop.i < strArray.length) {
+                menu.status += strArray[loop.i];
+                updateView();
+                loop.i++;
+                staggeredText(text);
+            }
+
+            else {
+                loop.i = 0;
+
+            }
+
+        },1500);
+    }
+
+    else {
+        setTimeout(()=>{
+            if (loop.i < strArray.length) {
+                menu.status += strArray[loop.i];
+                updateView();
+                loop.i++;
+                staggeredText(text);
+            }
+
+            else {
+                loop.i = 0;
+
+            }
+
+        },50);
+    }
+
+
+
+    return "";
+
+}
