@@ -36,7 +36,7 @@ function sectorForest1(direction) {
 
             button.firstaction = `<button class="actionButton exploreSequence" onclick="enterDeepWoods()">Enter Deep Woods</button>`;
 
-            button.secondaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+            button.secondaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
             button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest2(direction.east)">Go east</button>`;
 
@@ -70,7 +70,7 @@ function sectorForest2(direction) {
             }
         }
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.firstaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
         button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest1(direction.west)">Go west</button>`;
 
@@ -99,11 +99,11 @@ function sectorForest3(direction) {
 
         if (firsttime.sector3 == false) menu.status = "You head "+ direction +" and end up at the spring with the colorful mushrooms. You spot several shadows dancing in the water, but they disappear as you get closer.";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.firstaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
         button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest2(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.thirdaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
         button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest6(direction.south)">Go south</button>`;
 
@@ -157,9 +157,9 @@ function sectorForest5(direction) {
 
         button.secondaction = `<button class="actionButton exploreSequence" onclick="exploreSequence()">Keep adventuring</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.thirdaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.fourthaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
         firsttime.sector5 = false;
 
@@ -211,11 +211,11 @@ function sectorForest7(direction) {
 
         button.firstaction = `<button class="actionButton exploreSequence" onclick="sectorForest4(direction.north)">Go north</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.secondaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
         button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest8(direction.east)">Go east</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.fourthaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
         firsttime.sector7 = false;
 
@@ -269,9 +269,9 @@ function sectorForest9(direction) {
 
         button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest8(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.thirdaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+        button.fourthaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
         firsttime.sector9 = false;
 

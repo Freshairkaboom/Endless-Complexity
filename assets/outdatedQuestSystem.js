@@ -31,7 +31,7 @@ function theMerchantChapter1() {
 function ignoreQuest() {
     menu.status = "The figure is not interesting enough to pique your curiosity, so you head back to the road.";
 
-    button.firstaction = `<button class="actionButton exploreSequence" onclick="">N/A</button>`;
+    button.firstaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
     button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest1(direction.west)">Go west</button>`;
 

@@ -147,7 +147,7 @@ function flee() {
 
     menu.winorlose = 'You fled from the battle and lost some gold.';
     updateView();
-    player.bag.gold -= 5;
+    player.bag.gold -= player.bag.gold * 0.25;
     if (player.bag.gold < 0) player.bag.gold = 0;
     setTimeout(()=>{
         reset();
@@ -170,7 +170,7 @@ function reward() {
         pmvariables.experiencepoints += 5;
         player.bag.gold += loot;
         menu.winorlose = 'You beat the ' + monster.current.name + ' and get '+ loot + ' gp.';
-        monster.current = {name:'N/A',health:'N/A'};
+        monster.current = {name:'',health:''};
         updateView();
         setTimeout(()=>{
             if (pmvariables.experiencepoints >= getExpReq()) {
@@ -188,7 +188,7 @@ function reward() {
         pmvariables.experiencepoints += 10;
         player.bag.gold += loot*2;
         menu.winorlose = 'You beat the ' + monster.current.name + ' and got '+ loot*2 + ' gp.';
-        monster.current = {name:'N/A',health:'N/A'};
+        monster.current = {name:'',health:''};
         updateView();
 
         if (player.armory.slot1 == noweapon && player.weapon != ironsword && Math.ceil(Math.random()*5 == 5)) {
@@ -578,6 +578,6 @@ function reset() {
 
     pmvariables.cover = 0;
 
-    monster.current = {name:'N/A',health:'N/A'};
+    monster.current = {name:'',health:''};
     updateView();
 }

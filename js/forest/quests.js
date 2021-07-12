@@ -243,7 +243,7 @@ function theMerchantChapter1() {
                 setTimeout(()=>{
                     reset();
                 },3000);
-            },3000);
+            },6000);
 
         }
 
@@ -314,7 +314,7 @@ function ignoreQuest() {
 
     updateQuest(
         "The figure is not interesting enough to pique your curiosity, so you head back to the road.",
-        `<button class="actionButton exploreSequence" onclick="">N/A</button>`,
+        `<button class="actionButton exploreSequence" onclick=""></button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest1(direction.west)">Go west</button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest3(direction.east)">Go east</button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.south)">Go south</button>`
@@ -329,7 +329,7 @@ function endQuest() {
 
     updateQuest(
         "You decide to leave the farmer behind and head back to the crossroads. Hopefully he's not too mad about it.",
-        `<button class="actionButton exploreSequence" onclick="">N/A</button>`,
+        `<button class="actionButton exploreSequence" onclick=""></button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest1(direction.west)">Go west</button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest3(direction.east)">Go east</button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.south)">Go south</button>`

@@ -4,7 +4,7 @@
         randomObjects: [
 
             objectnull = {
-                name: "N/A",
+                name: "",
 
             },
 
@@ -24,7 +24,7 @@
         weaponStore: [
 
             noweapon = {
-                name: "N/A",
+                name: "",
             },
 
             stick = {
@@ -215,8 +215,8 @@
 
             monster = {
                 current: {
-                    name:'N/A',
-                    health:'N/A'
+                    name:'',
+                    health:''
                 },
             },
 
