@@ -64,7 +64,7 @@ function sectorForest2(direction) {
         if (firsttime.sector2 == false) {
             menu.status = "You head "+ direction +" and see a clearing. Several worn-out merchants are passing through. They all seem to be in a hurry.";
 
-            if (theMerchantQuest.completion = false) {
+            if (theMerchantQuest.completion == false) {
                 theMerchant();
                 return;
             }
