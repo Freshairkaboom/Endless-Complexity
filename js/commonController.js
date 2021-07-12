@@ -28,6 +28,7 @@ function applyLevel() {
     player.speed += Math.floor(player.speed * levelfactor.speed);
 }
 
+// Functions used to set the player's name //
 function setName() {
 
     player.name = '<input onchange="changeName(this.value)"/>'
@@ -41,11 +42,13 @@ function changeName(name) {
     updateView();
 }
 
+// Function used to prevent multiple events from firing at the same time. Locks time.event at the beginning of an event and time.event has to be manually reset at the end of events it is called from //
 function eventLock() {
     if (time.event == false) return "locked";
     time.event = false;
 }
 
+// Function used to update quest text and buttons //
 function updateQuest(status, button1, button2, button3, button4) {
     menu.status = status;
 
@@ -58,6 +61,7 @@ function updateQuest(status, button1, button2, button3, button4) {
     button.fourthaction = button4;
 }
 
+// Function used to add a stagger effect to menu.status text //
 function staggeredText(text) {
 
     let str = text;
