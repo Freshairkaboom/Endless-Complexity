@@ -1,19 +1,19 @@
 body {
-    background-image:url('https://github.com/Freshairkaboom/Endless-Complexity/blob/main/assets/bg.jpg?raw=true')
+    background-color: #8fcc54;
 }
 .title {
     margin-top: -8px;
     margin-left: -8px;
     margin-right: -8px;
     text-align: center;
-    background-color: gray;
+    color: white;
+    background-color: #202121;
     border-bottom: 5px solid black;
 }
 
 .page {
     background-color:rgb(147, 221, 77);
     margin-left: 350px;
-    margin-top: 150px;
     border: 2px solid black;
     width: 750px;
     display: grid;
@@ -28,6 +28,27 @@ body {
     border-right: 1px solid;
     grid-area: "modelContainer";
 
+}
+.modelContainerBook {
+    background-image: url('https://github.com/Freshairkaboom/Endless-Complexity/blob/main/assets/openbook.jpg?raw=true');
+    background-size: 100%;
+    background-position-y: -20px;
+    width: 750px;
+    height: 300px;
+    grid-area: "modelContainer";
+
+}
+
+.closed {
+    background-image:unset;
+    background-size: 0%;
+    height: 0px;
+}
+
+.bookText {
+    margin-left: 125px;
+    width: 250px;
+    font-family:cursive;
 }
 
 .statuscontainer {

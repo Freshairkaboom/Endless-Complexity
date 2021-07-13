@@ -6,6 +6,14 @@
 
         <div class="page ${style.opacity}">
 
+            <div class="modelContainerBook ${menu.bookclose}">
+                <p class="bookText">${menu.booktext}</p>
+            </div>
+
+        </div>
+
+        <div class="page ${style.opacity}">
+
             <div class="modelContainer">
                 <div class="modelBox">
                     <div>Player name: ${player.name}</div>

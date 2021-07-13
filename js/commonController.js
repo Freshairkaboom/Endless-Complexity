@@ -87,7 +87,8 @@ function staggeredText(text) {
     else {
         setTimeout(()=>{
             if (loop.i < strArray.length) {
-                menu.status += strArray[loop.i];
+                if (text.indexOf('Welcome to Endless Complexity') == -1) menu.status += strArray[loop.i];
+                else menu.booktext += strArray[loop.i];
                 updateView();
                 loop.i++;
                 staggeredText(text);
@@ -105,4 +106,18 @@ function staggeredText(text) {
 
     return "";
 
+}
+    writeIntro();
+function writeIntro() {
+    menu.booktext = staggeredText('Welcome to Endless Complexity!  This is a personal project that I am developing rapidly, so stay tuned for updates.  ' +
+    'Right now you can enjoy the Fight event that plays like an arcade-style fighting RPG where the goal is to reach higher levels.' +
+    '  You can also use the Explore event to see what exists around your home.  ' +
+    '  I hope you enjoy.');
+    updateView();
+
+    setTimeout(()=>{
+        menu.booktext = '';
+        menu.bookclose = "closed";
+        updateView();
+    },28000);
 }

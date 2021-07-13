@@ -99,6 +99,8 @@
         menuVariables: [
 
             menu = {
+                booktext: '',
+                bookclose: 'Open',
                 status: 'You are home.',
                 winorlose: '',
                 round: 0,
