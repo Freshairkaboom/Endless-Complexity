@@ -75,8 +75,8 @@
                 ad: 10, // Attack damage
                 speed: 7,
             },
-            goblinBoss = {
-                name: "Goblin Boss",
+            goblinGeneral = {
+                name: "Goblin General",
                 health: 100,
                 ad: 20, // Attack damage
                 speed: 12,

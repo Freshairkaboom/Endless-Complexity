@@ -52,7 +52,7 @@ function selectEvent(event) {
 function randomEncounter() {
     //Set all monster health
     goblin.health = 40 + Math.ceil(Math.random()*20) + Math.floor(goblin.health * monstergrowth.health);
-    goblinBoss.health = 80 + Math.ceil(Math.random()*40) + Math.floor(goblinBoss.health * monstergrowth.health);
+    goblinGeneral.health = 80 + Math.ceil(Math.random()*40) + Math.floor(goblinGeneral.health * monstergrowth.health);
 
     //Pick areas you can find in Assess Area event option at random.
     model.randomObjects[0] = getRandomObject();
@@ -67,9 +67,9 @@ function randomEncounter() {
         monstergrowth.health += 0.30;
         monstergrowth.ad += 0.30;
         monstergrowth.speed += 0.30;
-        return goblinBoss;
+        return goblinGeneral;
     }
-    if (random == 10 && menu.round > 10) return goblinBoss;
+    if (random == 10 && menu.round > 10) return goblinGeneral;
     else return goblin;
 
 }
