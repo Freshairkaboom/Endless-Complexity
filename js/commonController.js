@@ -87,7 +87,7 @@ function staggeredText(text) {
     else {
         setTimeout(()=>{
             if (loop.i < strArray.length) {
-                if (text.indexOf('Welcome to Endless Complexity') == -1 && text.indexOf('You have finished chapter 1') == -1) menu.status += strArray[loop.i];
+                if (text.indexOf('Welcome to Endless Complexity') == -1 && text.indexOf('You finished chapter 1') == -1) menu.status += strArray[loop.i];
                 else menu.booktext += strArray[loop.i];
                 updateView();
                 loop.i++;

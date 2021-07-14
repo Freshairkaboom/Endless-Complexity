@@ -101,7 +101,7 @@
             menu = {
                 intro: "Welcome to Endless Complexity!  This is a personal project that I am developing rapidly, so stay tuned for updates.  Right now you can enjoy the Fight event that plays like an arcade-style fighting RPG where the goal is to reach higher levels.  You can also use the Explore event to see what exists around your home.  I hope you enjoy.",
                 booktext: '',
-                bookclose: 'Open',
+                bookclose: 'open',
                 status: 'You are home.',
                 winorlose: '',
                 round: 0,
@@ -175,7 +175,7 @@
 
                 chapter2: [
                     [
-                        "You finished chapter 1 of The Merchant! I hope you liked it. Chapter 2 is not done yet, but here's some experience."
+                        "You finished chapter 1 of The Merchant!   I hope you liked it.   Chapter 2 is not done yet, but here's some experience."
                     ],
 
                     [

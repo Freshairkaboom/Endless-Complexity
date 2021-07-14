@@ -232,6 +232,8 @@ function theMerchantChapter1() {
 
         pmvariables.experiencepoints += 150;
         theMerchantQuest.completion = true;
+        menu.bookclose = 'open';
+        updateView();
 
 
         if (pmvariables.experiencepoints >= getExpReq()) {
@@ -242,6 +244,9 @@ function theMerchantChapter1() {
 
                 setTimeout(()=>{
                     reset();
+                    menu.bookclose = 'closed';
+                    menu.booktext = '';
+                    updateView();
                 },3000);
             },12000);
 
@@ -250,6 +255,9 @@ function theMerchantChapter1() {
         else {
             setTimeout(()=>{
                     reset();
+                    menu.bookclose = 'closed';
+                    menu.booktext = '';
+                    updateView();
             },12000);
         }
 
