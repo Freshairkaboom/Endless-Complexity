@@ -178,7 +178,7 @@ function loadGame() {
         return;
     }
 
-    if (!localStorage.getItem('player.name')) {
+    if (localStorage.length == 0) {
         alert('There is no saved data in storage.');
         return;
     }
