@@ -164,7 +164,7 @@ function calculateDamage() {
 }
 
 function reward() {
-    let loot = Math.ceil(Math.random()*30);
+    let loot = 10 + Math.floor(Math.random()*21);
 
     if (monster.current.name == "Goblin") {
         pmvariables.experiencepoints += 5;
