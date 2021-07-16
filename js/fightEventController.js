@@ -187,7 +187,7 @@ function reward() {
     else if (monster.current.name == "Goblin General") {
         pmvariables.experiencepoints += 10;
         player.bag.gold += loot*2;
-        menu.winorlose = 'You beat the ' + monster.current.name + ' and got '+ loot*4 + ' gp.';
+        menu.winorlose = 'You beat the ' + monster.current.name + ' and got '+ loot*10 + ' gp.';
         monster.current = {name:'',health:''};
         updateView();
 
