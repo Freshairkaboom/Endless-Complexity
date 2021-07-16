@@ -130,6 +130,9 @@ function saveGame() {
         return;
     }
 
+    save.havesaved = true;
+    storeData('save.havesaved', save.havesaved);
+
     storeData('player.name', player.name);
     storeData('player.health', player.health);
     storeData('player.ad', player.ad);
@@ -178,6 +181,10 @@ function loadGame() {
         return;
     }
 
+    if (save.havesaved == false) {
+        alert('There is no saved data in storage.');
+        return;
+    }
     player.name = localStorage.getItem('player.name');
     player.health = parseInt(localStorage.getItem('player.health'));
     player.ad = parseInt(localStorage.getItem('player.ad'));
