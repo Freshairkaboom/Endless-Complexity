@@ -223,8 +223,6 @@ function loadGame() {
     theMerchantQuest.completion = localStorage.getItem('theMerchantQuest.completion');
 
     updateView();
-
-    console.log('hei');
 }
 
 function storeData(nameOfData, valueOfData) {
