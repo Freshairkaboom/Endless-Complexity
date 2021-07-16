@@ -4,6 +4,8 @@
 
         <h1 class="title">Endless Complexity</h1>
 
+        <button class="saveandload" onclick="saveGame()">Save</button>
+        <button class="saveandload" onclick="loadGame()">Load</button>
         <div class="page ${style.opacity}">
 
             <div class="modelContainerBook ${menu.bookclose}">

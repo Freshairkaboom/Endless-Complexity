@@ -75,6 +75,10 @@ body {
     margin-bottom: 8px;
 }
 
+.saveandload {
+    float: left;
+}
+
 .actionButton {
     margin: 10px;
     width: 100px;

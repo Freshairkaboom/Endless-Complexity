@@ -70,7 +70,7 @@ function staggeredText(text) {
     if (strArray[loop.i-1] == "." || strArray[loop.i-1] == "!" || strArray[loop.i-1] == "?") {
         setTimeout(()=>{
             if (loop.i < strArray.length) {
-                menu.status += strArray[loop.i];
+                menu.booktext += strArray[loop.i];
                 updateView();
                 loop.i++;
                 staggeredText(text);
@@ -78,7 +78,12 @@ function staggeredText(text) {
 
             else {
                 loop.i = 0;
-
+                setTimeout(()=>{
+                    menu.booktext = '';
+                    menu.bookclose = "closed";
+                    time.selectevent = true;
+                    updateView();
+                },3000);
             }
 
         },1500);
@@ -87,8 +92,7 @@ function staggeredText(text) {
     else {
         setTimeout(()=>{
             if (loop.i < strArray.length) {
-                if (text.indexOf('Welcome to Endless Complexity') == -1 && text.indexOf('You finished chapter 1') == -1) menu.status += strArray[loop.i];
-                else menu.booktext += strArray[loop.i];
+                menu.booktext += strArray[loop.i];
                 updateView();
                 loop.i++;
                 staggeredText(text);
@@ -96,7 +100,12 @@ function staggeredText(text) {
 
             else {
                 loop.i = 0;
-
+                setTimeout(()=>{
+                    menu.booktext = '';
+                    menu.bookclose = "closed";
+                    time.selectevent = true;
+                    updateView();
+                },3000);
             }
 
         },40);
@@ -113,10 +122,107 @@ function writeIntro() {
     menu.booktext = staggeredText(menu.intro);
     updateView();
 
-    setTimeout(()=>{
-        menu.booktext = '';
-        menu.bookclose = "closed";
-        updateView();
-        time.selectevent = true;
-    },28000);
+}
+
+function saveGame() {
+    if (menu.status != 'You are home.') {
+        alert('You can only save when you are home.');
+        return;
+    }
+
+    storeData('player.name', player.name);
+    storeData('player.health', player.health);
+    storeData('player.ad', player.ad);
+    storeData('player.speed', player.speed);
+
+    storeData('player.weapon.name', player.weapon.name);
+    storeData('player.weapon.ad', player.weapon.ad);
+    storeData('player.weapon.speed', player.weapon.speed);
+
+    storeData('player.bag.inventory', player.bag.inventory);
+    storeData('player.bag.gold', player.bag.gold);
+    storeData('player.bag.healthpotions', player.bag.healthpotions);
+    storeData('player.bag.strengthpotions', player.bag.strengthpotions);
+
+    storeData('menu.round', menu.round);
+    storeData('pmvariables.level', pmvariables.level);
+    storeData('pmvariables.experiencepoints', pmvariables.experiencepoints);
+
+    storeData('levelfactor.health', levelfactor.health);
+    storeData('levelfactor.ad', levelfactor.ad);
+    storeData('levelfactor.speed', levelfactor.speed);
+    storeData('levelfactor.experience', levelfactor.experience);
+
+    storeData('monstergrowth.health', monstergrowth.health);
+    storeData('monstergrowth.ad', monstergrowth.ad);
+    storeData('monstergrowth.speed', monstergrowth.speed);
+    storeData('monsterbuff.interval', monsterbuff.interval);
+
+    storeData('firsttime.sector1', firsttime.sector1);
+    storeData('firsttime.sector2', firsttime.sector2);
+    storeData('firsttime.sector3', firsttime.sector3);
+    storeData('firsttime.sector4', firsttime.sector4);
+    storeData('firsttime.sector5', firsttime.sector5);
+    storeData('firsttime.sector6', firsttime.sector6);
+    storeData('firsttime.sector7', firsttime.sector7);
+    storeData('firsttime.sector8', firsttime.sector8);
+    storeData('firsttime.sector9', firsttime.sector9);
+
+    storeData('theMerchantQuest.completion', theMerchantQuest.completion);
+
+}
+function loadGame() {
+
+    if (menu.status != 'You are home.') {
+        alert('You can only load game data when you are home.');
+        return;
+    }
+
+    player.name = localStorage.getItem('player.name');
+    player.health = parseInt(localStorage.getItem('player.health'));
+    player.ad = parseInt(localStorage.getItem('player.ad'));
+    player.speed = parseInt(localStorage.getItem('player.speed'));
+
+    player.weapon.name = localStorage.getItem('player.weapon.name');
+    player.weapon.ad = parseInt(localStorage.getItem('player.weapon.ad'));
+    player.weapon.speed = parseInt(localStorage.getItem('player.weapon.speed'));
+
+    player.bag.inventory = parseInt(localStorage.getItem('player.bag.inventory'));
+    player.bag.gold = parseInt(localStorage.getItem('player.bag.gold'));
+    player.bag.healthpotions = parseInt(localStorage.getItem('player.bag.healthpotions'));
+    player.bag.strengthpotions = parseInt(localStorage.getItem('player.bag.strengthpotions'));
+
+    menu.round = parseInt(localStorage.getItem('menu.round'));
+    pmvariables.level = parseInt(localStorage.getItem('pmvariables.level'));
+    pmvariables.experiencepoints = parseInt(localStorage.getItem('pmvariables.experiencepoints'));
+
+    levelfactor.health = parseInt(localStorage.getItem('levelfactor.health'));
+    levelfactor.ad = parseInt(localStorage.getItem('levelfactor.ad'));
+    levelfactor.speed = parseInt(localStorage.getItem('levelfactor.speed'));
+    levelfactor.experience = parseInt(localStorage.getItem('levelfactor.experience'));
+
+    monstergrowth.health = parseInt(localStorage.getItem('monstergrowth.health'));
+    monstergrowth.ad = parseInt(localStorage.getItem('monstergrowth.ad'));
+    monstergrowth.speed = parseInt(localStorage.getItem('monstergrowth.speed'));
+    monsterbuff.interval = parseInt(localStorage.getItem('monsterbuff.interval'));
+
+    firsttime.sector1 = localStorage.getItem('firsttime.sector1');
+    firsttime.sector2 = localStorage.getItem('firsttime.sector2');
+    firsttime.sector3 = localStorage.getItem('firsttime.sector3');
+    firsttime.sector4 = localStorage.getItem('firsttime.sector4');
+    firsttime.sector5 = localStorage.getItem('firsttime.sector5');
+    firsttime.sector6 = localStorage.getItem('firsttime.sector6');
+    firsttime.sector7 = localStorage.getItem('firsttime.sector7');
+    firsttime.sector8 = localStorage.getItem('firsttime.sector8');
+    firsttime.sector9 = localStorage.getItem('firsttime.sector9');
+
+    theMerchantQuest.completion = localStorage.getItem('theMerchantQuest.completion');
+
+    updateView();
+
+    console.log('hei');
+}
+
+function storeData(nameOfData, valueOfData) {
+    localStorage.setItem(nameOfData, valueOfData)
 }
