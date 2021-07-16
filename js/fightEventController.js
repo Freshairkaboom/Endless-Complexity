@@ -244,6 +244,10 @@ function death() {
         levelfactor.ad = 0;
         levelfactor.speed = 0;
         menu.round = 0;
+
+        monstergrowth.health = 0;
+        monstergrowth.ad = 0;
+        monstergrowth.speed = 0;
         reset();
         },3000)
 }
