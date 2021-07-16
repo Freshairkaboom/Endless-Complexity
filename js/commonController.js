@@ -15,7 +15,7 @@ function levelUp () {
 
 function getExpReq() {
     if (pmvariables.level == 1) return 30;
-    else return Math.floor(30 * levelfactor.experience)
+    else return Math.floor(30 * levelfactor.experience);
 }
 
 function applyLevel() {
@@ -203,7 +203,7 @@ function loadGame() {
     levelfactor.health = parseInt(localStorage.getItem('levelfactor.health'));
     levelfactor.ad = parseInt(localStorage.getItem('levelfactor.ad'));
     levelfactor.speed = parseInt(localStorage.getItem('levelfactor.speed'));
-    levelfactor.experience = parseInt(localStorage.getItem('levelfactor.experience'));
+    levelfactor.experience = parseFloat(localStorage.getItem('levelfactor.experience'));
 
     monstergrowth.health = parseInt(localStorage.getItem('monstergrowth.health'));
     monstergrowth.ad = parseInt(localStorage.getItem('monstergrowth.ad'));
