@@ -200,15 +200,15 @@ function loadGame() {
     pmvariables.level = parseInt(localStorage.getItem('pmvariables.level'));
     pmvariables.experiencepoints = parseInt(localStorage.getItem('pmvariables.experiencepoints'));
 
-    levelfactor.health = parseInt(localStorage.getItem('levelfactor.health'));
-    levelfactor.ad = parseInt(localStorage.getItem('levelfactor.ad'));
-    levelfactor.speed = parseInt(localStorage.getItem('levelfactor.speed'));
+    levelfactor.health = parseFloat(localStorage.getItem('levelfactor.health'));
+    levelfactor.ad = parseFloat(localStorage.getItem('levelfactor.ad'));
+    levelfactor.speed = parseFloat(localStorage.getItem('levelfactor.speed'));
     levelfactor.experience = parseFloat(localStorage.getItem('levelfactor.experience'));
 
-    monstergrowth.health = parseInt(localStorage.getItem('monstergrowth.health'));
-    monstergrowth.ad = parseInt(localStorage.getItem('monstergrowth.ad'));
-    monstergrowth.speed = parseInt(localStorage.getItem('monstergrowth.speed'));
-    monsterbuff.interval = parseInt(localStorage.getItem('monsterbuff.interval'));
+    monstergrowth.health = parseFloat(localStorage.getItem('monstergrowth.health'));
+    monstergrowth.ad = parseFloat(localStorage.getItem('monstergrowth.ad'));
+    monstergrowth.speed = parseFloat(localStorage.getItem('monstergrowth.speed'));
+    monsterbuff.interval = parseFloat(localStorage.getItem('monsterbuff.interval'));
 
     firsttime.sector1 = localStorage.getItem('firsttime.sector1');
     firsttime.sector2 = localStorage.getItem('firsttime.sector2');
