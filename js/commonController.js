@@ -71,7 +71,7 @@ function death() {
         health: 0,
         ad: 7, // Attack damage
         speed: 5,
-        weapon: stick,
+        weapon: polearm,
         //Inventory:
         bag: {
             inventory: 10,
@@ -109,7 +109,7 @@ function staggeredText(text) {
 
     if (strArray[loop.i-1] == "." || strArray[loop.i-1] == "!" || strArray[loop.i-1] == "?") {
         setTimeout(()=>{
-            if (loop.i < strArray.length) {
+            if (loop.i < strArray.length && time.selectevent == false) {
                 menu.booktext += strArray[loop.i];
                 updateView();
                 loop.i++;
@@ -131,7 +131,7 @@ function staggeredText(text) {
 
     else {
         setTimeout(()=>{
-            if (loop.i < strArray.length) {
+            if (loop.i < strArray.length && time.selectevent == false) {
                 menu.booktext += strArray[loop.i];
                 updateView();
                 loop.i++;
@@ -211,6 +211,13 @@ function saveGame() {
 
 }
 function loadGame() {
+
+    if (menu.booktext != '') {
+        menu.booktext = '';
+        menu.bookclose = "closed";
+        time.selectevent = true;
+        updateView();
+    }
 
     if (menu.status != 'You are home.') {
         alert('You can only load game data when you are home.');
