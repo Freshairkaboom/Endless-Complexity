@@ -61,6 +61,46 @@ function updateQuest(status, button1, button2, button3, button4) {
     button.fourthaction = button4;
 }
 
+// Function used when player health reaches zero - resets game completely //
+function death() {
+    menu.winorlose = 'Oh dear, you have met your demise. Try again from the start.'
+    alert('You are dead. Load previous save file or try again from the beginning.');
+    updateView();
+    player = {
+        name: 'Bob',
+        health: 0,
+        ad: 7, // Attack damage
+        speed: 5,
+        weapon: stick,
+        //Inventory:
+        bag: {
+            inventory: 10,
+            gold: 10,
+            healthpotions: 0,
+            strengthpotions: 0,
+        },
+        armory: {
+            slot1: noweapon,
+            slot2: noweapon,
+            slot3: noweapon,
+        }
+    }
+    updateView();
+    setTimeout(()=> {
+        pmvariables.level = 1;
+        pmvariables.experiencepoints = 0;
+        levelfactor.health = 0;
+        levelfactor.ad = 0;
+        levelfactor.speed = 0;
+        menu.round = 0;
+
+        monstergrowth.health = 0;
+        monstergrowth.ad = 0;
+        monstergrowth.speed = 0;
+        reset();
+        },6000)
+}
+
 // Function used to add a stagger effect to menu.status text //
 function staggeredText(text) {
 
@@ -110,7 +150,6 @@ function staggeredText(text) {
 
         },40);
     }
-
 
 
     return "";

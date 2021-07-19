@@ -27,8 +27,8 @@
                 name: "",
             },
 
-            stick = {
-                name: "Stick",
+            polearm = {
+                name: "Polearm",
                 damage: 3,
                 speed: 5,
             },
@@ -53,7 +53,7 @@
                 health: 100,
                 ad: 7,
                 speed: 5,
-                weapon: stick,
+                weapon: polearm,
                 //Inventory:
                 bag: {
                     inventory: 10,
@@ -99,7 +99,7 @@
         menuVariables: [
 
             menu = {
-                intro: "Welcome to Endless Complexity!  This is a personal project that I am developing rapidly, so stay tuned for updates.  Right now you can enjoy the Fight event that plays like an arcade-style fighting RPG where the goal is to reach higher levels.  You can also use the Explore event to see what exists around your home.  I hope you enjoy.",
+                intro: "Your reassignment is complete, forest guardian. It is your sworn duty to protect Massgrove Forest. Our enemy, the goblins, are always attacking us, so please help drive them off. I'm not sure what kind of weaponry is available in the hut we left you, but I'm sure with the harsh training you received, you'll not have too many issues. Do come see me again, okay? I know you won't let us down. - Captain Taisha",
                 booktext: '',
                 bookclose: 'open',
                 status: 'You are home.',
@@ -175,11 +175,10 @@
 
                 chapter2: [
                     [
-                        "You finished chapter 1 of The Merchant!   I hope you liked it.   Chapter 2 is not done yet, but here's some experience."
-                    ],
-
-                    [
                         "You walk for a while to the east. The forest is getting denser and denser, and the vegetation grows thicker and more colorful. The sound of splashing water can be heard from beyond the treeline. The forest spring comes into view, and suddenly you see three men trawling the opposite shoreline. They look rough in appearance and they're wearing some sort of thick fabric and heavy boots. They don't seem to have noticed you."
+                    ],
+                    [
+                        "You choose to walk up to them and introduce yourself. Too late you realize your mistake - a crossbow bolt is heading right for you! You are hit square in the shoulder, letting out a scream that echoes throughout the woods. You fall to the ground and hear a disgruntled voice shout: Wait! That's not one of them! Careful where you point that thing Frederick!"
                     ],
                 ],
 
@@ -190,10 +189,6 @@
 
             loop = {
                 i: 0,
-            },
-
-            style = {
-                opacity: "",
             },
 
             levelfactor = {
@@ -265,23 +260,3 @@
         ],
 
     }
-
-    // let Events = [
-
-    //     forest = {
-    //         name: "forest",
-    //         strength: 3,
-    //         stealthdetection: 5,
-    //         traps: 5,
-    //         treasure: 'Stick',
-    //     },
-
-    //     castle = {
-    //         name: "castle",
-    //         strength: 5,
-    //         stealthdetection: 10,
-    //         traps: 3,
-    //         treasure: 'Iron sword',
-    //     },
-
-    // ]

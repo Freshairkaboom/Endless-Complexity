@@ -214,44 +214,6 @@ function reward() {
     }
 }
 
-function death() {
-    menu.winorlose = 'Oh dear, you have met your demise. Try again from the start.'
-    updateView();
-    player = {
-        name: 'Bob',
-        health: 0,
-        ad: 7, // Attack damage
-        speed: 5,
-        weapon: stick,
-        //Inventory:
-        bag: {
-            inventory: 10,
-            gold: 10,
-            healthpotions: 0,
-            strengthpotions: 0,
-        },
-        armory: {
-            slot1: noweapon,
-            slot2: noweapon,
-            slot3: noweapon,
-        }
-    }
-    updateView();
-    setTimeout(()=> {
-        pmvariables.level = 1;
-        pmvariables.experiencepoints = 0;
-        levelfactor.health = 0;
-        levelfactor.ad = 0;
-        levelfactor.speed = 0;
-        menu.round = 0;
-
-        monstergrowth.health = 0;
-        monstergrowth.ad = 0;
-        monstergrowth.speed = 0;
-        reset();
-        },3000)
-}
-
 // // Functions used by the Open Bag event option // //
 
 function restoreHealth() {
@@ -545,14 +507,12 @@ function addTreasure() {
 // // Functions used to check if player/monster is dead, or is afflicted by other effects // //
 function checkDead() {
     if (player.health < 1) {
-        style.opacity = "opacity";
         updateView();
         death();
         return;
     }
 
     if (monster.current.health < 1) {
-        style.opacity = "opacity";
         updateView();
         reward();
         return;
@@ -562,7 +522,6 @@ function checkDead() {
 
 // // Functions used to reset or lock events in fightSequence function // //
 function reset() {
-    style.opacity = "";
 
     menu.status = 'You are home.';
     menu.winorlose = '';

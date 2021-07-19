@@ -1,12 +1,11 @@
 
     function updateView() {
         let html = `
+        <button onclick="saveGame()">Save</button>
+        <button onclick="loadGame()">Load</button>
 
         <h1 class="title">Endless Complexity</h1>
-
-        <button class="saveandload" onclick="saveGame()">Save</button>
-        <button class="saveandload" onclick="loadGame()">Load</button>
-        <div class="page ${style.opacity}">
+        <div class="page">
 
             <div class="modelContainerBook ${menu.bookclose}">
                 <p class="bookText">${menu.booktext}</p>
@@ -14,7 +13,7 @@
 
         </div>
 
-        <div class="page ${style.opacity}">
+        <div class="page">
 
             <div class="modelContainer">
                 <div class="modelBox">
@@ -53,11 +52,11 @@
 
             <div class="buttoncontainer">
                 ${button.firstaction} 1)
-                <hr>
+
                 ${button.secondaction} 2)
-                <hr>
+
                 ${button.thirdaction} 3)
-                <hr>
+
                 ${button.fourthaction} 4)
             </div>
         </div>
