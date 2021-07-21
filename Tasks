@@ -1,11 +1,10 @@
 High prio:
-- Work on chapter 2 of the first quest: The Merchant.
+- Add basic Farm event functionality
 
 Low prio:
-- Make hp not reset after events
-- Have a rest option at home to recover hp but increases turn.
 
 Done:
+- Work on chapter 2 of the first quest: The Merchant.
 - Add function that adds objects to player, have those objects be usable from bag.
 - Make weapons into objects instead of string of text.
 - Add functionality to "Assess area" option in fightSequence() function.
