@@ -183,6 +183,13 @@ function saveGame() {
     storeData('player.bag.healthpotions', player.bag.healthpotions);
     storeData('player.bag.strengthpotions', player.bag.strengthpotions);
 
+    storeData('player.bag.seedbag.wheatgrain', player.bag.seedbag.wheatgrain);
+    storeData('player.bag.seedbag.barley', player.bag.seedbag.barley);
+    storeData('player.bag.seedbag.potato', player.bag.seedbag.potato);
+    storeData('player.bag.seedbag.herb', player.bag.seedbag.herb);
+    storeData('player.bag.seedbag.poisonivy', player.bag.seedbag.poisonivy);
+    storeData('player.bag.seedbag.magicseed', player.bag.seedbag.magicseed);
+
     storeData('menu.round', menu.round);
     storeData('pmvariables.level', pmvariables.level);
     storeData('pmvariables.experiencepoints', pmvariables.experiencepoints);
@@ -241,6 +248,13 @@ function loadGame() {
     player.bag.gold = parseInt(localStorage.getItem('player.bag.gold'));
     player.bag.healthpotions = parseInt(localStorage.getItem('player.bag.healthpotions'));
     player.bag.strengthpotions = parseInt(localStorage.getItem('player.bag.strengthpotions'));
+
+    player.bag.seedbag.wheatgrain = parseInt(localStorage.getItem('player.bag.seedbag.wheatgrain'));
+    player.bag.seedbag.barley = parseInt(localStorage.getItem('player.bag.seedbag.barley'));
+    player.bag.seedbag.potato = parseInt(localStorage.getItem('player.bag.seedbag.potato'));
+    player.bag.seedbag.herb = parseInt(localStorage.getItem('player.bag.seedbag.herb'));
+    player.bag.seedbag.poisonivy = parseInt(localStorage.getItem('player.bag.seedbag.poisonivy'));
+    player.bag.seedbag.magicseed = parseInt(localStorage.getItem('player.bag.seedbag.magicseed'));
 
     menu.round = parseInt(localStorage.getItem('menu.round'));
     pmvariables.level = parseInt(localStorage.getItem('pmvariables.level'));
