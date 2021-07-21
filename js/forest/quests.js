@@ -217,111 +217,369 @@ function theMerchantChapter1() {
         updateView();
     }
 
-    //Chapter 2
+    //Chapter 2 Step 8
     function theMerchantChapter2() {
 
         updateQuest(
-            staggeredText(theMerchantQuest.chapter2[0][0]),
+            theMerchantQuest.chapter2[0][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice1()">Approach them</button>`,
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice2()">Hide and wait</button>`,
             `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
+            );
+
+            updateView();
+
+    }
+
+    //Step 9
+    function theMerchantStep9Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[1][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep10Choice1()">Ugh...</button>`,
             `<button class="actionButton exploreSequence" onclick=""></button>`,
             `<button class="actionButton exploreSequence" onclick=""></button>`,
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-            updateView();
-
-        pmvariables.experiencepoints += 150;
-        theMerchantQuest.completion = true;
-        menu.bookclose = 'open';
-        updateView();
-
-
-        if (pmvariables.experiencepoints >= getExpReq()) {
-            setTimeout(()=>{
-                levelUp();
-                menu.status = 'You levelled up!';
-                updateView();
-
-                setTimeout(()=>{
-                    reset();
-                    menu.bookclose = 'closed';
-                    menu.booktext = '';
-                    updateView();
-                },3000);
-            },12000);
-
-        }
-
-        else {
-            setTimeout(()=>{
-                    reset();
-                    menu.bookclose = 'closed';
-                    menu.booktext = '';
-                    updateView();
-            },12000);
-        }
-
-    }
-
-    function theMerchantStep9Choice1() {
-
-        updateQuest(
-            theMerchantQuest.chapter2[1][0],
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice1()">Approach them</button>`,
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice2()"></button>`,
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice3()"></button>`,
-            `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
-            );
+        player.health -= 25;
+        if (player.health < 1) death();
 
         updateView();
     }
     function theMerchantStep9Choice2() {
 
         updateQuest(
-            theMerchantQuest.chapter2[0][1],
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice1()"></button>`,
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice2()"></button>`,
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice3()"></button>`,
+            theMerchantQuest.chapter2[1][1],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep10Choice2()">Continue hiding</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
-    }
-    function theMerchantStep9Choice3() {
+        pmvariables.experiencepoints += 10;
 
-        updateQuest(
-            theMerchantQuest.chapter2[0][2],
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice1()"></button>`,
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice2()"></button>`,
-            `<button class="actionButton exploreSequence" onclick="theMerchantStep9Choice3()"></button>`,
-            `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
-            );
+        if (pmvariables.experiencepoints >= getExpReq()) {
+            levelUp();
+            menu.status = 'You levelled up!';
+
+            setTimeout(()=>{
+                theMerchantQuest.chapter2[2][1]
+                updateView();
+            },3000);
+        }
 
         updateView();
+
     }
 
     //Step 10
+    function theMerchantStep10Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[2][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep11Choice1()">I'm...fine</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+
+    }
+    function theMerchantStep10Choice2() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[2][1],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep11Choice2()">Ugh...</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        player.health -= 25;
+        if (player.health < 1) death();
+
+        updateView();
+    }
 
     //Step 11
+    function theMerchantStep11Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[3][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep12Choice1()">I'm a forest guardian</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        player.health += 25;
+        updateView();
+    }
+    function theMerchantStep11Choice2() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[3][1],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep12Choice1()">I'm....a forest guardian</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 12
+    function theMerchantStep12Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[4][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep13Choice1()">She's my captain</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 13
+    function theMerchantStep13Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[5][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep14Choice1()">I'm helping out a merchant</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 14
+    function theMerchantStep14Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[6][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep15Choice1()">Well...he asked me to get him a cart because his was too heavy to move</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 15
+    function theMerchantStep15Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[7][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep16Choice1()">I...don't know.</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 16
+    function theMerchantStep16Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[8][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep17Choice1()">Thank you, I'm sure he will reward you for your efforts later</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 17
+    function theMerchantStep17Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[9][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep18Choice1()">Jack huh? I did wonder what his name was...Thanks again</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 18
+    function theMerchantStep18Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[10][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep19Choice1()">Continue</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 19
+    function theMerchantStep19Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[11][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep20Choice1()">Hey, I got the cart you asked for</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
 
     //Step 20
+    function theMerchantStep20Choice1() {
 
+        updateQuest(
+            theMerchantQuest.chapter2[12][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep21Choice1()">I guess they felt they owed me for shooting me in the shoulder</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
+
+    //Step 21
+    function theMerchantStep21Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[13][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep22Choice1()">And I'm ${player.name}. Nice to make your acquaintance. Well, shall we go?</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
+
+    //Step 22
+    function theMerchantStep22Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[14][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep23Choice1()">H-hello there</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
+
+    //Step 23
+    function theMerchantStep23Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[15][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep24Choice1()">What about me?</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
+
+    //Step 24
+    function theMerchantStep24Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[16][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep25Choice1()">Oh thanks...are you going to be okay?</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
+
+    //Step 25
+    function theMerchantStep25Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[17][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep26Choice1()">I guess you'll be fine then</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
+
+    //Step 26
+    function theMerchantStep26Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[18][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantStep27Choice1()">Weren't you going to your home?</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+
+        updateView();
+    }
+
+    //Step 27
+    function theMerchantStep27Choice1() {
+
+        updateQuest(
+            theMerchantQuest.chapter2[19][0],
+            `<button class="actionButton exploreSequence" onclick="theMerchantQuest.completion=true">Complete quest</button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`,
+            `<button class="actionButton exploreSequence" onclick=""></button>`
+            );
+        setTimeout(()=>{
+            if (theMerchantQuest.completion == false) {
+                theMerchantStep27Choice1();
+            }
+
+            else {
+                player.bag.gold += 500;
+                menu.status = 'You get 5 magic seeds. Unfortunately you do not know how to farm yet, so you sell them for 500 gold instead.';
+                pmvariables.experiencepoints += 50*pmvariables.level;
+                updateView();
+
+                setTimeout(()=>{
+                    if (pmvariables.experiencepoints >= getExpReq()) {
+                    levelUp();
+                    menu.status = 'You levelled up!';
+                    setTimeout(()=>{
+                        sectorForest2('back');
+                    },3000);
+
+                    updateView();
+            }
+                },6000);
+            }
+        },500)
+
+
+
+        updateView();
+    }
 
 
 function ignoreQuest() {
@@ -342,11 +600,11 @@ function ignoreQuest() {
 function endQuest() {
 
     updateQuest(
-        "You decide to leave the farmer behind and head back to the crossroads. Hopefully he's not too mad about it.",
+        "You decide to leave the merchant behind and head back to the crossroads. Hopefully he's not too mad about it.",
         `<button class="actionButton exploreSequence" onclick=""></button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest1(direction.west)">Go west</button>`,
         `<button class="actionButton exploreSequence" onclick="sectorForest3(direction.east)">Go east</button>`,
-        `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.south)">Go south</button>`
+        `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.south)">Go south</button>`,
         );
 
     time.event = true;

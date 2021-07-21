@@ -17,7 +17,7 @@
 
             <div class="modelContainer">
                 <div class="modelBox">
-                    <div>Player name: ${player.name}</div>
+                    <div>Player name: ${player.name} (click to change)</div>
                     <div>Health: ${player.health} + ${pmvariables.cover}</div>
                     <div>Attack damage: ${player.ad}</div>
                     <div>Speed: ${player.speed}</div>

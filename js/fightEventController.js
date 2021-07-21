@@ -191,8 +191,8 @@ function reward() {
         monster.current = {name:'',health:''};
         updateView();
 
-        if (player.armory.slot1 == noweapon && player.weapon != ironsword && Math.ceil(Math.random()*5 == 5)) {
-            alert('You got an Iron Sword! Check your bag.');
+        if (player.armory.slot1 == noweapon && player.weapon != ironsword && Math.ceil(Math.random()*5) == 5) {
+            menu.status =  'You beat the ' + monster.current.name + ' and got '+ loot*10 + ' gp and an iron sword!';
             player.armory.slot1 = ironsword;
         }
         updateView();

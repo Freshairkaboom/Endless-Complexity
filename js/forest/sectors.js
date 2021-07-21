@@ -62,7 +62,7 @@ function sectorForest2(direction) {
         menu.status = "You head " + direction + " to a clearing. There are several roaming merchants passing through. Some of the carts are riddled with arrows. Have they been attacked recently?";
 
         if (firsttime.sector2 == false) {
-            menu.status = "You head "+ direction +" and see a clearing. Several worn-out merchants are passing through. They all seem to be in a hurry.";
+            menu.status = "You head "+ direction +" to the northern clearing. Several worn-out merchants are passing through. They all seem to be in a hurry.";
 
             if (theMerchantQuest.completion == false) {
                 theMerchant();
