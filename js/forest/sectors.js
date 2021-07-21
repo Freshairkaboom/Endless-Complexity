@@ -66,6 +66,7 @@ function sectorForest2(direction) {
 
             if (theMerchantQuest.completion == false) {
                 theMerchant();
+                time.event = true;
                 return;
             }
         }
