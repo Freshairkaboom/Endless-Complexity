@@ -1,15 +1,15 @@
 
     function updateView() {
         let html = `
-        <button onclick="saveGame()">Save</button>
-        <button onclick="loadGame()">Load</button>
+        <button class="save" onclick="saveGame()">Save</button>
+        <button class="load" onclick="loadGame()">Load</button>
 
         <h1 class="title">Endless Complexity</h1>
-        <div class="page">
 
-            <div class="modelContainerBook ${menu.bookclose}">
+        <div class="modelContainerBook ${menu.bookclose}">
                 <p class="bookText">${menu.booktext}</p>
             </div>
+        <div class="page">
 
         </div>
 
