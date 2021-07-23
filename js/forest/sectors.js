@@ -124,7 +124,7 @@ function sectorForest4(direction) {
     menu.status = "You start walking...";
 
     setTimeout(()=>{
-        menu.status = "You head " + direction + " and come to a cave opening in the mountain wall with an orange hue. A terrible stench permeates the surrounding area, and the grass is scorched in several places. A warning sign reads: Lair of fire-breathing monsters.";
+        menu.status = "You head " + direction + " and come to a cave opening in the mountain wall with an orange hue. A terrible stench permeates the surrounding area, and the grass is scorched in several places. A warning sign reads: Lair of fire-breathing creatures.";
 
         if (firsttime.sector4 == false) menu.status = "You head "+ direction +" and end up back at the entrance to the Caverns. It smells like sulphur and burnt flesh.";
 

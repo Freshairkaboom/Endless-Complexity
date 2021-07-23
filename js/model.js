@@ -290,7 +290,7 @@
                 experience: 0,
             },
 
-            monstergrowth = {
+            enemygrowth = {
                 health: 0,
                 ad: 0,
                 speed: 0,
@@ -306,7 +306,7 @@
                 use: true,
             },
 
-            monster = {
+            enemy = {
                 current: {
                     name:'',
                     health:''
@@ -317,7 +317,7 @@
                 trapsornot: true,
             },
 
-            monsterbuff = {
+            enemybuff = {
                 interval: 0,
             },
 

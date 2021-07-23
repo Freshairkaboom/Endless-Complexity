@@ -94,9 +94,9 @@ function death() {
         levelfactor.speed = 0;
         menu.round = 0;
 
-        monstergrowth.health = 0;
-        monstergrowth.ad = 0;
-        monstergrowth.speed = 0;
+        enemyrgrowth.health = 0;
+        enemyrgrowth.ad = 0;
+        enemyrgrowth.speed = 0;
         reset();
         },6000)
 }
@@ -199,10 +199,10 @@ function saveGame() {
     storeData('levelfactor.speed', levelfactor.speed);
     storeData('levelfactor.experience', levelfactor.experience);
 
-    storeData('monstergrowth.health', monstergrowth.health);
-    storeData('monstergrowth.ad', monstergrowth.ad);
-    storeData('monstergrowth.speed', monstergrowth.speed);
-    storeData('monsterbuff.interval', monsterbuff.interval);
+    storeData('enemyrgrowth.health', enemyrgrowth.health);
+    storeData('enemyrgrowth.ad', enemyrgrowth.ad);
+    storeData('enemyrgrowth.speed', enemyrgrowth.speed);
+    storeData('enemyrbuff.interval', enemyrbuff.interval);
 
     storeData('firsttime.sector1', firsttime.sector1);
     storeData('firsttime.sector2', firsttime.sector2);
@@ -265,10 +265,10 @@ function loadGame() {
     levelfactor.speed = parseFloat(localStorage.getItem('levelfactor.speed'));
     levelfactor.experience = parseFloat(localStorage.getItem('levelfactor.experience'));
 
-    monstergrowth.health = parseFloat(localStorage.getItem('monstergrowth.health'));
-    monstergrowth.ad = parseFloat(localStorage.getItem('monstergrowth.ad'));
-    monstergrowth.speed = parseFloat(localStorage.getItem('monstergrowth.speed'));
-    monsterbuff.interval = parseFloat(localStorage.getItem('monsterbuff.interval'));
+    enemyrgrowth.health = parseFloat(localStorage.getItem('enemyrgrowth.health'));
+    enemyrgrowth.ad = parseFloat(localStorage.getItem('enemyrgrowth.ad'));
+    enemyrgrowth.speed = parseFloat(localStorage.getItem('enemyrgrowth.speed'));
+    enemyrbuff.interval = parseFloat(localStorage.getItem('enemyrbuff.interval'));
 
     firsttime.sector1 = localStorage.getItem('firsttime.sector1');
     firsttime.sector2 = localStorage.getItem('firsttime.sector2');

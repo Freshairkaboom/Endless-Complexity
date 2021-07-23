@@ -25,8 +25,8 @@
                 </div>
                 <hr>
                 <div class="modelBox">
-                    <div>Monster name: ${monster.current.name}</div>
-                    <div>Health: ${monster.current.health} </div>
+                    <div>Enemy name: ${enemy.current.name}</div>
+                    <div>Health: ${enemy.current.health} </div>
                 </div>
                 <hr>
                 <div class="modelBox">

@@ -4,11 +4,11 @@ function fightSequence(enemy) {
 
     time.event = true;
 
-    monster.current = enemy;
+    enemy.current = enemy;
 
     menu.status = "You encountered a " + enemy.name + "!";
 
-    button.firstaction = `<button class="actionButton fightSequence" onclick="strikeMonster(calculateDamage())">Strike</button>`;
+    button.firstaction = `<button class="actionButton fightSequence" onclick="strikeenemy(calculateDamage())">Strike</button>`;
 
     button.secondaction = `<button class="actionButton fightSequence" onclick="openBag()">Open bag</button>`;
 
@@ -22,7 +22,7 @@ function fightSequence(enemy) {
 
 // // Action button functions // //
 
-function strikeMonster(damage) {
+function strikeenemy(damage) {
 
     if(eventLock() == "locked") return;
 
@@ -30,16 +30,16 @@ function strikeMonster(damage) {
     updateView();
 
     setTimeout(()=>{
-        if (player.speed + player.weapon.speed >= monster.current.speed) {
-            monster.current.health -= damage;
+        if (player.speed + player.weapon.speed >= enemy.current.speed) {
+            enemy.current.health -= damage;
             checkDead();
-            if (monster.current.health < 0) monster.current.health = 0;
+            if (enemy.current.health < 0) enemy.current.health = 0;
 
-            if (pmvariables.cover > monster.current.ad) pmvariables.cover -= monster.current.ad;
-            else if (pmvariables.cover <= monster.current.ad) {
+            if (pmvariables.cover > enemy.current.ad) pmvariables.cover -= enemy.current.ad;
+            else if (pmvariables.cover <= enemy.current.ad) {
                 pmvariables.remainingcover = pmvariables.cover;
                 pmvariables.cover = 0;
-                player.health -= monster.current.ad - pmvariables.remainingcover;
+                player.health -= enemy.current.ad - pmvariables.remainingcover;
                 updateView();
             }
 
@@ -49,21 +49,21 @@ function strikeMonster(damage) {
 
         }
         else {
-            if (pmvariables.cover > monster.current.ad) pmvariables.cover -= monster.current.ad;
-            else if (pmvariables.cover <= monster.current.ad) {
+            if (pmvariables.cover > enemy.current.ad) pmvariables.cover -= enemy.current.ad;
+            else if (pmvariables.cover <= enemy.current.ad) {
                 pmvariables.remainingcover = pmvariables.cover;
                 pmvariables.cover = 0;
-                player.health -= monster.current.ad - pmvariables.remainingcover;
+                player.health -= enemy.current.ad - pmvariables.remainingcover;
                 updateView();
             }
             if (player.health < 0) player.health = 0;
 
-            monster.current.health -= damage;
+            enemy.current.health -= damage;
             checkDead();
-            if (monster.current.health < 0) monster.current.health = 0;
+            if (enemy.current.health < 0) enemy.current.health = 0;
         }
-        if (player.health > 0 && monster.current.health > 0) {
-            if(player.health < 50 && monster.current.health > 50) {
+        if (player.health > 0 && enemy.current.health > 0) {
+            if(player.health < 50 && enemy.current.health > 50) {
                 menu.status = "You don't see yourself winning a head on engagement any longer. Perhaps you should change strategy."
                 updateView();
                 time.event = true;
@@ -71,22 +71,22 @@ function strikeMonster(damage) {
             }
             else {
                 if (pmvariables.cover > 0) {
-                    menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
-                    + monster.current.name + " dealt " + monster.current.ad + " damage to your cover.";
+                    menu.status = "You dealt " + damage + " damage to the " + enemy.current.name + ", and the "
+                    + enemy.current.name + " dealt " + enemy.current.ad + " damage to your cover.";
                     updateView();
                     time.event = true;
                 }
 
                 else if (pmvariables.remainingcover > 0) {
-                    menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
-                    + monster.current.name + " dealt " + monster.current.ad + " damage to your cover and destroyed it!";
+                    menu.status = "You dealt " + damage + " damage to the " + enemy.current.name + ", and the "
+                    + enemy.current.name + " dealt " + enemy.current.ad + " damage to your cover and destroyed it!";
                     updateView();
                     time.event = true;
                 }
 
                 else {
-                    menu.status = "You dealt " + damage + " damage to the " + monster.current.name + ", and the "
-                    + monster.current.name + " dealt " + monster.current.ad + " damage to you.";
+                    menu.status = "You dealt " + damage + " damage to the " + enemy.current.name + ", and the "
+                    + enemy.current.name + " dealt " + enemy.current.ad + " damage to you.";
                     updateView();
                     time.event = true;
                 }
@@ -117,7 +117,7 @@ function openBag() {
 
     button.thirdaction = `<button class="actionButton fightSequence" onclick="switchWeapon()">Switch weapon</button>`;
 
-    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(monster.current)">Close bag</button>`;
+    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(enemy.current)">Close bag</button>`;
 
     updateView();
 }
@@ -133,7 +133,7 @@ function assessArea() {
 
     button.thirdaction = `<button class="actionButton fightSequence" onclick="useObject(model.randomObjects[2])">${model.randomObjects[2].name}</button>`;
 
-    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(monster.current)">Return to event</button>`;
+    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(enemy.current)">Return to event</button>`;
 
     updateView();
 
@@ -166,11 +166,11 @@ function calculateDamage() {
 function reward() {
     let loot = 10 + Math.floor(Math.random()*21);
 
-    if (monster.current.name == "Goblin") {
+    if (enemy.current.name == "Goblin") {
         pmvariables.experiencepoints += 5;
         player.bag.gold += loot;
-        menu.winorlose = 'You beat the ' + monster.current.name + ' and get '+ loot + ' gp.';
-        monster.current = {name:'',health:''};
+        menu.winorlose = 'You beat the ' + enemy.current.name + ' and get '+ loot + ' gp.';
+        enemy.current = {name:'',health:''};
         updateView();
         setTimeout(()=>{
             if (pmvariables.experiencepoints >= getExpReq()) {
@@ -184,15 +184,15 @@ function reward() {
         },500)
 
     }
-    else if (monster.current.name == "Goblin General") {
+    else if (enemy.current.name == "Goblin General") {
         pmvariables.experiencepoints += 10;
         player.bag.gold += loot*10;
-        menu.winorlose = 'You beat the ' + monster.current.name + ' and got '+ loot*10 + ' gp.';
-        monster.current = {name:'',health:''};
+        menu.winorlose = 'You beat the ' + enemy.current.name + ' and got '+ loot*10 + ' gp.';
+        enemy.current = {name:'',health:''};
         updateView();
 
         if (player.armory.slot1 == noweapon && player.weapon != ironsword && Math.ceil(Math.random()*5) == 5) {
-            menu.status =  'You beat the ' + monster.current.name + ' and got '+ loot*10 + ' gp and an iron sword!';
+            menu.status =  'You beat the ' + enemy.current.name + ' and got '+ loot*10 + ' gp and an iron sword!';
             player.armory.slot1 = ironsword;
         }
         updateView();
@@ -344,7 +344,7 @@ function campsiteEvent() {
 
     button.thirdaction = `<button class="actionButton fightSequence" onclick="checkTraps(campsite)">Check for traps</button>`;
 
-    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(monster.current)">Return to event</button>`;
+    button.fourthaction = `<button class="actionButton fightSequence" onclick="fightSequence(enemy.current)">Return to event</button>`;
 
     updateView();
 
@@ -371,7 +371,7 @@ function seekCover(object) {
             player.health -= 10;
             checkDead();
             menu.status = 'You step on a beartrap and lose 10 health!'
-            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},2000)
+            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(enemy.current);},2000)
             updateView();
         },3000);
     }
@@ -380,7 +380,7 @@ function seekCover(object) {
         setTimeout(()=>{
             menu.status = 'The crates fall apart as you lean on them, apparently they are rotten to the core. You are left without any cover.'
             updateView();
-            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},2000)
+            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(enemy.current);},2000)
         },3000);
     }
 
@@ -389,7 +389,7 @@ function seekCover(object) {
             menu.status = 'The crates provide solid cover for a counterattack.'
             pmvariables.cover = object.cover;
             updateView();
-            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},2000)
+            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(enemy.current);},2000)
         },3000);
     }
 }
@@ -415,13 +415,13 @@ function seekTreasure(object) {
             checkDead();
             menu.status = 'You find some treasure, but there is a trap on it! You lose some health.'
             updateView();
-            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},3000)
+            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(enemy.current);},3000)
         },3000);
     }
     else if (object.treasure > 1 && object.traps == 0) {
         setTimeout(()=>{
                 addTreasure();
-                setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},3000)
+                setTimeout(()=>{time.seek = true;time.check=true;fightSequence(enemy.current);},3000)
         },3000);
     }
 
@@ -429,7 +429,7 @@ function seekTreasure(object) {
         setTimeout(()=>{
             menu.status = 'You did not find any treasure...';
             updateView();
-            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},3000);
+            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(enemy.current);},3000);
         },3000)
     }
 }
@@ -472,7 +472,7 @@ function checkTraps(object) {
             player.health -= 15;
             checkDead();
             updateView();
-            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(monster.current);},3000);
+            setTimeout(()=>{time.seek = true;time.check=true;fightSequence(enemy.current);},3000);
         },3000);
     }
 }
@@ -504,7 +504,7 @@ function addTreasure() {
     }
 }
 
-// // Functions used to check if player/monster is dead, or is afflicted by other effects // //
+// // Functions used to check if player/enemy is dead, or is afflicted by other effects // //
 function checkDead() {
     if (player.health < 1) {
         updateView();
@@ -512,7 +512,7 @@ function checkDead() {
         return;
     }
 
-    if (monster.current.health < 1) {
+    if (enemy.current.health < 1) {
         updateView();
         reward();
         return;
@@ -541,6 +541,6 @@ function reset() {
 
     pmvariables.cover = 0;
 
-    monster.current = {name:'',health:''};
+    enemy.current = {name:'',health:''};
     updateView();
 }
