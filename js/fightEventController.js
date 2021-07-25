@@ -6,7 +6,7 @@ function fightSequence(encounter) {
 
     enemy.current = encounter;
 
-    menu.status = "You encountered a " + enemy.name + "!";
+    menu.status = "You encountered a " + enemy.current.name + "!";
 
     button.firstaction = `<button class="actionButton fightSequence" onclick="strikeenemy(calculateDamage())">Strike</button>`;
 
