@@ -1,10 +1,10 @@
 // // Main menu function - Updates action buttons and prepares the board // //
 
-function fightSequence(enemy) {
+function fightSequence(encounter) {
 
     time.event = true;
 
-    enemy.current = enemy;
+    enemy.current = encounter;
 
     menu.status = "You encountered a " + enemy.name + "!";
 
