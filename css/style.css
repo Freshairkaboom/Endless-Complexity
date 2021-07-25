@@ -21,6 +21,8 @@ body {
     box-shadow: 0 0 10px 5px;
     color: black;
     width: 750px;
+    position:absolute;
+    left: 375px;
 
 }
 
