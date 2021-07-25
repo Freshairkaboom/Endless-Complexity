@@ -166,7 +166,7 @@ function calculateDamage() {
 function reward() {
     let loot = 10 + Math.floor(Math.random()*21);
 
-    if (enemy.current.name == "Goblin") {
+    if (enemy.current.name == "Bandit") {
         pmvariables.experiencepoints += 5;
         player.bag.gold += loot;
         menu.winorlose = 'You beat the ' + enemy.current.name + ' and get '+ loot + ' gp.';
@@ -184,7 +184,7 @@ function reward() {
         },500)
 
     }
-    else if (enemy.current.name == "Goblin General") {
+    else if (enemy.current.name == "Bandit Leader") {
         pmvariables.experiencepoints += 10;
         player.bag.gold += loot*10;
         menu.winorlose = 'You beat the ' + enemy.current.name + ' and got '+ loot*10 + ' gp.';
