@@ -155,7 +155,7 @@ function staggeredText(text) {
     return "";
 
 }
-    writeIntro();
+
 function writeIntro() {
     time.selectevent = false;
     menu.booktext = staggeredText(menu.intro);

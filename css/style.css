@@ -17,9 +17,11 @@ body {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.81);
     border-radius: 10px;
+    border: 5px solid black;
     box-shadow: 0 0 10px 5px;
     color: black;
-    border: 5px solid black;
+    width: 750px;
+
 }
 
 .page {
@@ -114,6 +116,17 @@ body {
     border: 1px solid red;
 }
 
+.startButton {
+    margin: 10px;
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    position:absolute;
+    top: 100px;
+    left: 650px;
+    box-shadow: 0 0 10px 5px;
+}
+
 .fightSequence {
     background-color: rgb(221, 80, 80)
 }
@@ -124,4 +137,10 @@ body {
 
 .whitetext {
     color: white;
+}
+
+.bg-start {
+    position: absolute;
+    top: 200px;
+    left: 300px;
 }
