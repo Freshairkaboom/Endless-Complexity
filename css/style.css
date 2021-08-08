@@ -117,14 +117,11 @@ body {
 }
 
 .startButton {
-    margin: 10px;
-    width: 180px;
-    height: 60px;
-    cursor: pointer;
-    position:absolute;
-    top: 100px;
-    left: 650px;
-    box-shadow: 0 0 10px 5px;
+    width: 8rem;
+    height: 6rem;
+
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .fightSequence {
@@ -144,4 +141,10 @@ body {
 
     top: 200px;
     left: 275px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

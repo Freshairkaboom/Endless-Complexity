@@ -94,9 +94,9 @@ function death() {
         levelfactor.speed = 0;
         menu.round = 0;
 
-        enemyrgrowth.health = 0;
-        enemyrgrowth.ad = 0;
-        enemyrgrowth.speed = 0;
+        enemygrowth.health = 0;
+        enemygrowth.ad = 0;
+        enemygrowth.speed = 0;
         reset();
         },6000)
 }
@@ -199,10 +199,10 @@ function saveGame() {
     storeData('levelfactor.speed', levelfactor.speed);
     storeData('levelfactor.experience', levelfactor.experience);
 
-    storeData('enemyrgrowth.health', enemyrgrowth.health);
-    storeData('enemyrgrowth.ad', enemyrgrowth.ad);
-    storeData('enemyrgrowth.speed', enemyrgrowth.speed);
-    storeData('enemyrbuff.interval', enemyrbuff.interval);
+    storeData('enemygrowth.health', enemygrowth.health);
+    storeData('enemygrowth.ad', enemygrowth.ad);
+    storeData('enemygrowth.speed', enemygrowth.speed);
+    storeData('enemybuff.interval', enemybuff.interval);
 
     storeData('firsttime.sector1', firsttime.sector1);
     storeData('firsttime.sector2', firsttime.sector2);
@@ -265,10 +265,10 @@ function loadGame() {
     levelfactor.speed = parseFloat(localStorage.getItem('levelfactor.speed'));
     levelfactor.experience = parseFloat(localStorage.getItem('levelfactor.experience'));
 
-    enemyrgrowth.health = parseFloat(localStorage.getItem('enemyrgrowth.health'));
-    enemyrgrowth.ad = parseFloat(localStorage.getItem('enemyrgrowth.ad'));
-    enemyrgrowth.speed = parseFloat(localStorage.getItem('enemyrgrowth.speed'));
-    enemyrbuff.interval = parseFloat(localStorage.getItem('enemyrbuff.interval'));
+    enemygrowth.health = parseFloat(localStorage.getItem('enemygrowth.health'));
+    enemygrowth.ad = parseFloat(localStorage.getItem('enemygrowth.ad'));
+    enemygrowth.speed = parseFloat(localStorage.getItem('enemygrowth.speed'));
+    enemybuff.interval = parseFloat(localStorage.getItem('enemybuff.interval'));
 
     firsttime.sector1 = localStorage.getItem('firsttime.sector1');
     firsttime.sector2 = localStorage.getItem('firsttime.sector2');
