@@ -2,7 +2,7 @@ function enterCavern() {
     if (pmvariables.level < 5 || theMerchantQuest.completion == false || 1<2) {
         menu.status = "You try to enter the cavern, but the terrifying screeches coupled with the intense heat makes you feel overwhelmed. "+
         "You should probably come back when you're a bit stronger."
-        updateView();
+        view();
     }
 
     else {
@@ -16,6 +16,6 @@ function enterCavern() {
 
         button.fourthaction = `<button class="actionButton exploreSequence" onclick="">Go back</button>`;
 
-        updateView();
+        view();
     }
 }

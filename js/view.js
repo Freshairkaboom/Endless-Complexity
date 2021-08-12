@@ -1,6 +1,29 @@
+function view() {
+    if (model.app.currentView == 'startView') startView();
+    if (model.app.currentView == 'mainView') mainView();
+    if (model.app.currentView == 'fightView') fightView();
+    if (model.app.currentView == 'exploreView') exploreView();
+    if (model.app.currentView == 'skillView') skillView();
+    if (model.app.currentView == 'studyView') farmView();
+}
 
-    function updateView() {
-        let html = `
+function startView() {
+    let html = `
+    <div class="container">
+
+    <h1 class="title">Endless Complexity</h1>
+
+    <button class="startButton" onclick="model.app.currentView='mainView';view();writeIntro();">Start Game</button>
+
+    </div>
+
+`;
+app.innerHTML = html;
+}
+
+
+function mainView() {
+    let html = `
         <button class="save" onclick="saveGame()">Save</button>
         <button class="load" onclick="loadGame()">Load</button>
 
@@ -63,4 +86,14 @@
 
     `;
     app.innerHTML = html;
-    }
+}
+
+function fightView() {
+
+}
+function skillView() {
+
+}
+function studyView() {
+
+}

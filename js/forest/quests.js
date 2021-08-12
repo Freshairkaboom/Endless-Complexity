@@ -8,7 +8,7 @@ function theMerchant() {
         `<button class="actionButton exploreSequence" onclick=""></button>`
         );
 
-    updateView();
+    view();
 }
 
 function theMerchantChapter1() {
@@ -21,7 +21,7 @@ function theMerchantChapter1() {
         `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
         );
 
-    updateView();
+    view();
 
 }
 
@@ -37,7 +37,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
     function theMerchantStep1Choice2() {
@@ -50,7 +50,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
     function theMerchantStep1Choice3() {
@@ -63,7 +63,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
 
@@ -78,7 +78,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
     function theMerchantStep2Choice2() {
@@ -91,7 +91,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
     function theMerchantStep2Choice3() {
@@ -104,7 +104,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
 
@@ -119,7 +119,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
     function theMerchantStep3Choice2() {
@@ -132,7 +132,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
     function theMerchantStep3Choice3() {
@@ -145,7 +145,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
 
     }
 
@@ -160,7 +160,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 5
@@ -174,7 +174,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 6
@@ -188,7 +188,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
     }
     function theMerchantStep6Choice2() {
 
@@ -200,7 +200,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 7
@@ -214,7 +214,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-        updateView();
+        view();
     }
 
     //Chapter 2 Step 8
@@ -228,7 +228,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick="endQuest()">*Leave*</button>`
             );
 
-            updateView();
+            view();
 
     }
 
@@ -246,7 +246,7 @@ function theMerchantChapter1() {
         player.health -= 25;
         if (player.health < 1) death();
 
-        updateView();
+        view();
     }
     function theMerchantStep9Choice2() {
 
@@ -266,11 +266,11 @@ function theMerchantChapter1() {
 
             setTimeout(()=>{
                 theMerchantQuest.chapter2[2][1]
-                updateView();
+                view();
             },3000);
         }
 
-        updateView();
+        view();
 
     }
 
@@ -285,7 +285,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
 
     }
     function theMerchantStep10Choice2() {
@@ -301,7 +301,7 @@ function theMerchantChapter1() {
         player.health -= 25;
         if (player.health < 1) death();
 
-        updateView();
+        view();
     }
 
     //Step 11
@@ -316,7 +316,7 @@ function theMerchantChapter1() {
             );
 
         player.health += 25;
-        updateView();
+        view();
     }
     function theMerchantStep11Choice2() {
 
@@ -328,7 +328,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 12
@@ -342,7 +342,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 13
@@ -356,7 +356,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 14
@@ -370,7 +370,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 15
@@ -384,7 +384,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 16
@@ -398,7 +398,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 17
@@ -412,7 +412,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 18
@@ -426,7 +426,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 19
@@ -440,7 +440,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 20
@@ -454,7 +454,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 21
@@ -468,7 +468,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 22
@@ -482,7 +482,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 23
@@ -496,7 +496,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 24
@@ -510,7 +510,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 25
@@ -524,7 +524,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 26
@@ -538,7 +538,7 @@ function theMerchantChapter1() {
             `<button class="actionButton exploreSequence" onclick=""></button>`
             );
 
-        updateView();
+        view();
     }
 
     //Step 27
@@ -560,7 +560,7 @@ function theMerchantChapter1() {
                 player.bag.gold += 500;
                 menu.status = 'You get 5 magic seeds. Unfortunately you do not know how to farm yet, so you sell them for 500 gold instead.';
                 pmvariables.experiencepoints += 50*pmvariables.level;
-                updateView();
+                view();
 
                 setTimeout(()=>{
                     if (pmvariables.experiencepoints >= getExpReq()) {
@@ -570,7 +570,7 @@ function theMerchantChapter1() {
                         sectorForest2('back');
                     },3000);
 
-                    updateView();
+                    view();
             }
                 },6000);
             }
@@ -578,7 +578,7 @@ function theMerchantChapter1() {
 
 
 
-        updateView();
+        view();
     }
 
 
@@ -594,7 +594,7 @@ function ignoreQuest() {
 
     time.event = true;
 
-    updateView();
+    view();
 }
 
 function endQuest() {
@@ -609,5 +609,5 @@ function endQuest() {
 
     time.event = true;
 
-    updateView();
+    view();
 }

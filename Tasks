@@ -1,5 +1,5 @@
 High prio:
-- Add basic Farm event functionality
+- Refactor MVC so that model corresponds to different views, and controller functions call on view() function instead of different views, as well as change model.app.currentView when changing views.
 
 Low prio:
 

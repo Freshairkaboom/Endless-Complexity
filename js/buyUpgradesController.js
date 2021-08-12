@@ -5,7 +5,7 @@
         player.bag.gold -= 50;
         player.bag.inventory -= 1;
         player.bag.strengthpotions += 1;
-        updateView();
+        view();
     }
     else alert("Check if you have enough gold or inventory space.");
 
@@ -17,7 +17,7 @@ function buyHealthPotion() {
         player.bag.gold -= 25;
         player.bag.inventory -= 1;
         player.bag.healthpotions += 1;
-        updateView();
+        view();
     }
     else alert("Check if you have enough gold or inventory space.");
 }

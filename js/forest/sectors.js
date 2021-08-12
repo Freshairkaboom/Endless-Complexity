@@ -16,11 +16,11 @@ function goForest() {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 
 function sectorForest1(direction) {
@@ -46,11 +46,11 @@ function sectorForest1(direction) {
 
             time.event = true;
 
-            updateView();
+            view();
 
         },500);
 
-        updateView();
+        view();
     }
 
 function sectorForest2(direction) {
@@ -83,11 +83,11 @@ function sectorForest2(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 function sectorForest3(direction) {
     if(eventLock() == "locked") return;
@@ -112,11 +112,11 @@ function sectorForest3(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 function sectorForest4(direction) {
     if(eventLock() == "locked") return;
@@ -140,11 +140,11 @@ function sectorForest4(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 function sectorForest5(direction) {
     if(eventLock() == "locked") return;
@@ -166,11 +166,11 @@ function sectorForest5(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 function sectorForest6(direction) {
     if(eventLock() == "locked") return;
@@ -194,11 +194,11 @@ function sectorForest6(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 function sectorForest7(direction) {
     if(eventLock() == "locked") return;
@@ -222,11 +222,11 @@ function sectorForest7(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 function sectorForest8(direction) {
     if(eventLock() == "locked") return;
@@ -250,11 +250,11 @@ function sectorForest8(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }
 function sectorForest9(direction) {
     if(eventLock() == "locked") return;
@@ -278,9 +278,9 @@ function sectorForest9(direction) {
 
         time.event = true;
 
-        updateView();
+        view();
 
     },500);
 
-    updateView();
+    view();
 }

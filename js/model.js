@@ -1,6 +1,14 @@
     //Object defaults
 
     let model = {
+        app: {
+            currentView: 'startView',
+        },
+
+        startview: {
+
+        },
+
         randomObjects: [
 
             objectnull = {

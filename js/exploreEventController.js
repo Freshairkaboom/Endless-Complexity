@@ -12,7 +12,7 @@ function exploreSequence() {
 
     button.fourthaction = `<button class="actionButton exploreSequence" onclick="returnHome()">Return home</button>`;
 
-    updateView();
+    view();
 }
 
 function returnHome() {

@@ -9,7 +9,7 @@ function theMerchant() {
 
     button.fourthaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
 
-    updateView();
+    view();
 }
 
 function theMerchantChapter1() {
@@ -23,7 +23,7 @@ function theMerchantChapter1() {
 
     button.fourthaction = `<button class="actionButton exploreSequence" onclick="pushStory(3)">${theMerchantQuest.responses.button1[0]}</button>`;
 
-    updateView();
+    view();
 
 
 }
@@ -39,7 +39,7 @@ function ignoreQuest() {
 
     button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.south)">Go south</button>`;
 
-    updateView();
+    view();
 }
 
 function pushStory(choice) {
@@ -60,7 +60,7 @@ function pushStory(choice) {
 
                 button.fourthaction = `<button class="actionButton exploreSequence" onclick="pushStory(3)">${theMerchantQuest.responses.button4[i+1]}</button>`;
 
-                updateView();
+                view();
                 return;
             }
 
@@ -75,7 +75,7 @@ function pushStory(choice) {
 
                 button.fourthaction = `<button class="actionButton exploreSequence" onclick="pushStory(3)">*Leave*</button>`;
 
-                updateView();
+                view();
                 return;
             }
         }

@@ -10,7 +10,7 @@ function levelUp () {
     levelfactor.ad += 0.25;
     levelfactor.speed += 0.25;
 
-    updateView();
+    view();
 }
 
 function getExpReq() {
@@ -32,14 +32,14 @@ function applyLevel() {
 function setName() {
 
     player.name = '<input onchange="changeName(this.value)"/>'
-    updateView();
+    view();
 }
 
 function changeName(name) {
     pmvariables.truename = name;
 
     player.name = '<span onclick="setName()">' + name + '</span>';
-    updateView();
+    view();
 }
 
 // Function used to prevent multiple events from firing at the same time. Locks time.event at the beginning of an event and time.event has to be manually reset at the end of events it is called from //
@@ -65,7 +65,7 @@ function updateQuest(status, button1, button2, button3, button4) {
 function death() {
     menu.winorlose = 'Oh dear, you have met your demise. Try again from the start.'
     alert('You are dead. Load previous save file or try again from the beginning.');
-    updateView();
+    view();
     player = {
         name: 'Bob',
         health: 0,
@@ -85,7 +85,7 @@ function death() {
             slot3: noweapon,
         }
     }
-    updateView();
+    view();
     setTimeout(()=> {
         pmvariables.level = 1;
         pmvariables.experiencepoints = 0;
@@ -111,7 +111,7 @@ function staggeredText(text) {
         setTimeout(()=>{
             if (loop.i < strArray.length && time.selectevent == false) {
                 menu.booktext += strArray[loop.i];
-                updateView();
+                view();
                 loop.i++;
                 staggeredText(text);
             }
@@ -122,7 +122,7 @@ function staggeredText(text) {
                     menu.booktext = '';
                     menu.bookclose = "closed";
                     time.selectevent = true;
-                    updateView();
+                    view();
                 },3000);
             }
 
@@ -133,7 +133,7 @@ function staggeredText(text) {
         setTimeout(()=>{
             if (loop.i < strArray.length && time.selectevent == false) {
                 menu.booktext += strArray[loop.i];
-                updateView();
+                view();
                 loop.i++;
                 staggeredText(text);
             }
@@ -144,7 +144,7 @@ function staggeredText(text) {
                     menu.booktext = '';
                     menu.bookclose = "closed";
                     time.selectevent = true;
-                    updateView();
+                    view();
                 },3000);
             }
 
@@ -159,7 +159,7 @@ function staggeredText(text) {
 function writeIntro() {
     time.selectevent = false;
     menu.booktext = staggeredText(menu.intro);
-    updateView();
+    view();
 
 }
 
@@ -223,7 +223,7 @@ function loadGame() {
         menu.booktext = '';
         menu.bookclose = "closed";
         time.selectevent = true;
-        updateView();
+        view();
     }
 
     if (menu.status != 'You are home.') {
@@ -282,9 +282,18 @@ function loadGame() {
 
     theMerchantQuest.completion = localStorage.getItem('theMerchantQuest.completion');
 
-    updateView();
+    view();
 }
 
 function storeData(nameOfData, valueOfData) {
     localStorage.setItem(nameOfData, valueOfData)
+}
+
+function randomQuip() {
+    random = Math.floor(Math.random()*4);
+
+    if (random == 0) return "They seem to be hostile, so you seem to have no choice but to fight.";
+    if (random == 1) return "You can see that they are not in the mood for talking. Draw your weapon!";
+    if (random == 2) return "You can sense their bloodlust from a mile away. Seems like they're in a mood to fight!";
+    if (random == 3) return "The enemy has the stench of blood on their coat. You see no reason to believe it was self defence, so you ready your weapon.";
 }

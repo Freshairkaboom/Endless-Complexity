@@ -10,29 +10,29 @@ function selectEvent(event) {
 
     //Loading event visible on screen
     menu.status = 'Loading event...';
-    updateView();
+    view();
 
     //Checks what box was clicked and selects appropriate event
     if (event == 'Fight') {
-        setTimeout(()=>{fightSequence(randomEncounter());time.selectevent=true;updateView();}, 3000);
+        setTimeout(()=>{fightSequence(randomEncounter());time.selectevent=true;view();}, 3000);
 
     }
     else if (event == 'Explore') {
-            updateView()
-            setTimeout(()=>{exploreSequence();time.selectevent=true;updateView();}, 3000);
+            view()
+            setTimeout(()=>{exploreSequence();time.selectevent=true;view();}, 3000);
     }
     else if (event == 'Farm') {
             menu.status = 'Event is not finished, try again later.'
             menu.round--;
-            updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.selectevent=true;updateView();}, 3000);
+            view()
+            setTimeout(()=>{menu.status='You are home.';view();time.selectevent=true;view();}, 3000);
 
     }
     else if (event == 'Study') {
             menu.status = 'Event is not finished, try again later.'
             menu.round--;
-            updateView()
-            setTimeout(()=>{menu.status='You are home.';updateView();time.selectevent=true;updateView();}, 3000);
+            view()
+            setTimeout(()=>{menu.status='You are home.';view();time.selectevent=true;view();}, 3000);
 
     }
 }
