@@ -1,5 +1,5 @@
  //Called from 50gp button in the bottom left box.
- function buystrengthPotion() {
+function buystrengthPotion() {
     console.log(player.bag.strengthpotions);
     if (player.bag.gold >= 50 && player.bag.inventory > 0) {
         player.bag.gold -= 50;

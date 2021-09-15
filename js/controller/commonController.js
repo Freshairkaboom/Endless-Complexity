@@ -1,4 +1,4 @@
-// For functions used by several menus and views.
+// For functions used by several views.
 
 // Functions used to level up player and keep variables from resetting//
 function levelUp () {
@@ -296,4 +296,27 @@ function randomQuip() {
     if (random == 1) return "You can see that they are not in the mood for talking. Draw your weapon!";
     if (random == 2) return "You can sense their bloodlust from a mile away. Seems like they're in a mood to fight!";
     if (random == 3) return "The enemy has the stench of blood on their coat. You see no reason to believe it was self defence, so you ready your weapon.";
+}
+
+/*----------------------------------------------------------------------------------*
+*   This function sets values in model that can't be set before model is loaded.    *
+/*----------------------------------------------------------------------------------*/
+
+setModelDeferValues();
+function setModelDeferValues() {
+    model.fightview.status.bag.full = isBackpackFull();
+}
+
+function tryFunction(code) {
+    try {
+        code
+    }
+
+    catch(err) {
+        console.log(err.message);
+    }
+
+    finally {
+
+    };
 }

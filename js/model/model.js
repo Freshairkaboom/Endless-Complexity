@@ -1,11 +1,189 @@
-    //Object defaults
-
     let model = {
         app: {
             currentView: 'startView',
         },
 
         startview: {
+            //Empty for now
+        },
+        mainview: {
+            player: {
+                name: '<span onclick="setName()">Bob</span>',
+                health: 100,
+                ad: 7,
+                speed: 5,
+                weapon: 'None',
+
+                bag: {
+                    inventory: 10,
+                    gold: 10,
+                    healthpotions: 0,
+                    strengthpotions: 0,
+                    windingmap: 0,
+                },
+
+                seedbag: {
+                    wheatgrain: 0,
+                    barley: 0,
+                    potato: 0,
+                    herb: 0,
+                    poisonivy: 0,
+                    magicseed: 0,
+                },
+
+                armory: {
+                    slot1: 'None',
+                    slot2: 'None',
+                    slot3: 'None',
+                },
+
+            },
+
+            menu: {
+                intro: "Your reassignment is complete, forest guardian. It is your sworn duty to protect Massgrove Forest. Bandits are always attacking us, so please help drive them off. I'm not sure what kind of weaponry is available in the hut we left you, but I'm sure with the harsh training you received, you'll not have too many issues. Do come see me again, okay? I know you won't let us down. - Captain Taisha",
+                booktext: '',
+                bookclose: 'open',
+                status: 'You are home.',
+                winorlose: '',
+                round: 0,
+            },
+
+            button: {
+                firstaction: `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`,
+                secondaction: `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`,
+                thirdaction: `<button class="actionButton" onclick="selectEvent('Profession')">Profession</button>`,
+                fourthaction: `<button class="actionButton" onclick="selectEvent('Study')">Study</button>`,
+            },
+
+            time: {
+                selectevent: true,
+                strength: true,
+                health: true,
+                event: true,
+                seek: true,
+                check: true,
+                use: true,
+            },
+
+        },
+        fightview: {
+            player: {
+                name: '<span onclick="setName()">Bob</span>',
+                health: 100,
+                ad: 7,
+                speed: 5,
+                weapon: 'None',
+
+                bag: {
+                    inventory: 10,
+                    gold: 10,
+                    healthpotions: 0,
+                    strengthpotions: 0,
+                },
+
+                armory: {
+                    slot1: 'None',
+                    slot2: 'None',
+                    slot3: 'None',
+                },
+
+            },
+
+            menu: {
+                status: 'You report to the forest barracks for active duty.',
+                round: 0,
+            },
+
+            button: {
+                firstaction: `<button class="actionButton" onclick="reportToSergeant()">Report to Sergeant</button>`,
+                secondaction: `<button class="actionButton" onclick="bagMenu()">Open bag</button>`,
+                thirdaction: `<button class="actionButton" onclick="exploreBarracksMenu()">Explore barracks</button>`,
+                fourthaction: `<button class="actionButton" onclick="requestLeave()">Request leave</button>`,
+            },
+
+            assignments: {
+                assignmentlist: [
+                    {name: 'Guard merchant road', event: ''},
+                    {name: 'Preserve wildlife', event: ''},
+                    {name: 'Patrol Deep Woods', event: ''},
+                ],
+
+                firstassignment: {name: '', event: ''},
+
+                secondassignment: {name: '', event: ''},
+
+                thirdassignment: {name: '', event: ''},
+            },
+
+            skills: {
+                exercisepoints: 30,
+
+                strength: 0,
+                agility: 0,
+                defence: 0,
+            },
+
+            time: {
+                selectevent: true,
+                strength: true,
+                health: true,
+                event: true,
+                seek: true,
+                check: true,
+                use: true,
+            },
+
+            status: {
+                sergeant: {
+                    chat: `Your reputation precedes you, forest guardian. The officers in Skilimas seem to be holding you to a certain standard. Do not think that just because you are Captain Taisha's favourite, that I'm going to cut you slack. I will push you beyond your limits daily, and don't you forget it.`,
+                },
+
+                bag: {
+                    full: 'You open your rucksack. It is empty.',
+                }
+            },
+
+        },
+        exploreview: {
+            player: {
+                name: '<span onclick="setName()">Bob</span>',
+                health: 100,
+                ad: 7,
+                speed: 5,
+                weapon: 'None',
+
+                bag: {
+                    inventory: 10,
+                    gold: 10,
+                    healthpotions: 0,
+                    strengthpotions: 0,
+                },
+
+                armory: {
+                    slot1: 'None',
+                    slot2: 'None',
+                    slot3: 'None',
+                },
+
+            },
+
+            menu: {
+                status: 'You leave your home to explore the surrounding area.',
+                day: 0,
+            },
+
+            button: {
+                firstaction: `<button class="actionButton" onclick="">Explore forest</button>`,
+                secondaction: `<button class="actionButton" onclick=""></button>`,
+                thirdaction: `<button class="actionButton" onclick=""></button>`,
+                fourthaction: `<button class="actionButton" onclick="requestLeave()">Go home</button>`,
+            },
+
+        },
+        professionview: {
+
+        },
+        studyview: {
 
         },
 

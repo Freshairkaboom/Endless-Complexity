@@ -5,34 +5,39 @@ function selectEvent(event) {
     time.selectevent = false;
 
     //Increases menu.round by 1 and resets the player's health so they can fight.
-    menu.round++;
+    model.mainview.menu.round++;
     applyLevel();
 
     //Loading event visible on screen
-    menu.status = 'Loading event...';
+    model.mainview.menu.status = 'Loading event...';
     view();
 
     //Checks what box was clicked and selects appropriate event
     if (event == 'Fight') {
-        setTimeout(()=>{fightSequence(randomEncounter());time.selectevent=true;view();}, 3000);
+        model.mainview.menu.status = 'Event is not finished, try again later.';
+        model.mainview.menu.round--;
+        view();
+        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
 
     }
     else if (event == 'Explore') {
-            view()
-            setTimeout(()=>{exploreSequence();time.selectevent=true;view();}, 3000);
+        model.mainview.menu.status = 'Event is not finished, try again later.';
+        model.mainview.menu.round--;
+        view();
+        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
     }
-    else if (event == 'Farm') {
-            menu.status = 'Event is not finished, try again later.'
-            menu.round--;
-            view()
-            setTimeout(()=>{menu.status='You are home.';view();time.selectevent=true;view();}, 3000);
+    else if (event == 'Profession') {
+        model.mainview.menu.status = 'Event is not finished, try again later.';
+        model.mainview.menu.round--;
+        view();
+        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
 
     }
     else if (event == 'Study') {
-            menu.status = 'Event is not finished, try again later.'
-            menu.round--;
-            view()
-            setTimeout(()=>{menu.status='You are home.';view();time.selectevent=true;view();}, 3000);
+        model.mainview.menu.status = 'Event is not finished, try again later.';
+        model.mainview.menu.round--;
+        view();
+        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
 
     }
 }
