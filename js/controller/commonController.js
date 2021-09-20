@@ -50,15 +50,15 @@ function eventLock() {
 
 // Function used to update quest text and buttons //
 function updateQuest(status, button1, button2, button3, button4) {
-    menu.status = status;
+    model.exploreview.menu.status = status;
 
-    button.firstaction = button1;
+    model.exploreview.button.firstaction = button1;
 
-    button.secondaction = button2;
+    model.exploreview.button.secondaction = button2;
 
-    button.thirdaction = button3;
+    model.exploreview.button.thirdaction = button3;
 
-    button.fourthaction = button4;
+    model.exploreview.button.fourthaction = button4;
 }
 
 // Function used when player health reaches zero - resets game completely //
@@ -110,7 +110,7 @@ function staggeredText(text) {
     if (strArray[loop.i-1] == "." || strArray[loop.i-1] == "!" || strArray[loop.i-1] == "?") {
         setTimeout(()=>{
             if (loop.i < strArray.length && time.selectevent == false) {
-                menu.booktext += strArray[loop.i];
+                model.mainview.menu.booktext += strArray[loop.i];
                 view();
                 loop.i++;
                 staggeredText(text);
@@ -119,9 +119,9 @@ function staggeredText(text) {
             else {
                 loop.i = 0;
                 setTimeout(()=>{
-                    menu.booktext = '';
-                    menu.bookclose = "closed";
-                    time.selectevent = true;
+                    model.mainview.menu.booktext = '';
+                    model.mainview.menu.bookclose = "closed";
+                    model.mainview.time.selectevent = true;
                     view();
                 },3000);
             }
@@ -132,7 +132,7 @@ function staggeredText(text) {
     else {
         setTimeout(()=>{
             if (loop.i < strArray.length && time.selectevent == false) {
-                menu.booktext += strArray[loop.i];
+                model.mainview.menu.booktext += strArray[loop.i];
                 view();
                 loop.i++;
                 staggeredText(text);
@@ -141,8 +141,8 @@ function staggeredText(text) {
             else {
                 loop.i = 0;
                 setTimeout(()=>{
-                    menu.booktext = '';
-                    menu.bookclose = "closed";
+                    model.mainview.menu.booktext = '';
+                    model.mainview.menu.bookclose = "closed";
                     time.selectevent = true;
                     view();
                 },3000);
@@ -158,7 +158,7 @@ function staggeredText(text) {
 
 function writeIntro() {
     time.selectevent = false;
-    menu.booktext = staggeredText(menu.intro);
+    model.mainview.menu.booktext = staggeredText(model.mainview.menu.intro);
     view();
 
 }
@@ -219,8 +219,8 @@ function saveGame() {
 }
 function loadGame() {
 
-    if (menu.booktext != '') {
-        menu.booktext = '';
+    if (model.mainview.menu.booktext != '') {
+        model.mainview.menu.booktext = '';
         menu.bookclose = "closed";
         time.selectevent = true;
         view();
@@ -302,10 +302,10 @@ function randomQuip() {
 *   This function sets values in model that can't be set before model is loaded.    *
 /*----------------------------------------------------------------------------------*/
 
-setModelDeferValues();
-function setModelDeferValues() {
-    model.fightview.status.bag.full = isBackpackFull();
-}
+// setModelDeferValues();
+// function setModelDeferValues() {
+//     model.fightview.status.bag.full = isBackpackFull();
+// }
 
 function tryFunction(code) {
     try {

@@ -5,6 +5,8 @@
 
 body {
     background-color:#333;
+    background-image: url(https://mcdn.wallpapersafari.com/medium/58/10/rDRZdm.jpg);
+    background-size: 100%;
     padding: 0;
     margin: 0;
     display: flex;

@@ -1,3 +1,5 @@
+
+
 function exploreSequence() {
 
     time.explore = true;
@@ -6,9 +8,9 @@ function exploreSequence() {
 
     button.firstaction = `<button class="actionButton exploreSequence" onclick="goForest()">Go to forest</button>`;
 
-    button.secondaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+    button.secondaction = `<button class="actionButton exploreSequence" onclick=""><s>Go to ocean</s></button>`;
 
-    button.thirdaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+    button.thirdaction = `<button class="actionButton exploreSequence" onclick=""><s>Go to city</s></button>`;
 
     button.fourthaction = `<button class="actionButton exploreSequence" onclick="returnHome()">Return home</button>`;
 

@@ -173,10 +173,42 @@
             },
 
             button: {
-                firstaction: `<button class="actionButton" onclick="">Explore forest</button>`,
-                secondaction: `<button class="actionButton" onclick=""></button>`,
-                thirdaction: `<button class="actionButton" onclick=""></button>`,
+                firstaction: `<button class="actionButton" onclick="goForest()">Explore forest</button>`,
+                secondaction: `<button class="actionButton" onclick=""><s>Go to ocean</s></button>`,
+                thirdaction: `<button class="actionButton" onclick=""><s>Go to city</s></button>`,
                 fourthaction: `<button class="actionButton" onclick="requestLeave()">Go home</button>`,
+            },
+
+            currentarea: {id: 5, north: 2, west: 4, east: 6, south: 8},
+
+            forestmap: [
+                {id: 1, north: 'Deep Woods', west: '', east: 2, south: 4},
+                {id: 2, north: '', west: 1, east: 3, south: 5},
+                {id: 3, north: '', west: 2, east: '', south: 6},
+                {id: 4, north: 1, west: 'Fiery Caverns', east: 5, south: 7},
+                {id: 5, north: 2, west: 4, east: 6, south: 8},
+                {id: 6, north: 3, west: 5, east: 'Winding Paths', south: 9},
+                {id: 7, north: 4, west: '', east: 8, south: ''},
+                {id: 8, north: 5, west: 7, east: 9, south: ''},
+                {id: 9, north: 6, west: 8, east: '', south: ''},
+            ],
+
+            firsttime: {
+                sector1: true,
+                sector2: true,
+                sector3: true,
+                sector4: true,
+                sector5: true,
+                sector6: true,
+                sector7: true,
+                sector8: true,
+                sector9: true,
+            },
+
+            quests: {
+                theMerchantQuest: {
+                    completion: false,
+                },
             },
 
         },
