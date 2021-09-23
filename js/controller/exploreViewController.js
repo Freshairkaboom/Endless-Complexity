@@ -270,7 +270,9 @@ function goForest() {
 /*------------------------------------------*/
 
 function returnHome() {
-    reset();
+    model.app.currentView = 'mainView';
+
+    view();
 }
 
 /*------------------------------------------*

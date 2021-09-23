@@ -29,7 +29,7 @@ function exploreView() {
             </div>
             <hr>
             <div class="bottomBox">
-                <div>Hint: Report to the Sergeant to receive your duty assignments and hone skills.</div>
+                <div>Hint: It's wise to make a mental map of the area you are exploring, that way it's easier to find your way back next time.</div>
             </div>
         </div>
 

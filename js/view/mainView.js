@@ -36,8 +36,7 @@ function mainView() {
                 </div>
                 <hr>
                 <div class="bottomBox">
-                    <div>Buy health potion:<button class="button" onclick="buyHealthPotion()">25gp</button></div>
-                    <div> Buy strength potion: <button class="button2" onclick="buystrengthPotion()">50gp</button></div>
+                    <div>Hint: Choose what you want to do from the action buttons to the right.</div>
                 </div>
             </div>
 
