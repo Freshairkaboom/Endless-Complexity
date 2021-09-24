@@ -6,13 +6,13 @@ function goForest() {
     setTimeout(()=>{
         menu.status = "You head deeper into the forest.";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="sectorForest2(direction.north)">Go north</button>`;
+        button.firstaction = `<button class="actionButton" onclick="sectorForest2(direction.north)">Go north</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest4(direction.west)">Go west</button>`;
+        button.secondaction = `<button class="actionButton" onclick="sectorForest4(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest6(direction.east)">Go east</button>`;
+        button.thirdaction = `<button class="actionButton" onclick="sectorForest6(direction.east)">Go east</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest8(direction.south)">Go south</button>`;
+        button.fourthaction = `<button class="actionButton" onclick="sectorForest8(direction.south)">Go south</button>`;
 
         time.event = true;
 
@@ -34,13 +34,13 @@ function sectorForest1(direction) {
 
             if (firsttime.sector1 == false) menu.status = "You head "+ direction +" and end up back at the entrance to the Deep Woods."
 
-            button.firstaction = `<button class="actionButton exploreSequence" onclick="enterDeepWoods()">Enter Deep Woods</button>`;
+            button.firstaction = `<button class="actionButton" onclick="enterDeepWoods()">Enter Deep Woods</button>`;
 
-            button.secondaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+            button.secondaction = `<button class="actionButton" onclick=""></button>`;
 
-            button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest2(direction.east)">Go east</button>`;
+            button.thirdaction = `<button class="actionButton" onclick="sectorForest2(direction.east)">Go east</button>`;
 
-            button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest4(direction.south)">Go south</button>`;
+            button.fourthaction = `<button class="actionButton" onclick="sectorForest4(direction.south)">Go south</button>`;
 
             firsttime.sector1 = false;
 
@@ -71,13 +71,13 @@ function sectorForest2(direction) {
             }
         }
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.firstaction = `<button class="actionButton" onclick=""></button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest1(direction.west)">Go west</button>`;
+        button.secondaction = `<button class="actionButton" onclick="sectorForest1(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest3(direction.east)">Go east</button>`;
+        button.thirdaction = `<button class="actionButton" onclick="sectorForest3(direction.east)">Go east</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.south)">Go south</button>`;
+        button.fourthaction = `<button class="actionButton" onclick="sectorForest5(direction.south)">Go south</button>`;
 
         firsttime.sector2 = false;
 
@@ -100,13 +100,13 @@ function sectorForest3(direction) {
 
         if (firsttime.sector3 == false) menu.status = "You head "+ direction +" and end up at the spring with the colorful mushrooms. You spot several shadows dancing in the water, but they disappear as you get closer.";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.firstaction = `<button class="actionButton" onclick=""></button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest2(direction.west)">Go west</button>`;
+        button.secondaction = `<button class="actionButton" onclick="sectorForest2(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.thirdaction = `<button class="actionButton" onclick=""></button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest6(direction.south)">Go south</button>`;
+        button.fourthaction = `<button class="actionButton" onclick="sectorForest6(direction.south)">Go south</button>`;
 
         firsttime.sector3 = false;
 
@@ -128,13 +128,13 @@ function sectorForest4(direction) {
 
         if (firsttime.sector4 == false) menu.status = "You head "+ direction +" and end up back at the entrance to the Caverns. It smells like sulphur and burnt flesh.";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="sectorForest1(direction.north)">Go north</button>`;
+        button.firstaction = `<button class="actionButton" onclick="sectorForest1(direction.north)">Go north</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="enterCavern()">Enter Cavern</button>`;
+        button.secondaction = `<button class="actionButton" onclick="enterCavern()">Enter Cavern</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.east)">Go east</button>`;
+        button.thirdaction = `<button class="actionButton" onclick="sectorForest5(direction.east)">Go east</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest7(direction.south)">Go south</button>`;
+        button.fourthaction = `<button class="actionButton" onclick="sectorForest7(direction.south)">Go south</button>`;
 
         firsttime.sector4 = false;
 
@@ -154,13 +154,13 @@ function sectorForest5(direction) {
     setTimeout(()=>{
         menu.status = "You head " + direction + " and find yourself back at your home. Maybe you would like to go home and rest?";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="returnHome()">Return home</button>`;
+        button.firstaction = `<button class="actionButton" onclick="returnHome()">Return home</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="exploreSequence()">Keep adventuring</button>`;
+        button.secondaction = `<button class="actionButton" onclick="exploreSequence()">Keep adventuring</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.thirdaction = `<button class="actionButton" onclick=""></button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.fourthaction = `<button class="actionButton" onclick=""></button>`;
 
         firsttime.sector5 = false;
 
@@ -182,13 +182,13 @@ function sectorForest6(direction) {
 
         if (firsttime.sector6 == false) menu.status = "You head "+ direction +" and end up back at the entrance to the Winding Paths. A gust of wind escapes from behind the trees, hitting you in the face. Clearly, something is reacting to your presence."
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="sectorForest3(direction.north)">Go north</button>`;
+        button.firstaction = `<button class="actionButton" onclick="sectorForest3(direction.north)">Go north</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.west)">Go west</button>`;
+        button.secondaction = `<button class="actionButton" onclick="sectorForest5(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="enterWindingPaths()">Enter winding paths</button>`;
+        button.thirdaction = `<button class="actionButton" onclick="enterWindingPaths()">Enter winding paths</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectorForest9(direction.south)">Go south</button>`;
+        button.fourthaction = `<button class="actionButton" onclick="sectorForest9(direction.south)">Go south</button>`;
 
         firsttime.sector6 = false;
 
@@ -210,13 +210,13 @@ function sectorForest7(direction) {
 
         if (firsttime.sector7 == false) menu.status = "You head "+ direction +" and find yourself back at the abandoned campfire. There's an eerie silence here, almost like the forest is holding its breath.";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="sectorForest4(direction.north)">Go north</button>`;
+        button.firstaction = `<button class="actionButton" onclick="sectorForest4(direction.north)">Go north</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.secondaction = `<button class="actionButton" onclick=""></button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest8(direction.east)">Go east</button>`;
+        button.thirdaction = `<button class="actionButton" onclick="sectorForest8(direction.east)">Go east</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.fourthaction = `<button class="actionButton" onclick=""></button>`;
 
         firsttime.sector7 = false;
 
@@ -238,13 +238,13 @@ function sectorForest8(direction) {
 
         if (firsttime.sector8 == false) menu.status = "You head "+ direction +" and smell the ocean breeze beckoning you. Maybe you should spend a few hours here...";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="sectorForest5(direction.north)">Go north</button>`;
+        button.firstaction = `<button class="actionButton" onclick="sectorForest5(direction.north)">Go north</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest7(direction.west)">Go west</button>`;
+        button.secondaction = `<button class="actionButton" onclick="sectorForest7(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="sectorForest9(direction.east)">Go east</button>`;
+        button.thirdaction = `<button class="actionButton" onclick="sectorForest9(direction.east)">Go east</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="enterBeach()">Go to beach</button>`;
+        button.fourthaction = `<button class="actionButton" onclick="enterBeach()">Go to beach</button>`;
 
         firsttime.sector8 = false;
 
@@ -266,13 +266,13 @@ function sectorForest9(direction) {
 
         if (firsttime.sector9 == false) menu.status = "You head "+ direction +" and come upon the large collection of stones from before. You don't see anything interesting in the area."
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="sectorForest6(direction.north)">Go north</button>`;
+        button.firstaction = `<button class="actionButton" onclick="sectorForest6(direction.north)">Go north</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="sectorForest8(direction.west)">Go west</button>`;
+        button.secondaction = `<button class="actionButton" onclick="sectorForest8(direction.west)">Go west</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.thirdaction = `<button class="actionButton" onclick=""></button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick=""></button>`;
+        button.fourthaction = `<button class="actionButton" onclick=""></button>`;
 
         firsttime.sector9 = false;
 

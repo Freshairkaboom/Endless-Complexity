@@ -8,13 +8,13 @@ function enterCavern() {
     else {
         menu.status = "You enter the cavern, and immediately the intense heat hits your face, but you brave through it, confident in your own abilities. You should probably avoid using flammable equipment. The narrow paths lead to multiple different parts of the cave. Which way do you want to go?";
 
-        button.firstaction = `<button class="actionButton exploreSequence" onclick="">Go left</button>`;
+        button.firstaction = `<button class="actionButton" onclick="">Go left</button>`;
 
-        button.secondaction = `<button class="actionButton exploreSequence" onclick="">Go middle</button>`;
+        button.secondaction = `<button class="actionButton" onclick="">Go middle</button>`;
 
-        button.thirdaction = `<button class="actionButton exploreSequence" onclick="">Go right</button>`;
+        button.thirdaction = `<button class="actionButton" onclick="">Go right</button>`;
 
-        button.fourthaction = `<button class="actionButton exploreSequence" onclick="">Go back</button>`;
+        button.fourthaction = `<button class="actionButton" onclick="">Go back</button>`;
 
         view();
     }
