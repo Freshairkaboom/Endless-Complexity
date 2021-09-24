@@ -126,14 +126,6 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.fightSequence {
-    background-color: rgb(221, 80, 80)
-}
-
-.exploreSequence {
-    background-color: chartreuse;
-}
-
 .whitetext {
     color: white;
 }

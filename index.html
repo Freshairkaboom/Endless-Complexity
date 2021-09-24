@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="css/style.css"/>
 
 </head>
-<!-- Load view after body is loaded -->
-<body onload="model.app.currentView='exploreView';view()">
+<!-- Load main view after body is loaded -->
+<body onload="view()">
     <div id="app"></div>
 </body>
 
@@ -18,29 +18,20 @@
 <script>let app = document.getElementById('app');</script>
 
 <!-- Bring in Javascript (Style: Model View Controller) -->
-<script src="js/model/model.js"></script>
-<script src="js/view/view.js"></script>
+<script src="js/model.js"></script>
+<script src="js/view.js"></script>
 
-<!-- Contains controller functions used by several views -->
-<script defer src="js/controller/commonController.js"></script>
+<script src="js/selectEventController.js"></script>
+<script src="js/buyUpgradesController.js"></script>
+<script src="js/fightEventController.js"></script>
+<script src="js/exploreEventController.js"></script>
 
-<script src="js/view/startView.js"></script>
-<script src="js/controller/startViewController.js"></script>
-
-<script src="js/view/mainView.js"></script>
-<script src="js/controller/mainViewController.js"></script>
-
-<script src="js/view/fightView.js"></script>
-<script src="js/controller/fightViewController.js"></script>
-
-<script src="js/view/exploreView.js"></script>
-<script src="js/controller/exploreViewController.js"></script>
-<script src="js/controller/quests/theMerchant.js"></script>
-
-<script src="js/view/professionView.js"></script>
-<script src="js/controller/professionViewController.js"></script>
-
-<script src="js/view/studyView.js"></script>
-<script src="js/controller/studyViewController.js"></script>
+<script src="js/forest/sectors.js"></script>
+<script src="js/forest/deepwoods.js"></script>
+<script src="js/forest/beach.js"></script>
+<script src="js/forest/cavern.js"></script>
+<script src="js/forest/windingpaths.js"></script>
+<script src="js/forest/quests.js"></script>
+<script src="js/commonController.js"></script>
 
 </html>
