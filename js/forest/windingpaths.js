@@ -6,13 +6,13 @@ function enterWindingPaths() {
     else if (player.bag.windingmap == 1) {
         menu.status = "With the winding map in hand, you brave the treacherous path leading deeper into the forest. Where would you like to go?"
 
-        button.firstaction = `<button class="actionButton" onclick="">Take first path</button>`;
+        button.firstaction = `<button class="actionButton exploreSequence" onclick="">Take first path</button>`;
 
-        button.secondaction = `<button class="actionButton" onclick="">Take second path</button>`;
+        button.secondaction = `<button class="actionButton exploreSequence" onclick="">Take second path</button>`;
 
-        button.thirdaction = `<button class="actionButton" onclick="">Take third path</button>`;
+        button.thirdaction = `<button class="actionButton exploreSequence" onclick="">Take third path</button>`;
 
-        button.fourthaction = `<button class="actionButton" onclick="sectionForest6(direction.west)">Go back to footpath</button>`;
+        button.fourthaction = `<button class="actionButton exploreSequence" onclick="sectionForest6(direction.west)">Go back to footpath</button>`;
         view();
     }
 }

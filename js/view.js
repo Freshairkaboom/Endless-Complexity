@@ -1,30 +1,10 @@
 function view() {
-
-    switch(model.app.currentView) {
-        case 'startView':
-            startView();
-            break;
-
-        case 'mainView':
-            mainView();
-            break;
-
-        case 'fightView':
-            fightView();
-            break;
-
-        case 'exploreView':
-            exploreView();
-            break;
-
-        case 'skillView':
-            skillView();
-            break;
-
-        case 'studyView':
-            studyView();
-            break;
-    }
+    if (model.app.currentView == 'startView') startView();
+    if (model.app.currentView == 'mainView') mainView();
+    if (model.app.currentView == 'fightView') fightView();
+    if (model.app.currentView == 'exploreView') exploreView();
+    if (model.app.currentView == 'skillView') skillView();
+    if (model.app.currentView == 'studyView') farmView();
 }
 
 function startView() {
