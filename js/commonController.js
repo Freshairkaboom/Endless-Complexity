@@ -50,15 +50,15 @@ function eventLock() {
 
 // Function used to update quest text and buttons //
 function updateQuest(status, button1, button2, button3, button4) {
-    model.exploreview.menu.status = status;
+    menu.status = status;
 
-    model.exploreview.button.firstaction = button1;
+    button.firstaction = button1;
 
-    model.exploreview.button.secondaction = button2;
+    button.secondaction = button2;
 
-    model.exploreview.button.thirdaction = button3;
+    button.thirdaction = button3;
 
-    model.exploreview.button.fourthaction = button4;
+    button.fourthaction = button4;
 }
 
 // Function used when player health reaches zero - resets game completely //

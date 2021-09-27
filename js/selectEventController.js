@@ -5,19 +5,17 @@ function selectEvent(event) {
     time.selectevent = false;
 
     //Increases menu.round by 1 and resets the player's health so they can fight.
-    model.mainview.menu.round++;
+    menu.round++;
     applyLevel();
 
     //Loading event visible on screen
-    model.mainview.menu.status = 'Loading event...';
+    menu.status = 'Loading event...';
     view();
 
     //Checks what box was clicked and selects appropriate event
     if (event == 'Fight') {
-        model.mainview.menu.status = 'Event is not finished, try again later.';
-        model.mainview.menu.round--;
         view();
-        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
+        setTimeout(() => {fightSequence(randomEncounter()); time.selectevent = true; view(); }, 3000);
 
     }
     else if (event == 'Explore') {

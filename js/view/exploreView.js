@@ -9,11 +9,11 @@ function exploreView() {
 
         <div class="modelContainer">
             <div class="modelBox">
-                <div>Player name: ${model.exploreview.player.name} (click to change)</div>
-                <div>Health: ${model.exploreview.player.health}</div>
-                <div>Attack damage: ${model.exploreview.player.ad}</div>
-                <div>Speed: ${model.exploreview.player.speed}</div>
-                <div>Equipped: ${model.exploreview.player.weapon}</div>
+                <div>Player name: ${player.name} (click to change)</div>
+                <div>Health: ${player.health}</div>
+                <div>Attack damage: ${player.ad}</div>
+                <div>Speed: ${player.speed}</div>
+                <div>Equipped: ${player.weapon}</div>
             </div>
             <hr>
             <div class="modelBox">
@@ -22,10 +22,10 @@ function exploreView() {
             </div>
             <hr>
             <div class="modelBox">
-                <div>Inventory: ${model.exploreview.player.bag.inventory} slots left</div>
-                <div>Gold: ${model.exploreview.player.bag.gold} gp</div>
-                <div>Health potions: ${model.exploreview.player.bag.healthpotions}</div>
-                <div>Strength potions: ${model.exploreview.player.bag.strengthpotions}</div>
+                <div>Inventory: ${player.bag.inventory} slots left</div>
+                <div>Gold: ${player.bag.gold} gp</div>
+                <div>Health potions: ${player.bag.healthpotions}</div>
+                <div>Strength potions: ${player.bag.strengthpotions}</div>
             </div>
             <hr>
             <div class="bottomBox">
@@ -36,17 +36,17 @@ function exploreView() {
         <div class="statuscontainer">
                 <div>Level: ${pmvariables.level}</div>
                 <div>Experience: ${pmvariables.experiencepoints} / ${getExpReq()}</div>
-                <div> Status: ${model.exploreview.menu.status}</div>
+                <div> Status: ${menu.status}</div>
         </div>
 
         <div class="buttoncontainer">
-            ${model.exploreview.button.firstaction} 1)
+            ${button.firstaction} 1)
 
-            ${model.exploreview.button.secondaction} 2)
+            ${button.secondaction} 2)
 
-            ${model.exploreview.button.thirdaction} 3)
+            ${button.thirdaction} 3)
 
-            ${model.exploreview.button.fourthaction} 4)
+            ${button.fourthaction} 4)
 
         </div>
     </div>
