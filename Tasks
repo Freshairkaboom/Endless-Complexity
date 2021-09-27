@@ -1,5 +1,5 @@
 High prio:
-- Refactor MVC so that model corresponds to different views, and controller functions call on view() function instead of different views, as well as change model.app.currentView when changing views.
+- Rework quest system to avoid repetition: Assign step and choice to quest text.
 
 Low prio:
 
