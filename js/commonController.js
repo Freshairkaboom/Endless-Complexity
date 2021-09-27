@@ -110,7 +110,7 @@ function staggeredText(text) {
     if (strArray[loop.i-1] == "." || strArray[loop.i-1] == "!" || strArray[loop.i-1] == "?") {
         setTimeout(()=>{
             if (loop.i < strArray.length && time.selectevent == false) {
-                model.mainview.menu.booktext += strArray[loop.i];
+                menu.booktext += strArray[loop.i];
                 view();
                 loop.i++;
                 staggeredText(text);
@@ -119,9 +119,9 @@ function staggeredText(text) {
             else {
                 loop.i = 0;
                 setTimeout(()=>{
-                    model.mainview.menu.booktext = '';
-                    model.mainview.menu.bookclose = "closed";
-                    model.mainview.time.selectevent = true;
+                    menu.booktext = '';
+                    menu.bookclose = "closed";
+                    time.selectevent = true;
                     view();
                 },3000);
             }
@@ -132,7 +132,7 @@ function staggeredText(text) {
     else {
         setTimeout(()=>{
             if (loop.i < strArray.length && time.selectevent == false) {
-                model.mainview.menu.booktext += strArray[loop.i];
+                menu.booktext += strArray[loop.i];
                 view();
                 loop.i++;
                 staggeredText(text);
@@ -141,8 +141,8 @@ function staggeredText(text) {
             else {
                 loop.i = 0;
                 setTimeout(()=>{
-                    model.mainview.menu.booktext = '';
-                    model.mainview.menu.bookclose = "closed";
+                    menu.booktext = '';
+                    menu.bookclose = "closed";
                     time.selectevent = true;
                     view();
                 },3000);
@@ -158,7 +158,7 @@ function staggeredText(text) {
 
 function writeIntro() {
     time.selectevent = false;
-    model.mainview.menu.booktext = staggeredText(model.mainview.menu.intro);
+    menu.booktext = staggeredText(menu.intro);
     view();
 
 }
@@ -219,8 +219,8 @@ function saveGame() {
 }
 function loadGame() {
 
-    if (model.mainview.menu.booktext != '') {
-        model.mainview.menu.booktext = '';
+    if (menu.booktext != '') {
+        menu.booktext = '';
         menu.bookclose = "closed";
         time.selectevent = true;
         view();
