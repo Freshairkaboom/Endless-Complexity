@@ -5,8 +5,8 @@ function view() {
             startView();
             break;
 
-        case 'mainView':
-            mainView();
+        case 'gameView':
+            gameView();
             break;
 
     }
@@ -19,8 +19,8 @@ function startView() {
     <h1 class="title">Endless Complexity</h1>
 
     <div class="buttonContainer">
-    <button class="startButton" onclick="model.app.currentView='mainView';view();writeIntro();">New Game</button>
-    <button class="startButton" onclick="model.app.currentView='mainView';loadGame();closeBook();view();">Load Game</button>
+    <button class="startButton" onclick="model.app.currentView='gameView';view();writeIntro();">New Game</button>
+    <button class="startButton" onclick="model.app.currentView='gameView';loadGame();closeBook();view();">Load Game</button>
     </div>
 
     </div>
@@ -30,7 +30,7 @@ app.innerHTML = html;
 }
 
 
-function mainView() {
+function gameView() {
     let html = `
         <button class="save" onclick="saveGame()">Save</button>
         <button class="load" onclick="loadGame()">Load</button>

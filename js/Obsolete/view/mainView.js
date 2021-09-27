@@ -1,4 +1,4 @@
-function mainView() {
+function gameView() {
     let html = `
         <button class="save" onclick="saveGame()">Save</button>
         <button class="load" onclick="loadGame()">Load</button>

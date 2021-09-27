@@ -4,8 +4,8 @@ function view() {
         case 'startView':
             startView();
             break;
-        case 'mainView':
-            mainView();
+        case 'gameView':
+            gameView();
             break;
         case 'fightView':
             fightView();
