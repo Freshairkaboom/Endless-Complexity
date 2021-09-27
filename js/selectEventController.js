@@ -21,19 +21,23 @@ function selectEvent(event) {
 
     }
     else if (event == 'Explore') {
-            view();
-            setTimeout(()=>{exploreSequence();time.selectevent=true;view();}, 3000);
+        model.mainview.menu.status = 'Event is not finished, try again later.';
+        model.mainview.menu.round--;
+        view();
+        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
     }
-    else if (event == 'Farm') {
-            menu.round--;
-            view();
-            setTimeout(()=>{farmSequence();time.selectevent=true;view();}, 3000);
+    else if (event == 'Profession') {
+        model.mainview.menu.status = 'Event is not finished, try again later.';
+        model.mainview.menu.round--;
+        view();
+        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
 
     }
     else if (event == 'Study') {
-            menu.round--;
-            view();
-            setTimeout(()=>{studySequence();time.selectevent=true;view();}, 3000);
+        model.mainview.menu.status = 'Event is not finished, try again later.';
+        model.mainview.menu.round--;
+        view();
+        setTimeout(() => { model.mainview.menu.status = 'You are home.'; view(); time.selectevent = true; view(); }, 3000);
 
     }
 }

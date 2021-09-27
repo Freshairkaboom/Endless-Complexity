@@ -298,6 +298,25 @@ function randomQuip() {
     if (random == 3) return "The enemy has the stench of blood on their coat. You see no reason to believe it was self defence, so you ready your weapon.";
 }
 
-function closeBook() {
-    menu.bookclose = "closed";
+/*----------------------------------------------------------------------------------*
+*   This function sets values in model that can't be set before model is loaded.    *
+/*----------------------------------------------------------------------------------*/
+
+// setModelDeferValues();
+// function setModelDeferValues() {
+//     model.fightview.status.bag.full = isBackpackFull();
+// }
+
+function tryFunction(code) {
+    try {
+        code
+    }
+
+    catch(err) {
+        console.log(err.message);
+    }
+
+    finally {
+
+    };
 }

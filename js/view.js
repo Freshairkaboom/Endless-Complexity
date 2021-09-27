@@ -9,6 +9,21 @@ function view() {
             mainView();
             break;
 
+        case 'fightView':
+            fightView();
+            break;
+
+        case 'exploreView':
+            exploreView();
+            break;
+
+        case 'skillView':
+            skillView();
+            break;
+
+        case 'studyView':
+            studyView();
+            break;
     }
 }
 
@@ -18,10 +33,7 @@ function startView() {
 
     <h1 class="title">Endless Complexity</h1>
 
-    <div class="buttonContainer">
-    <button class="startButton" onclick="model.app.currentView='mainView';view();writeIntro();">New Game</button>
-    <button class="startButton" onclick="model.app.currentView='mainView';loadGame();closeBook();view();">Load Game</button>
-    </div>
+    <button class="startButton" onclick="model.app.currentView='mainView';view();writeIntro();">Start Game</button>
 
     </div>
 
@@ -94,4 +106,14 @@ function mainView() {
 
     `;
     app.innerHTML = html;
+}
+
+function fightView() {
+
+}
+function skillView() {
+
+}
+function studyView() {
+
 }
