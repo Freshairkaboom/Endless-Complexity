@@ -120,6 +120,13 @@ let model = {
             round: 0,
         },
 
+        menuState = {
+            playerInfoOpen: false,
+            enemyInfoOpen: false,
+            inventoryOpen: false,
+            shopOpen: false,
+        },
+
         button = {
             firstaction: `<button class="actionButton" onclick="selectEvent('Fight')">Fight</button>`,
             secondaction: `<button class="actionButton" onclick="selectEvent('Explore')">Explore</button>`,
