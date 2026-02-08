@@ -1,18 +1,30 @@
 *, *::before, *::after {
     box-sizing: border-box;
+}
 
+html {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
 
 body {
     background-color:#333;
-    background-image: url(../assets/bg.jpg);
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 .title {
     text-align: center;
@@ -21,8 +33,11 @@ body {
     border: 5px solid black;
     box-shadow: 0 0 10px 5px;
     color: black;
-    width: 750px;
-
+    width: 100%;
+    max-width: 750px;
+    padding: 1rem;
+    margin: 0 1rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
 .page {
@@ -30,43 +45,161 @@ body {
     border: 2px solid black;
     border-radius: 10px;
     box-shadow: 0 0 10px 5px;
-    width: 750px;
+    width: 100%;
+    max-width: 750px;
+    margin: 0.5rem;
+    padding: 1rem;
     display: grid;
-            grid-template-areas: "modelContainer statusContainer buttonContainer";
-
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "model status buttons";
+    gap: 1rem;
+    position: relative;
 }
 .modelContainer {
-    width: 255px;
+    grid-area: model;
     border-right: 1px solid;
-    grid-area: "modelContainer";
+    padding: 0.5rem;
+    min-width: 0;
+}
 
+.infoSection {
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.infoHeader {
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.infoHeader::-webkit-details-marker {
+    display: none;
+}
+
+.infoHeader::before {
+    content: '▼';
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+    font-size: 0.8em;
+}
+
+details:not([open]) .infoHeader::before {
+    transform: rotate(-90deg);
+}
+
+.infoHeader:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.infoContent {
+    padding: 0.75rem;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.infoContent > div {
+    padding: 0.25rem 0;
+}
+
+.shopContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modelBox {
+    margin-bottom: 0.5rem;
+}
+
+.bottomBox {
+    margin-top: 0.5rem;
 }
 .modelContainerBook {
     background-image: url('https://github.com/Freshairkaboom/Endless-Complexity/blob/main/assets/openbook.jpg?raw=true');
-    background-size: 100%;
-    background-position-y: -20px;
-    width: 750px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    max-width: 750px;
     height: 300px;
-    grid-area: "modelContainer";
-
+    margin: 0.5rem;
+    border-radius: 10px;
 }
 
 .statuscontainer {
-    width: 250px;
+    grid-area: status;
     border-right: 1px solid;
-    grid-area: "statusContainer";
-
+    padding: 0.5rem;
+    min-width: 0;
 }
 
 .buttoncontainer {
-    width: 250px;
-    grid-area: "buttonContainer";
+    grid-area: buttons;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.actionButtonWrapper {
+    position: relative;
+    display: flex;
+}
+
+.actionButtonWrapper:nth-child(1) .actionButton::before {
+    content: '1)';
+}
+
+.actionButtonWrapper:nth-child(2) .actionButton::before {
+    content: '2)';
+}
+
+.actionButtonWrapper:nth-child(3) .actionButton::before {
+    content: '3)';
+}
+
+.actionButtonWrapper:nth-child(4) .actionButton::before {
+    content: '4)';
+}
+
+.actionButton::before {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #333;
+    min-width: 1.5rem;
+    text-align: right;
+}
+
+.actionButton {
+    position: relative;
+    padding-right: 3rem;
+    padding-left: 0.75rem;
+    text-align: left;
 }
 
 .closed {
-    background-image:unset;
-    background-size: 0%;
-    height: 0px;
+    display: none;
 }
 
 .bookText {
@@ -77,26 +210,144 @@ body {
 }
 
 .save {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.load {
+    position: fixed;
+    top: 10px;
+    left: 80px;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.save:hover,
+.load:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
     position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+/* Menu Backdrop */
+.menuBackdrop {
+    position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-.load {
+
+.menuBackdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Side Menu/Drawer */
+.sideMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 350px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1002;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 1rem;
+}
+
+.sideMenu.active {
+    right: 0;
+}
+
+.closeMenu {
     position: absolute;
-    left: 50px;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
-.button {
-    width: 50px;
-    height: 20px;
-    margin-left: 80.8px;
-
+.closeMenu:hover {
+    background-color: rgba(0, 0, 0, 0.2);
 }
+
+.menuContent {
+    margin-top: 60px;
+}
+
+.button,
 .button2 {
-    width: 50px;
-    height: 20px;
-    margin-left: 64px;
-    margin-bottom: 8px;
+    min-width: 50px;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
 }
 
 .button:hover {
@@ -107,22 +358,380 @@ body {
 }
 
 .actionButton {
-    margin: 10px;
-    width: 180px;
-    height: 60px;
+    margin: 0.5rem 0;
+    width: 100%;
+    min-height: 60px;
+    padding: 0.75rem;
+    padding-right: 3rem;
+    padding-left: 0.75rem;
     cursor: pointer;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    position: relative;
+    text-align: left;
 }
 
 .actionButton:hover {
-    border: 1px solid red;
+    border: 2px solid red;
+    transform: scale(1.02);
 }
 
 .startButton {
-    width: 8rem;
-    height: 6rem;
-
-    font-size: 1.5rem;
+    min-width: 8rem;
+    min-height: 6rem;
+    padding: 1rem 2rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.startButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+    .title {
+        border: 3px solid black;
+        margin: 0 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .container {
+        padding: 0.5rem;
+    }
+
+    .startButton {
+        min-width: 7rem;
+        min-height: 5rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .buttonContainer {
+        gap: 0.75rem;
+    }
+
+    /* Show hamburger menu */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Game view tablet styles */
+    .page {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "status buttons";
+        margin: 0.5rem;
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+
+    /* Hide desktop modelContainer on tablet */
+    .modelContainer {
+        display: none;
+    }
+
+    .statuscontainer,
+    .buttoncontainer {
+        border-right: none;
+        padding: 0.75rem;
+    }
+
+    .modelContainerBook {
+        height: 250px;
+    }
+
+    .save {
+        top: 5px;
+        left: 5px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .load {
+        top: 5px;
+        left: 65px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    html {
+        overflow: hidden;
+        position: fixed;
+    }
+
+    body {
+        padding: 0;
+        align-items: flex-start;
+        overflow: hidden;
+        height: 100vh;
+        position: fixed;
+        background-repeat: no-repeat;
+    }
+
+    /* Hide title on mobile to save space */
+    .title {
+        display: none;
+    }
+
+    .container {
+        padding: 0;
+        width: 100%;
+        max-width: 100vw;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    .startButton {
+        width: 100%;
+        max-width: 300px;
+        min-height: 4rem;
+        padding: 1rem;
+    }
+
+    .buttonContainer {
+        width: 100%;
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Show hamburger menu */
+    .hamburger {
+        display: flex;
+        width: 45px;
+        height: 45px;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 2.5px;
+    }
+
+    /* Side menu adjustments for mobile */
+    .sideMenu {
+        width: 85%;
+        max-width: 300px;
+    }
+
+    /* Game view mobile styles - status and buttons only */
+    .page {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "status"
+            "buttons";
+        width: 90vw;
+        max-width: 90vw;
+        margin: 0.5rem auto;
+        padding: 0.5rem;
+        gap: 0.75rem;
+        border: 1px solid black;
+        box-shadow: 0 0 5px 2px;
+        max-height: calc(100vh - 120px);
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+
+    /* Hide desktop modelContainer on mobile */
+    .modelContainer {
+        display: none;
+    }
+
+    .statuscontainer {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 0.75rem 0.5rem;
+        font-size: 1rem;
+        min-width: 0;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .statuscontainer > div {
+        padding: 0.3rem 0;
+        line-height: 1.4;
+    }
+
+    .buttoncontainer {
+        border-right: none;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .modelContainerBook {
+        height: 180px;
+        margin: 0.25rem;
+    }
+
+    .bookText {
+        margin-left: 5%;
+        width: 90%;
+        font-size: 0.85rem;
+    }
+
+    .save {
+        top: 5px;
+        left: 5px;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .load {
+        top: 5px;
+        left: 50px;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .actionButton {
+        min-height: 55px;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .button,
+    .button2 {
+        display: block;
+        width: 100%;
+        margin: 0.25rem 0;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Mobile menu content styling */
+    .menuContent .infoSection {
+        margin-bottom: 0.75rem;
+    }
+
+    .menuContent .infoHeader {
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+
+    .menuContent .infoContent {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape orientation for mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        align-items: center;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .container {
+        padding: 0;
+        width: 100%;
+        max-width: 100vw;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    .page {
+        width: 95vw;
+        max-width: 95vw;
+        height: 90vh;
+        max-height: 90vh;
+        margin: 0 auto;
+        padding: 0.25rem;
+        gap: 0.5rem;
+        border: 1px solid black;
+        box-shadow: 0 0 5px 2px;
+        overflow: hidden;
+        box-sizing: border-box;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas: "status buttons";
+    }
+
+    .modelContainer {
+        display: none;
+    }
+
+    .statuscontainer {
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: none;
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        min-width: 0;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .statuscontainer > div {
+        padding: 0.2rem 0;
+        line-height: 1.3;
+    }
+
+    .buttoncontainer {
+        border-right: none;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        min-width: 0;
+        max-width: 100%;
+        overflow-y: auto;
+    }
+
+    .actionButton {
+        min-height: 45px;
+        font-size: 0.85rem;
+        margin: 0;
+        padding: 0.5rem;
+    }
+
+    .modelContainerBook {
+        height: 150px;
+        margin: 0.25rem;
+    }
+
+    .hamburger {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .hamburger span {
+        width: 22px;
+        height: 2px;
+    }
+
+    .save {
+        top: 5px;
+        left: 5px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .load {
+        top: 5px;
+        left: 45px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
 }
 
 .whitetext {
@@ -140,4 +749,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
 }

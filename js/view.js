@@ -35,42 +35,101 @@ function gameView() {
         <button class="save" onclick="saveGame()">Save</button>
         <button class="load" onclick="loadGame()">Load</button>
 
-        <h1 class="title">Endless Complexity</h1>
+        <div class="menuBackdrop" id="menuBackdrop" onclick="toggleMenu()"></div>
+        <div class="sideMenu" id="sideMenu">
+            <button class="closeMenu" onclick="toggleMenu()">&times;</button>
+            <div class="menuContent">
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Player Info</summary>
+                    <div class="infoContent">
+                        <div>Player name: ${player.name} (click to change)</div>
+                        <div>Health: ${player.health} + ${pmvariables.cover}</div>
+                        <div>Attack damage: ${player.ad}</div>
+                        <div>Speed: ${player.speed}</div>
+                        <div>Equipped: ${player.weapon.name}</div>
+                    </div>
+                </details>
 
-        <div class="modelContainerBook ${menu.bookclose}">
-                <p class="bookText">${menu.booktext}</p>
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Enemy Info</summary>
+                    <div class="infoContent">
+                        <div>Enemy name: ${enemy.current.name}</div>
+                        <div>Health: ${enemy.current.health}</div>
+                    </div>
+                </details>
+
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Inventory</summary>
+                    <div class="infoContent">
+                        <div>Inventory slots: ${player.bag.inventory}</div>
+                        <div>Gold: ${player.bag.gold} gp</div>
+                        <div>Health potions: ${player.bag.healthpotions}</div>
+                        <div>Strength potions: ${player.bag.strengthpotions}</div>
+                    </div>
+                </details>
+
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Shop</summary>
+                    <div class="infoContent shopContent">
+                        <div>Buy health potion:<button class="button" onclick="buyHealthPotion()">25gp</button></div>
+                        <div>Buy strength potion: <button class="button2" onclick="buystrengthPotion()">50gp</button></div>
+                    </div>
+                </details>
             </div>
-        <div class="page">
-
         </div>
 
-        <div class="page">
+        <div class="container">
+            <h1 class="title">Endless Complexity</h1>
+
+            <div class="modelContainerBook ${menu.bookclose}">
+                <p class="bookText">${menu.booktext}</p>
+            </div>
+
+            <div class="page">
+
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
             <div class="modelContainer">
-                <div class="modelBox">
-                    <div>Player name: ${player.name} (click to change)</div>
-                    <div>Health: ${player.health} + ${pmvariables.cover}</div>
-                    <div>Attack damage: ${player.ad}</div>
-                    <div>Speed: ${player.speed}</div>
-                    <div>Equipped: ${player.weapon.name}</div>
-                </div>
-                <hr>
-                <div class="modelBox">
-                    <div>Enemy name: ${enemy.current.name}</div>
-                    <div>Health: ${enemy.current.health} </div>
-                </div>
-                <hr>
-                <div class="modelBox">
-                    <div>Inventory: ${player.bag.inventory} slots left</div>
-                    <div>Gold: ${player.bag.gold} gp</div>
-                    <div>Health potions: ${player.bag.healthpotions}</div>
-                    <div>Strength potions: ${player.bag.strengthpotions}</div>
-                </div>
-                <hr>
-                <div class="bottomBox">
-                    <div>Buy health potion:<button class="button" onclick="buyHealthPotion()">25gp</button></div>
-                    <div> Buy strength potion: <button class="button2" onclick="buystrengthPotion()">50gp</button></div>
-                </div>
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Player Info</summary>
+                    <div class="infoContent">
+                        <div>Player name: ${player.name} (click to change)</div>
+                        <div>Health: ${player.health} + ${pmvariables.cover}</div>
+                        <div>Attack damage: ${player.ad}</div>
+                        <div>Speed: ${player.speed}</div>
+                        <div>Equipped: ${player.weapon.name}</div>
+                    </div>
+                </details>
+
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Enemy Info</summary>
+                    <div class="infoContent">
+                        <div>Enemy name: ${enemy.current.name}</div>
+                        <div>Health: ${enemy.current.health}</div>
+                    </div>
+                </details>
+
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Inventory</summary>
+                    <div class="infoContent">
+                        <div>Inventory slots: ${player.bag.inventory}</div>
+                        <div>Gold: ${player.bag.gold} gp</div>
+                        <div>Health potions: ${player.bag.healthpotions}</div>
+                        <div>Strength potions: ${player.bag.strengthpotions}</div>
+                    </div>
+                </details>
+
+                <details class="infoSection" open>
+                    <summary class="infoHeader">Shop</summary>
+                    <div class="infoContent shopContent">
+                        <div>Buy health potion:<button class="button" onclick="buyHealthPotion()">25gp</button></div>
+                        <div>Buy strength potion: <button class="button2" onclick="buystrengthPotion()">50gp</button></div>
+                    </div>
+                </details>
             </div>
 
             <div class="statuscontainer">
@@ -82,16 +141,24 @@ function gameView() {
             </div>
 
             <div class="buttoncontainer">
-                ${button.firstaction} 1)
+                <div class="actionButtonWrapper">${button.firstaction}</div>
 
-                ${button.secondaction} 2)
+                <div class="actionButtonWrapper">${button.secondaction}</div>
 
-                ${button.thirdaction} 3)
+                <div class="actionButtonWrapper">${button.thirdaction}</div>
 
-                ${button.fourthaction} 4)
+                <div class="actionButtonWrapper">${button.fourthaction}</div>
             </div>
+        </div>
         </div>
 
     `;
     app.innerHTML = html;
+}
+
+function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    const backdrop = document.getElementById('menuBackdrop');
+    menu.classList.toggle('active');
+    backdrop.classList.toggle('active');
 }

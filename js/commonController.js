@@ -29,16 +29,17 @@ function applyLevel() {
 }
 
 // Functions used to set the player's name //
-function setName() {
-
-    player.name = '<input onchange="changeName(this.value)"/>'
+function setName(event) {
+    if (event) event.stopPropagation();
+    player.name = '<input onchange="changeName(this.value, event)"/>'
     view();
 }
 
-function changeName(name) {
+function changeName(name, event) {
+    if (event) event.stopPropagation();
     pmvariables.truename = name;
 
-    player.name = '<span onclick="setName()">' + name + '</span>';
+    player.name = '<span onclick="setName(event)">' + name + '</span>';
     view();
 }
 
