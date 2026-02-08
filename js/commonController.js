@@ -302,3 +302,28 @@ function randomQuip() {
 function closeBook() {
     menu.bookclose = "closed";
 }
+
+// Keyboard shortcuts for action buttons (1-4)
+document.addEventListener('keydown', function(event) {
+    // Only trigger if not typing in an input field
+    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+        return;
+    }
+
+    const actionButtons = document.querySelectorAll('.actionButton');
+
+    switch(event.key) {
+        case '1':
+            if (actionButtons[0]) actionButtons[0].click();
+            break;
+        case '2':
+            if (actionButtons[1]) actionButtons[1].click();
+            break;
+        case '3':
+            if (actionButtons[2]) actionButtons[2].click();
+            break;
+        case '4':
+            if (actionButtons[3]) actionButtons[3].click();
+            break;
+    }
+});
