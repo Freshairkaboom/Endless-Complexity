@@ -140,8 +140,11 @@ details:not([open]) .infoHeader::before {
     width: 100%;
     max-width: 750px;
     height: 300px;
+    min-height: 300px;
+    max-height: 300px;
     margin: 0.5rem;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .statuscontainer {
@@ -204,10 +207,16 @@ details:not([open]) .infoHeader::before {
 }
 
 .bookText {
-    margin-left: 125px;
-    width: 250px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: black;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 30px;
+    padding: 20px;
+    max-width: 670px;
+    font-family: 'Crimson Text', 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2c2c2c;
+    text-align: left;
 }
 
 .save {
@@ -396,7 +405,7 @@ details:not([open]) .infoHeader::before {
 }
 
 /* Tablet and smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 768px) and (orientation: landscape) {
     body {
         align-items: center;
     }
@@ -433,10 +442,13 @@ details:not([open]) .infoHeader::before {
 
     /* Game view tablet styles */
     .page {
-        grid-template-columns: 375px 375px;
-        grid-template-rows: 757px;
+        display: grid !important;
+        grid-template-columns: 375px 375px !important;
+        grid-template-rows: 757px !important;
         grid-template-areas:
-            "status buttons";
+            "status buttons" !important;
+        align-content: start !important;
+        align-items: start !important;
         width: 750px !important;
         height: 757px !important;
         min-width: 750px !important;
@@ -451,6 +463,9 @@ details:not([open]) .infoHeader::before {
         flex-shrink: 0 !important;
         flex-grow: 0 !important;
         border: 2px solid black;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
     }
 
     /* Hide desktop modelContainer on tablet */
@@ -461,28 +476,25 @@ details:not([open]) .infoHeader::before {
     .statuscontainer,
     .buttoncontainer {
         border-right: none;
-        padding: 0.75rem;
+        padding: 0.75rem !important;
         overflow-y: auto;
-        width: 375px;
-        height: 757px;
-        min-width: 375px;
-        min-height: 757px;
-        max-width: 375px;
-        max-height: 757px;
-        flex-shrink: 0;
-        box-sizing: border-box;
+        width: 375px !important;
+        height: 757px !important;
+        min-width: 375px !important;
+        min-height: 757px !important;
+        max-width: 375px !important;
+        max-height: 757px !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+        box-sizing: border-box !important;
+        background-color: transparent !important;
     }
 
     .statuscontainer {
-        border-right: 1px solid rgba(0, 0, 0, 0.2);
-    }
-
-    .modelContainerBook {
-        height: 250px;
-        margin: 0.5rem 0;
-    }
-
-    .save {
+        grid-area: status !important;
+        border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+        border-bottom: none !important;
+        padding-right: 0.75rem !important;
         top: 5px;
         left: 5px;
         padding: 0.4rem 0.8rem;
@@ -497,8 +509,8 @@ details:not([open]) .infoHeader::before {
     }
 }
 
-/* Mobile screens */
-@media (max-width: 480px) {
+/* Mobile screens - portrait orientation */
+@media (max-width: 768px) and (orientation: portrait) {
     html {
         overflow: hidden;
         position: fixed;
@@ -520,10 +532,15 @@ details:not([open]) .infoHeader::before {
 
     .container {
         padding: 0;
-        width: 100%;
+        width: 100vw;
+        height: auto;
+        min-height: 100vh;
         max-width: 100vw;
-        max-height: 100vh;
-        overflow: hidden;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
     }
 
     .startButton {
@@ -560,20 +577,33 @@ details:not([open]) .infoHeader::before {
 
     /* Game view mobile styles - status and buttons only */
     .page {
-        grid-template-columns: minmax(0, 1fr);
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto 1fr !important;
         grid-template-areas:
             "status"
-            "buttons";
-        width: 90vw;
-        max-width: 90vw;
-        margin: 0.5rem auto;
-        padding: 0.5rem;
-        gap: 0.75rem;
-        border: 1px solid black;
-        box-shadow: 0 0 5px 2px;
-        max-height: calc(100vh - 120px);
-        overflow-x: hidden;
-        box-sizing: border-box;
+            "buttons" !important;
+        align-content: center;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 100vw !important;
+        min-height: 100vh !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        background-color: rgba(255, 255, 255, 0.81);
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
     }
 
     /* Hide desktop modelContainer on mobile */
@@ -582,15 +612,26 @@ details:not([open]) .infoHeader::before {
     }
 
     .statuscontainer {
+        grid-area: status;
         border-right: none;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         padding: 0.75rem 0.5rem;
+        padding-top: 50px;
+        padding-right: 60px;
         font-size: 1rem;
-        min-width: 0;
-        max-width: 100%;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow-y: auto;
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
+        background-color: transparent;
+        flex-shrink: 0;
+        box-sizing: border-box;
     }
 
     .statuscontainer > div {
@@ -599,13 +640,23 @@ details:not([open]) .infoHeader::before {
     }
 
     .buttoncontainer {
+        grid-area: buttons;
         border-right: none;
         padding: 0.5rem;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        min-width: 0;
-        max-width: 100%;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow-y: auto;
+        background-color: transparent;
+        flex-shrink: 1;
+        flex-grow: 1;
+        box-sizing: border-box;
     }
 
     .modelContainerBook {
@@ -622,15 +673,17 @@ details:not([open]) .infoHeader::before {
     .save {
         top: 5px;
         left: 5px;
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
+        padding: 0.4rem 0.7rem;
+        font-size: 0.85rem;
+        z-index: 1000;
     }
 
     .load {
         top: 5px;
-        left: 50px;
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
+        left: 65px;
+        padding: 0.4rem 0.7rem;
+        font-size: 0.85rem;
+        z-index: 1000;
     }
 
     .actionButton {
@@ -668,6 +721,7 @@ details:not([open]) .infoHeader::before {
 @media (max-height: 500px) and (orientation: landscape) {
     body {
         align-items: center;
+        justify-content: center;
     }
 
     .title {
@@ -679,24 +733,33 @@ details:not([open]) .infoHeader::before {
         width: 100%;
         max-width: 100vw;
         max-height: 100vh;
+        height: 100vh;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .page {
-        width: 95vw;
-        max-width: 95vw;
-        height: 90vh;
-        max-height: 90vh;
-        margin: 0 auto;
-        padding: 0.25rem;
-        gap: 0.5rem;
-        border: 1px solid black;
-        box-shadow: 0 0 5px 2px;
-        overflow: hidden;
-        box-sizing: border-box;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        grid-template-areas: "status buttons";
-        align-items: center;
+        display: flex !important;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        padding: 10vw;
+        padding-left: 0.5rem !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        background-color: rgba(255, 255, 255, 0.81);
     }
 
     .modelContainer {
@@ -704,18 +767,22 @@ details:not([open]) .infoHeader::before {
     }
 
     .statuscontainer {
-        border-right: 1px solid rgba(0, 0, 0, 0.2);
-        border-bottom: none;
-        padding: 0.5rem;
-        font-size: 1.0rem;
-        min-width: 0;
-        max-width: 100%;
+        border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+        padding-top: 50px;
+        font-size: 0.9rem;
+        min-width: 0 !important;
+        background-color: transparent;
+        max-width: 48vw !important;
+        min-width: 40vw !important;
+        width: 48vw !important;
+        height: auto !important;
+        max-height: 70vh !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        display: block !important;
+        overflow-y: auto !important;
+        flex-shrink: 0 !important;
     }
 
     .statuscontainer > div {
@@ -724,15 +791,20 @@ details:not([open]) .infoHeader::before {
     }
 
     .buttoncontainer {
-        border-right: none;
-        padding: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-        min-width: 0;
-        max-width: 100%;
-        overflow-y: auto;
-        justify-content: center;
+        border-right: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.35rem !important;
+        min-width: 0 !important;
+        max-width: 48vw !important;
+        min-width: 40vw !important;
+        width: 48vw !important;
+        height: auto !important;
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        justify-content: flex-start !important;
+        background-color: transparent;
+        flex-shrink: 0 !important;
     }
 
     .actionButton {

@@ -5,6 +5,10 @@ function view() {
             startView();
             break;
 
+        case 'introView':
+            introView();
+            break;
+
         case 'gameView':
             gameView();
             break;
@@ -19,8 +23,24 @@ function startView() {
     <h1 class="title">Endless Complexity</h1>
 
     <div class="buttonContainer">
-    <button class="startButton" onclick="model.app.currentView='gameView';view();writeIntro();">New Game</button>
-    <button class="startButton" onclick="model.app.currentView='gameView';loadGame();closeBook();view();">Load Game</button>
+    <button class="startButton" onclick="model.app.currentView='introView';view();writeIntro();">New Game</button>
+    <button class="startButton" onclick="model.app.currentView='gameView';loadGame();view();">Load Game</button>
+    </div>
+
+    </div>
+
+`;
+app.innerHTML = html;
+}
+
+function introView() {
+    let html = `
+    <div class="container">
+
+    <h1 class="title">Endless Complexity</h1>
+
+    <div class="modelContainerBook ${menu.bookclose}">
+        <p class="bookText">${menu.booktext}</p>
     </div>
 
     </div>
@@ -91,17 +111,13 @@ function gameView() {
         <div class="container">
             <h1 class="title">Endless Complexity</h1>
 
-            <div class="modelContainerBook ${menu.bookclose}">
-                <p class="bookText">${menu.booktext}</p>
-            </div>
-
-            <div class="page">
-
             <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+
+            <div class="page">
 
             <div class="modelContainer">
                 <details class="infoSection" id="playerInfoMain" ${menuState.playerInfoOpen ? 'open' : ''} ontoggle="menuState.playerInfoOpen = this.open">
@@ -220,14 +236,6 @@ function updateGameViewContent() {
             <div class="actionButtonWrapper">${button.thirdaction}</div>
             <div class="actionButtonWrapper">${button.fourthaction}</div>
         `;
-    }
-
-    // Update book
-    const bookContainer = document.querySelector('.modelContainerBook');
-    if (bookContainer) {
-        bookContainer.className = `modelContainerBook ${menu.bookclose}`;
-        const bookText = bookContainer.querySelector('.bookText');
-        if (bookText) bookText.textContent = menu.booktext;
     }
 }
 

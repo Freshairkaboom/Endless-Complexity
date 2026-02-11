@@ -123,6 +123,7 @@ function staggeredText(text) {
                     menu.booktext = '';
                     menu.bookclose = "closed";
                     time.selectevent = true;
+                    model.app.currentView = 'gameView';
                     view();
                 },3000);
             }
@@ -145,6 +146,7 @@ function staggeredText(text) {
                     menu.booktext = '';
                     menu.bookclose = "closed";
                     time.selectevent = true;
+                    model.app.currentView = 'gameView';
                     view();
                 },3000);
             }
