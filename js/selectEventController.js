@@ -12,27 +12,19 @@ function selectEvent(event) {
     menu.status = 'Loading event...';
     view();
 
-    //Checks what box was clicked and selects appropriate event
-    if (event == 'Fight') {
-        view();
-        setTimeout(() => {fightSequence(randomEncounter()); time.selectevent = true; view(); }, 3000);
-
-    }
-    else if (event == 'Explore') {
-            view();
-            setTimeout(()=>{exploreSequence();time.selectevent=true;view();}, 3000);
-    }
-    else if (event == 'Farm') {
-            menu.round--;
-            view();
-            setTimeout(()=>{farmSequence();time.selectevent=true;view();}, 3000);
-
-    }
-    else if (event == 'Study') {
-            menu.round--;
-            view();
-            setTimeout(()=>{studySequence();time.selectevent=true;view();}, 3000);
-
+    switch (event) {
+        case 'Fight':
+            setTimeout(() => {fightSequence(randomEncounter()); time.selectevent = true; view(); }, 500);
+            break;
+        case 'Explore':
+            setTimeout(()=>{exploreSequence();time.selectevent=true;view();}, 500);
+            break;
+        case 'Farm':
+            setTimeout(()=>{farmSequence();time.selectevent=true;view();}, 500);
+            break;
+        case 'Study':
+            setTimeout(()=>{studySequence();time.selectevent=true;view();}, 500);
+            break;
     }
 }
 
